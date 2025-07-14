@@ -34,7 +34,7 @@
   </p>
 </div>
 
-![Visitor Count](https://profile-counter.glitch.me/linuxdo-scripts/count.svg)
+<img src="https://profile-counter.glitch.me/linuxdo-scripts/count.svg" style="display:none">
 
 ## 📖 项目介绍
 
