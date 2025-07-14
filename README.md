@@ -19,7 +19,7 @@
   <p>
     <a href="https://discord.gg/n2pErsD7Kg">Discord</a>
     ·
-    <a href="https://linuxdo-scripts.zishu.me">文档</a>
+    <a href="https://linuxdo-scripts.zishu.me">使用文档</a>
     ·
     <a href="https://github.com/ezyshu/linuxdo-scripts/issues/new/choose">问题反馈</a>
     ·
@@ -27,10 +27,10 @@
   </p>
 
   <p>
-    <img src="https://img.shields.io/github/v/release/ezyshu/linuxdo-scripts?label=Version">
-    <img src="https://img.shields.io/github/stars/ezyshu/linuxdo-scripts?style=flat&label=Github%20Stars">
-    <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&label=Chrome%20Web%20Store">
-    <img src="https://img.shields.io/github/license/ezyshu/linuxdo-scripts?style=flat&">
+  <img src="https://img.shields.io/github/v/release/ezyshu/linuxdo-scripts?logo=github">
+  <img src="https://img.shields.io/github/stars/ezyshu/linuxdo-scripts?logo=github&style=flat">
+  <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&logo=googlechrome&label=Chrome%20Web%20Store">
+  <img src="https://img.shields.io/badge/License-AGPLv3-important?logo=gnu">
   </p>
 </div>
 
@@ -49,7 +49,15 @@ LinuxDo Scripts 是一个功能丰富的浏览器扩展，旨在提升 LinuxDo �
   
 </details>
 
-## ✨ 主要特性
+## 📥 1. 安装使用
+
+### 浏览器支持
+- **Chrome / Edge / Arc / Brave**：[Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
+- **国内用户**：[Crx 商店](https://www.crxsoso.com/webstore/detail/fbgblmjbeebanackldpbmpacppflgmlj)
+- **Firefox**：[Firefox Addons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
+
+
+## ✨ 2. 主要特性
 
 ### 🔍 浏览体验优化
 - 话题列表显示创建时间
@@ -83,14 +91,7 @@ LinuxDo Scripts 是一个功能丰富的浏览器扩展，旨在提升 LinuxDo �
 - 支持自定义 CSS 样式
 - 设置面板数据同步
 
-## 📥 安装使用
-
-### 浏览器支持
-- **Chrome / Edge / Arc / Brave**：[Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
-- **国内用户**：[Crx 商店](https://www.crxsoso.com/webstore/detail/fbgblmjbeebanackldpbmpacppflgmlj)
-- **Firefox**：[Firefox Addons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
-
-## 🛠️ 开发指南
+## 🛠️ 3. 开发指南
 
 ### 环境要求
 ```
@@ -118,27 +119,27 @@ npm run dev
 - 每个新功能以独立组件形式开发，避免冲突
 - 提交 PR 后将进行代码审核，无重大问题将尽快合并
 
-## 🚀 贡献者
+## 🚀 4. 贡献者
 
 ![Contributor](https://contrib.rocks/image?repo=ezyshu/linuxdo-scripts)
 
-## 🤝 贡献指南
+## 🤝 5. 贡献指南
 
 欢迎提出新的功能想法和改进建议！您可以通过以下方式参与项目：
 - 提交 Issue 报告问题或提出建议
 - 提交 Pull Request 贡献代码
 - 加入 Discord 社区参与讨论
 
-## ⭐️ Star History
+## ⭐️ 6. Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=ezyshu/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#ezyshu/linuxdo-scripts&Timeline)
 
-## 📄 许可证
+## 📄 7. 许可证
 
 本项目基于 MIT 许可证开源，详细信息请查看 [LICENSE](LICENSE) 文件。
 
-## 📖 免责声明
+## 📖 8. 免责声明
 
-本项目是一个免费且开源的项目，但并不保证其完全无BUG，使用前请自行承担风险；使用时请遵守相关法律法规，不得滥用。
+本项目免费且开放源代码，但不保证其绝对完善无误，请您在决定使用前自行评估风险。同时，务必遵守所有适用法律法规，严禁任何形式的滥用行为。
 
 如果有任何侵权行为，请联系 [ezyshu](https://github.com/ezyshu)，将会及时处理。
