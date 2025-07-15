@@ -44,11 +44,11 @@ jobs:
     - name: Create new release
       if: env.create_release == 'true'
       run: |
-        --generate-notes \
         CURRENT_DATE=$(TZ='Asia/Shanghai' date +'%Y-%m-%d  %H:%M')
         sed -i "s/\$PACKAGE_VERSION/$PACKAGE_VERSION/g" CHANGELOG.md
         sed -i "s/\$CURRENT_DATE/$CURRENT_DATE/g" CHANGELOG.md
         gh release create "$PACKAGE_VERSION" \
+        --generate-notes \
         -t "$PACKAGE_VERSION" \
         -n "$(cat CHANGELOG.md)
 

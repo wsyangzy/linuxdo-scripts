@@ -1,4 +1,4 @@
-title: "【错误报告】"
+title: "【错误报告】请输入简要标题"
 labels: bug
 name: "🐞 错误报告"
 description: 创建报告以帮助我们改进
@@ -22,7 +22,7 @@ body:
       label: 你使用的浏览器版本 + 扩展版本号
       placeholder: 如：Chrome 131 / 1.0.1 
     validations:
-      required: true
+      required: false
   - type: textarea
     id: steps-to-reproduce
     attributes:
