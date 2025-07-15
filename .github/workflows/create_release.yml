@@ -45,20 +45,32 @@ jobs:
       if: env.create_release == 'true'
       run: |
         CURRENT_DATE=$(TZ='Asia/Shanghai' date +'%Y-%m-%d  %H:%M')
-        sed -i "s/\$PACKAGE_VERSION/$PACKAGE_VERSION/g" CHANGELOG.md
-        sed -i "s/\$CURRENT_DATE/$CURRENT_DATE/g" CHANGELOG.md
+        sed -i "s/\\$PACKAGE_VERSION/$PACKAGE_VERSION/g" CHANGELOG.md
+        sed -i "s/\\$CURRENT_DATE/$CURRENT_DATE/g" CHANGELOG.md
+
+        GENERATED_NOTES_BODY=$(gh api \
+          --method POST \
+          /repos/${{ github.repository }}/releases/generate-notes \
+          -f tag_name="$PACKAGE_VERSION" \
+          | jq -r .body)
+
+        {
+          echo "$GENERATED_NOTES_BODY"
+          echo
+          cat CHANGELOG.md
+          echo
+          echo "---"
+          echo
+          echo "使用方法:  "
+          echo "- **Chrome / Edge / Arc / Brave:** [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)"
+          echo "- **国内用户:** [Crx 商店](https://www.crxsoso.com/webstore/detail/fbgblmjbeebanackldpbmpacppflgmlj)"
+          echo "- **Firefox:** [Firefox Addons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)"
+          echo
+          echo "发布于：$CURRENT_DATE"
+        } > release_body.md
+
         gh release create "$PACKAGE_VERSION" \
-        --generate-notes \
-        -t "$PACKAGE_VERSION" \
-        -n "$(cat CHANGELOG.md)
-
-        ---
-
-        使用方法:  
-        - **Chrome / Edge / Arc / Brave:** [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
-        - **国内用户:** [Crx 商店](https://www.crxsoso.com/webstore/detail/fbgblmjbeebanackldpbmpacppflgmlj)
-        - **Firefox:** [Firefox Addons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
-        
-        发布于：$CURRENT_DATE"
+        -F release_body.md \
+        -t "$PACKAGE_VERSION"
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
