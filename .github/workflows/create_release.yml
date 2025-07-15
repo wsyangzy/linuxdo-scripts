@@ -48,15 +48,16 @@ jobs:
         sed -i "s/\$PACKAGE_VERSION/$PACKAGE_VERSION/g" CHANGELOG.md
         sed -i "s/\$CURRENT_DATE/$CURRENT_DATE/g" CHANGELOG.md
         gh release create "$PACKAGE_VERSION" \
+        --generate-notes \
         -t "$PACKAGE_VERSION" \
         -n "$(cat CHANGELOG.md)
 
         ---
 
         使用方法:  
-        - **Chrome / Edge / Arc / Brave**：[Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
-        - **国内用户**：[Crx 商店](https://www.crxsoso.com/webstore/detail/fbgblmjbeebanackldpbmpacppflgmlj)
-        - **Firefox**：[Firefox Addons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
+        - **Chrome / Edge / Arc / Brave:** [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
+        - **国内用户:** [Crx 商店](https://www.crxsoso.com/webstore/detail/fbgblmjbeebanackldpbmpacppflgmlj)
+        - **Firefox:** [Firefox Addons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
         
         发布于：$CURRENT_DATE"
       env:
