@@ -1,3 +1,8 @@
+## 1.3.2
+
+- refactor: 重构分享图像生成功能，使用 @zumer/snapdom
+- delete: 卸载 html2canvas 组件库
+
 ## 1.3.1
 
 - workflow: 修改工作流新版本生成日志执行策略
