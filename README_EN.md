@@ -34,9 +34,7 @@
   </p>
 </div>
 
-<img src="https://profile-counter.glitch.me/linuxdo-scripts/count.svg" style="display:none">
-
-## 📖 Project Introduction
+<!-- <img src="https://profile-counter.glitch.me/linuxdo-scripts/count.svg" style="display:none"> -->
 
 LinuxDo Scripts is a feature-rich browser extension designed to enhance the user experience on the LinuxDo forum. It integrates multiple practical functions, from basic interface optimizations to advanced AI-assisted features, making your forum browsing and interaction experience smoother and more efficient.
 

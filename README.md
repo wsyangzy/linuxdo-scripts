@@ -34,9 +34,7 @@
   </p>
 </div>
 
-<img src="https://profile-counter.glitch.me/linuxdo-scripts/count.svg" style="display:none">
-
-## 📖 项目介绍
+<!-- <img src="https://profile-counter.glitch.me/linuxdo-scripts/count.svg" style="display:none"> -->
 
 LinuxDo Scripts 是一个功能丰富的浏览器扩展，旨在提升 LinuxDo 论坛的使用体验。它集成了多项实用功能，从基础的界面优化到高级的 AI 辅助功能，让您的论坛浏览和互动体验更加流畅和高效。
 
