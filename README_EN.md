@@ -134,7 +134,9 @@ New feature ideas and improvement suggestions are welcome! You can participate i
 
 ## 📄 7. License
 
-This project is open-sourced under the MIT license. Please refer to the [LICENSE](LICENSE) file for detailed information.
+This project is open-sourced under the [Apache License 2.0](https://github.com/ezyshu/linuxdo-scripts/blob/main/LICENSE).
+
+You are free to share and modify this project, but you must attribute the original author and source.
 
 ## 📖 8. Disclaimer
 

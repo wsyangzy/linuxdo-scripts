@@ -133,8 +133,10 @@ npm run dev
 [![Star History Chart](https://api.star-history.com/svg?repos=ezyshu/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#ezyshu/linuxdo-scripts&Timeline)
 
 ## 📄 7. 许可证
+ 
+本项目采用 [Apache License 2.0](https://github.com/ezyshu/linuxdo-scripts/blob/main/LICENSE) 协议开源。
 
-本项目基于 MIT 许可证开源，详细信息请查看 [LICENSE](LICENSE) 文件。
+您可以自由地分享和修改本项目，但必须标明原作者和来源。
 
 ## 📖 8. 免责声明
 
