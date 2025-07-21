@@ -1,2 +1,1 @@
-- refactor: 重构分享图像生成功能，使用 @zumer/snapdom
-- delete: 卸载 html2canvas 组件库
+- chore: popup 刷新列表时滚动至顶部
