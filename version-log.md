@@ -1,3 +1,8 @@
+## 1.3.3
+
+- chore: popup 刷新列表时滚动至顶部
+- delete: 移除搜索弹窗相关的新标签页跳转逻辑
+
 ## 1.3.2
 
 - refactor: 重构分享图像生成功能，使用 @zumer/snapdom
