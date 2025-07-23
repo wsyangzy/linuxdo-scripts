@@ -114,7 +114,6 @@ export default {
       this.getHotPosts();
       this.getNewsPosts();
       localStorage.setItem("Timestamp", Date.now());
-      this.scrollToTop();
     },
 
     // 当容器滚动时，记录当前位置
