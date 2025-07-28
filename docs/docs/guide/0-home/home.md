@@ -1,3 +1,7 @@
+```shell
+# 首页
+```
+
 [简体中文](README.md) | [English](README_EN.md)
 
 ```
@@ -26,7 +30,7 @@
     <a href="https://github.com/ezyshu/linuxdo-scripts/releases/latest">最新版本</a>
   </p>
 
-  <p>
+  <p style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;">
     <img src="https://img.shields.io/github/v/release/ezyshu/linuxdo-scripts?logo=github&label=Version">
     <img src="https://img.shields.io/github/stars/ezyshu/linuxdo-scripts?logo=github&style=flat&label=Stars">
     <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&logo=googlechrome&label=ChromeWebStore">

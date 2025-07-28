@@ -36,7 +36,7 @@ export default {
   },
   ignoreDeadLinks: true,
   themeConfig: {
-    siteTitle: 'LinuxDo Scripts 扩展',
+    siteTitle: 'LinuxDo Scripts 文档',
     nav,
     editLink: {
       pattern: 'https://github.com/ezyshu/linuxdo-scripts/blob/main/docs/docs/:path',

@@ -2,23 +2,23 @@
 layout: home
 
 hero:
-  name: LinuxDo 脚本增强插件
+  name: LinuxDo Scripts
   tagline: 持续更新，提供更强大的论坛体验，欢迎贡献您的创意！
   image:
-    src: https://vitepress.dev/vitepress-logo-large.webp
+    src: https://github.com/ezyshu/linuxdo-scripts/blob/main/public/icon/128.png?raw=true
     alt: 文档封面
   actions:
     - theme: brand
       text: 使用指南
       link: /guide/0-home/home.html
     - theme: alt
-      text: GitHub 项目
+      text: GitHub
       link: https://github.com/ezyshu/linuxdo-scripts
     - theme: alt
-      text: Chrome 扩展
+      text: Chrome Web Store
       link: https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj
     - theme: alt
-      text: Firefox 扩展
+      text: Firefox Addons
       link: https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/
 
 features:
@@ -58,6 +58,12 @@ features:
 @media (min-width: 960px) {
   :root {
     --vp-home-hero-image-filter: blur(72px);
+  }
+  .clip {
+    font-size:45px !important;
+  }
+  .tagline {
+    font-size:20px !important;
   }
 }
 </style>
