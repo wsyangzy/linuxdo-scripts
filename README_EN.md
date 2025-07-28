@@ -27,121 +27,185 @@
   </p>
 
   <p>
-  <img src="https://img.shields.io/github/v/release/ezyshu/linuxdo-scripts?logo=github">
-  <img src="https://img.shields.io/github/stars/ezyshu/linuxdo-scripts?logo=github&style=flat">
-  <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&logo=googlechrome&label=Chrome%20Web%20Store">
-  <img src="https://img.shields.io/badge/License-AGPLv3-important?logo=gnu">
+    <img src="https://img.shields.io/github/v/release/ezyshu/linuxdo-scripts?logo=github&label=Version">
+    <img src="https://img.shields.io/github/stars/ezyshu/linuxdo-scripts?logo=github&style=flat&label=Stars">
+    <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&logo=googlechrome&label=ChromeWebStore">
+    <img src="https://img.shields.io/badge/License-Apache%202.0-blue?logo=apache">
+    <img src="https://img.shields.io/github/last-commit/ezyshu/linuxdo-scripts?logo=github&label=Last%20Commit">
   </p>
 </div>
 
-<!-- <img src="https://profile-counter.glitch.me/linuxdo-scripts/count.svg" style="display:none"> -->
+## 📖 Project Overview
 
-LinuxDo Scripts is a feature-rich browser extension designed to enhance the user experience on the LinuxDo forum. It integrates multiple practical functions, from basic interface optimizations to advanced AI-assisted features, making your forum browsing and interaction experience smoother and more efficient.
+LinuxDo Scripts is a feature-rich browser extension designed to enhance the user experience on the LinuxDo forum. It integrates a wide range of practical features, from basic interface optimizations to advanced AI assistance, making your forum browsing and interaction smoother and more efficient.
 
-![image](https://github.com/user-attachments/assets/13b83ca0-3927-4261-8e29-15e152de4846)
+### ✨ Key Highlights
+- 🎨 **UI Beautification** - Multiple theme skins, personalized customization
+- 🤖 **AI Intelligence** - Topic summarization, smart reply generation
+- 📚 **Content Management** - Bookmarks, user tags, content filtering
+- ⚡ **Experience Optimization** - Quick actions, automation features
+- 🔧 **Highly Customizable** - Supports custom CSS, quick reply templates, and more
+
+![Feature Showcase](https://github.com/user-attachments/assets/13b83ca0-3927-4261-8e29-15e152de4846)
 
 <details>
-<summary>Instructions</summary>
+<summary>📸 More Screenshots</summary>
   
-![image](https://github.com/user-attachments/assets/880539ab-7a56-4b2f-aaaa-218ee4f8e699)
-![image](https://github.com/user-attachments/assets/6ee3d75c-b4ff-489d-942d-1526a9793f4f)
-![image](https://github.com/user-attachments/assets/2d106967-bb7d-49c8-af5a-9a551904cb5d)
+![Settings Panel](https://github.com/user-attachments/assets/880539ab-7a56-4b2f-aaaa-218ee4f8e699)
+![Feature Demo](https://github.com/user-attachments/assets/6ee3d75c-b4ff-489d-942d-1526a9793f4f)
+![UI Optimization](https://github.com/user-attachments/assets/2d106967-bb7d-49c8-af5a-9a551904cb5d)
   
 </details>
 
-## 📥 1. Installation and Usage
+## 📥 Quick Installation
 
-### Browser Support
-- **Chrome / Edge / Arc / Brave**: [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
-- **Domestic Users**: [Crx Store](https://www.crxsoso.com/webstore/detail/fbgblmjbeebanackldpbmpacppflgmlj)
-- **Firefox**: [Firefox Addons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
+### 🌐 Supported Browsers
 
+| Browser                         | Installation Link                                                                             | Note            |
+| ------------------------------- | --------------------------------------------------------------------------------------------- | --------------- |
+| **Chrome / Edge / Arc / Brave** | [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj) | Recommended     |
+| **Firefox**                     | [Firefox Addons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)            | Fully Supported |
+| **Mainland China Users**        | [Crx Store](https://www.crxsoso.com/webstore/detail/fbgblmjbeebanackldpbmpacppflgmlj)         | No VPN Required |
 
-## ✨ 2. Key Features
+### 🚀 Installation Steps
+1. Click the installation link for your browser above
+2. Click "Add to Browser" in the extension store
+3. Confirm installation permissions
+4. Visit the [LinuxDo Forum](https://linux.do) to start using
+
+## ✨ Features
 
 ### 🔍 Browsing Experience Optimization
-- Display creation time in topic lists
-- Show floor numbers
-- Open topics in new tabs
-- Preview details and comments directly in the topic list
-- Optimized display for mixed English and Chinese text
-- Improved signature image display to prevent broken images
-- Automatic switch to dark mode
+- ⏰ Show topic creation time in lists
+- 🏢 Display floor numbers and OP badge
+- 🆕 Open topics in new tabs
+- 👀 Preview details and comments directly in topic lists
+- 📝 Optimized display for mixed Chinese and English
+- 🖼️ Improved signature image display to prevent broken images
+- 🌙 Auto switch to dark mode
+- 📱 Ultra-wide monitor optimization
 
 ### 📚 Content Management
-- Comprehensive bookmark functionality
-- User tagging feature
-- Force hide (block) topics from specified users
-- Toggle to view only the original poster's posts
+- ⭐ Comprehensive bookmark functionality
+- 🏷️ User tag system
+- 🚫 Force block topics from specified users
+- 👑 Toggle to view only OP's posts
+- 🔍 Keyword and tag filtering
+- 📅 Block old posts by date
 
 ### 💬 Interaction Enhancement
-- Quick reply to topics (supports customization)
-- Optimized emoji in comment boxes
-- Floor lottery functionality
-- User level information query
+- ⚡ Quick reply to topics (supports custom templates)
+- 😊 Optimized emoji in comment boxes
+- 🎲 Floor lottery feature
+- 📊 User level information query
+- 👍 Quick like button
+- 🔄 Auto-expand replies
 
-### 🤖 AI Intelligence
-- AI topic summarization
-- Smart reply generation
-- AI-assisted post replies
+### 🤖 AI Assistant
+- 📋 AI topic summarization
+- 💡 Smart reply generation
+- 🤝 AI-assisted replies
+- 🎯 Intelligent content analysis
 
 ### 🎨 Personalization
-- Switch forum theme skins
-- Switch forum emoji styles
-- Support custom CSS styles
-- Settings panel data synchronization
+- 🎭 Multiple forum theme skins
+- 😀 Switch forum emoji styles
+- 🎨 Custom CSS support
+- ☁️ Cloud sync for settings data
+- 🖼️ Custom forum logo
+- 📑 Custom tab icon and title
 
-## 🛠️ 3. Development Guide
+### 🛠️ Practical Tools
+- 📸 Convert topics to images for sharing
+- 📄 Export forum articles
+- ⬆️ Back to top / jump to first floor
+- 🔕 Quick mute for posts
+- 🎯 View your own reply floors
 
-### Environment Requirements
-```
-node: v22.12.0
-```
+## 🛠️ Development Guide
 
-### Local Development
-1. Clone the repository and install dependencies:
-```shell
-git clone https://github.com/ezyshu/linuxdo-scripts
+### 📋 Environment Requirements
+- **Node.js**: `v22.12.0`
+- **Package Manager**: npm
+
+### 🚀 Local Development
+
+```bash
+# 1. Clone the project
+git clone https://github.com/ezyshu/linuxdo-scripts.git
+cd linuxdo-scripts
+
+# 2. Install dependencies
 npm install
-```
 
-2. Start the development server:
-```shell
+# 3. Start the development server
 npm run dev
 ```
 
-3. Load the extension:
-- Open the local `.output` folder.
-- Drag and drop the `chrome-mv3` folder onto `chrome://extensions/`.
+### 📦 Load the Extension
+1. Open your browser's extension management page
+   - Chrome: `chrome://extensions/`
+   - Firefox: `about:addons`
+2. Enable "Developer Mode"
+3. Click "Load unpacked extension"
+4. Select the `.output/chrome-mv3` folder in the project root directory
 
-### Development Notes
-- Adopt a component-based development approach.
-- Develop each new feature as an independent component to avoid conflicts.
-- Code will be reviewed after submitting a Pull Request, and will be merged promptly if there are no major issues.
+### 🏗️ Project Structure
+```
+linuxdo-scripts/
+├── entrypoints/          # Entry files
+├── components/           # Vue components
+├── public/               # Static assets
+├── docs/                 # Documentation
+├── i18n/                 # Internationalization files
+└── package.json          # Project configuration
+```
 
-## 🚀 4. Contributors
+### 💡 Development Guidelines
+- 🧩 **Component-based development**: Each feature is an independent component to avoid conflicts
+- 📝 **Code standards**: Follow ESLint configuration
+- 🔄 **Submission process**: PR → Code review → Merge
+- 📚 **Documentation updates**: New features must be documented
 
-![Contributor](https://contrib.rocks/image?repo=ezyshu/linuxdo-scripts)
+## 🤝 Contributing
 
-## 🤝 5. Contribution Guidelines
+### 🎯 How to Contribute
+- 🐛 [Report Bugs](https://github.com/ezyshu/linuxdo-scripts/issues/new?template=bug_report.yml)
+- 💡 [Feature Suggestions](https://github.com/ezyshu/linuxdo-scripts/issues/new?template=feature_report.yml)
+- 🔧 [Submit Code](https://github.com/ezyshu/linuxdo-scripts/pulls)
+- 🙍‍♂️ [Join Discussions](https://discord.gg/n2pErsD7Kg)
 
-New feature ideas and improvement suggestions are welcome! You can participate in the project by:
-- Submitting Issues to report problems or suggest ideas.
-- Submitting Pull Requests to contribute code.
-- Joining the Discord community for discussions.
+### 👥 Contributors
+![Contributors](https://contrib.rocks/image?repo=ezyshu/linuxdo-scripts)
 
-## ⭐️ 6. Star History
+## 📊 Project Statistics
 
+### ⭐ Star History
 [![Star History Chart](https://api.star-history.com/svg?repos=ezyshu/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#ezyshu/linuxdo-scripts&Timeline)
 
-## 📄 7. License
+## 📄 License
 
-This project is open-sourced under the [Apache License 2.0](https://github.com/ezyshu/linuxdo-scripts/blob/main/LICENSE).
+This project is licensed under the [Apache License 2.0](https://github.com/ezyshu/linuxdo-scripts/blob/main/LICENSE).
 
-You are free to share and modify this project, but you must attribute the original author and source.
+**You are free to:**
+- ✅ Use, copy, modify, and distribute this software
+- ✅ Use for commercial purposes
+- ✅ Re-license under the terms of the license
 
-## 📖 8. Disclaimer
+**You must:**
+- 📋 Retain the original copyright notice
+- 📋 Indicate any changes made to the original code
 
-This project is free and open-source, but we do not guarantee its absolute perfection and freedom from errors. Please assess the risks yourself before deciding to use it. Furthermore, you must comply with all applicable laws and regulations, and any form of misuse is strictly prohibited.
+## ⚠️ Disclaimer
 
-If there are any infringement issues, please contact [ezyshu](https://github.com/ezyshu), and it will be handled promptly.
+- This project is **free and open-source** and does not guarantee absolute perfection or freedom from errors
+- Please assess risks yourself before use and comply with relevant laws and regulations
+- Any form of abuse is strictly prohibited
+- For infringement issues, please contact [ezyshu](https://github.com/ezyshu) for prompt resolution
+
+---
+
+<div align="center">
+  <p>If you find this project helpful, please consider giving us a ⭐ Star!</p>
+  <p>Made with ❤️ by <a href="https://github.com/ezyshu">ezyshu</a> and <a href="https://github.com/ezyshu/linuxdo-scripts/graphs/contributors">contributors</a></p>
+</div>
