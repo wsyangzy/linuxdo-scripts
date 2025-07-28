@@ -293,12 +293,6 @@
               v-model="settingData.checked28"
               v-show="matchesSearch('隐藏输入框提示文字')"
             />
-            <!-- 插入删除线 -->
-            <MenuInsertStrikethrough
-              :sort="3"
-              v-model="settingData.checked51"
-              v-show="matchesSearch('插入删除线')"
-            />
 
             <div class="group-line">外置按钮</div>
             <!-- 列表快速免打扰帖子 -->
@@ -462,7 +456,6 @@ import MenuCatePageOptimizeBanner from "./components/BasicSettings/MenuCatePageO
 import MenuExportArticle from "./components/BasicSettings/MenuExportArticle.vue";
 import MenuTopicOwnerBadge from "./components/BasicSettings/MenuTopicOwnerBadge.vue";
 import MenuAlwaysFirstPost from "./components/BasicSettings/MenuAlwaysFirstPost.vue";
-import MenuInsertStrikethrough from "./components/BasicSettings/MenuInsertStrikethrough.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -583,7 +576,6 @@ export default {
     MenuTopicOwnerBadge,
     MenuAlwaysFirstPost,
     MenuBlockTags,
-    MenuInsertStrikethrough,
   },
   data() {
     return {
