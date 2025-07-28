@@ -96,7 +96,6 @@ LinuxDo Scripts is a feature-rich browser extension designed to enhance the user
 ### 💬 Interaction Enhancement
 - ⚡ Quick reply to topics (supports custom templates)
 - 😊 Optimized emoji in comment boxes
-- 🎲 Floor lottery feature
 - 📊 User level information query
 - 👍 Quick like button
 - 🔄 Auto-expand replies
