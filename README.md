@@ -39,6 +39,8 @@
 
 LinuxDo Scripts 是一个功能丰富的浏览器扩展，专为提升 LinuxDo 论坛的使用体验而设计。它集成了从基础界面优化到高级 AI 辅助的多项实用功能，让您的论坛浏览和互动体验更加流畅高效。
 
+论坛交流贴：[linuxdo 增强插件，持续更新欢迎反馈（浏览器扩展，油猴已失效不再更新）- LINUX DO](https://linux.do/t/topic/170951)
+
 ### ✨ 核心亮点
 - 🎨 **界面美化** - 多种主题皮肤，个性化定制
 - 🤖 **AI 智能** - 话题总结、智能回复生成
@@ -46,7 +48,7 @@ LinuxDo Scripts 是一个功能丰富的浏览器扩展，专为提升 LinuxDo �
 - ⚡ **体验优化** - 快捷操作、自动化功能
 - 🔧 **高度可定制** - 支持自定义 CSS、快捷回复等
 
-![功能展示](https://github.com/user-attachments/assets/13b83ca0-3927-4261-8e29-15e152de4846)
+![主图](https://github.com/user-attachments/assets/13b83ca0-3927-4261-8e29-15e152de4846)
 
 <details>
 <summary>📸 更多截图展示</summary>
