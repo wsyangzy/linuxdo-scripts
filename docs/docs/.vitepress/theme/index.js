@@ -44,7 +44,7 @@ export default {
       repoId: 'R_kgDOMfjPXA',
       category: 'Announcements', // default: `General`
       categoryId: 'DIC_kwDOMfjPXM4Chc6M',
-      mapping: 'url', // default: `pathname`
+      mapping: 'pathname', // default: `pathname`
       inputPosition: 'top', // default: `top`
       lang: 'zh-CN', // default: `zh-CN`
       // i18n setting (Note: This configuration will override the default language set by lang)
