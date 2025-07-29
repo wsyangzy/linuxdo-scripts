@@ -16,7 +16,7 @@
     "medium-zoom": "^1.0.8",
     "vite-plugin-vitepress-auto-sidebar": "^1.7.0",
     "vitepress-plugin-codeblocks-fold": "^1.2.27",
-    "vitepress-plugin-comment-with-giscus": "^1.1.8",
+    "vitepress-plugin-comment-with-giscus": "^1.1.15",
     "vitepress-plugin-rss": "^0.2.4",
     "yarn": "^1.22.21"
   }

@@ -1,5 +1,5 @@
-## docs
+## LinuxDo Scripts 文档
 
-linuxdo-scripts 增强插件的使用文档。
+LinuxDo Scripts 增强扩展的使用文档和开发文档，详情请查阅以下地址。
 
-（未完成）
+文档地址：https://linuxdo-scripts.zishu.me

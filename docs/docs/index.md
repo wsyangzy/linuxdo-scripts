@@ -22,15 +22,24 @@ hero:
       link: https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/
 
 features:
-  - icon: 📖
-    title: 完整文档
-    details: 详细说明每个功能的使用方法与配置技巧
   - icon: ⚡
-    title: 功能增强
-    details: 在论坛基础功能上新增多项实用特性
+    title: 体验优化
+    details: 快捷操作、自动化功能、新标签页打开话题、中英文混排优化显示等
+  - icon: 🔍
+    title: 互动增强
+    details: 快捷回复、等级信息查询、快捷点赞按钮、自动展开回复等
+  - icon: 🤖
+    title: AI 智能助手
+    details: 话题总结、内容智能分析、智能回复生成等
+  - icon: 📚
+    title: 内容管理
+    details: 完善的收藏夹功能、用户标签系统、关键词和标签过滤等
+  - icon: 🎨
+    title: 个性化定制
+    details: 支持自定义 CSS、论坛表情风格切换、多种主题皮肤等
   - icon: 🔧
-    title: 持续更新
-    details: 定期添加新功能并优化现有体验
+    title: 实用工具
+    details: 话题转图片分享、论坛文章导出、返回顶部、快速免打扰帖子等
 ---
 
 <style>

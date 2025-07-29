@@ -1,5 +1,7 @@
-import DefaultTheme from 'vitepress/theme'
+import DefaultTheme from 'vitepress/theme';
+import giscusTalk from 'vitepress-plugin-comment-with-giscus';
 import { useData, useRoute } from 'vitepress';
+import { toRefs } from "vue";
 
 // 引入组件
 import './custom.css';
@@ -34,5 +36,36 @@ export default {
     )
 
     codeblocksFold({ route, frontmatter }, true, 600);
+
+
+    // Obtain configuration from: https://giscus.app/
+    giscusTalk({
+      repo: 'ezyshu/linuxdo-scripts',
+      repoId: 'R_kgDOMfjPXA',
+      category: 'Announcements', // default: `General`
+      categoryId: 'DIC_kwDOMfjPXM4Chc6M',
+      mapping: 'url', // default: `pathname`
+      inputPosition: 'top', // default: `top`
+      lang: 'zh-CN', // default: `zh-CN`
+      // i18n setting (Note: This configuration will override the default language set by lang)
+      // Configured as an object with key-value pairs inside:
+      // [your i18n configuration name]: [corresponds to the language pack name in Giscus]
+      locales: {
+        'zh-Hans': 'zh-CN',
+        'en-US': 'en'
+      },
+      homePageShowComment: true, // Whether to display the comment area on the homepage, the default is false
+      lightTheme: 'preferred_color_scheme', // default: `light`
+      darkTheme: 'transparent_dark', // default: `transparent_dark`
+      // ...
+    }, {
+      frontmatter, route
+    },
+      // Whether to activate the comment area on all pages.
+      // The default is true, which means enabled, this parameter can be ignored;
+      // If it is false, it means it is not enabled.
+      // You can use `comment: true` preface to enable it separately on the page.
+      true
+    );
   },
 }
