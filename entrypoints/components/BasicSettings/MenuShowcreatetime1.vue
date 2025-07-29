@@ -44,27 +44,56 @@ export default {
     },
 
     convertToTimestamp(dateStr) {
-      const cleanedDateStr = dateStr.replace(/\s+/g, ""); // 去掉所有空格
-      const datePattern = /(\d{4})年(\d{1,2})月(\d{1,2})日(\d{2}):(\d{2})/;
-      const dateMatch = cleanedDateStr.match(datePattern);
-
-      if (dateMatch) {
-        const year = parseInt(dateMatch[1], 10);
-        const month = parseInt(dateMatch[2], 10) - 1;
-        const day = parseInt(dateMatch[3], 10);
-        const hours = parseInt(dateMatch[4], 10);
-        const minutes = parseInt(dateMatch[5], 10);
+      // 处理中文格式：2025 年 7月 29 日 12:59
+      const chinesePattern = /(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日\s*(\d{1,2}):(\d{2})/;
+      const chineseMatch = dateStr.match(chinesePattern);
+      
+      if (chineseMatch) {
+        const year = parseInt(chineseMatch[1], 10);
+        const month = parseInt(chineseMatch[2], 10) - 1;
+        const day = parseInt(chineseMatch[3], 10);
+        const hours = parseInt(chineseMatch[4], 10);
+        const minutes = parseInt(chineseMatch[5], 10);
 
         const date = new Date(year, month, day, hours, minutes);
         return date.getTime();
       }
+      
+      // 处理英文格式：Jul 29, 2025 1:20 pm
+      const englishPattern = /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{1,2}),\s+(\d{4})\s+(\d{1,2}):(\d{2})\s*(am|pm)/i;
+      const englishMatch = dateStr.match(englishPattern);
+      
+      if (englishMatch) {
+        const monthNames = {
+          'jan': 0, 'feb': 1, 'mar': 2, 'apr': 3, 'may': 4, 'jun': 5,
+          'jul': 6, 'aug': 7, 'sep': 8, 'oct': 9, 'nov': 10, 'dec': 11
+        };
+        
+        const month = monthNames[englishMatch[1].toLowerCase()];
+        const day = parseInt(englishMatch[2], 10);
+        const year = parseInt(englishMatch[3], 10);
+        let hours = parseInt(englishMatch[4], 10);
+        const minutes = parseInt(englishMatch[5], 10);
+        const ampm = englishMatch[6].toLowerCase();
+        
+        // 处理12小时制
+        if (ampm === 'pm' && hours !== 12) {
+          hours += 12;
+        } else if (ampm === 'am' && hours === 12) {
+          hours = 0;
+        }
+
+        const date = new Date(year, month, day, hours, minutes);
+        return date.getTime();
+      }
+      
       return null;
     },
     setInitDate() {
       $(".topic-list-item .age").each((index, element) => {
         const str = $(element).attr("title");
-
-        const match = str.match(/创建日期：([\s\S]*?)最新：/);
+        // 匹配第一行从冒号开始的内容，支持中英文格式和冒号
+        const match = str.match(/^(?:创建日期|Created)[:：]\s*([^\n]+)/);
 
         if (match && match[1]) {
           const creationDate = match[1].trim();
