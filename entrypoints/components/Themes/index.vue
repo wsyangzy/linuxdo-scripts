@@ -1,7 +1,10 @@
 <template>
   <div class="item">
     <p>切换论坛主题：</p>
-    <p>如果存在样式问题请切换其他主题或者关闭，因为这个功能直接 copy Discourse 框架下其他论坛的样式文件，我也改不了。</p>
+    <p>
+      如果存在样式问题请切换其他主题或者关闭，因为这个功能直接 copy Discourse
+      框架下其他论坛的样式文件，我也改不了。
+    </p>
     <hr />
     <ul>
       <li v-for="item in list" :key="item.id">
@@ -43,37 +46,37 @@ export default {
           id: 6,
           name: "ls-themes6",
           imgurl:
-            "https://cdn.ldstatic.com/original/3X/d/9/d935995d90221b7acdde23df142ba7bbe3c38bf0.png",
+            "https://raw.githubusercontent.com/ezyshu/linuxdo-scripts/refs/heads/main/public/themes/6.webp",
         },
         {
           id: 5,
           name: "ls-themes5",
           imgurl:
-            "https://cdn.ldstatic.com/original/3X/3/a/3a9cfbddfd2385ec4c638a10b15055220332e65c.png",
+            "https://raw.githubusercontent.com/ezyshu/linuxdo-scripts/refs/heads/main/public/themes/5.webp",
         },
         {
           id: 4,
           name: "ls-themes4",
           imgurl:
-            "https://cdn.ldstatic.com/original/3X/8/f/8fb7fe2251b44a6ea1831055bf5ac3ef2c12b4ea.jpeg",
+            "https://raw.githubusercontent.com/ezyshu/linuxdo-scripts/refs/heads/main/public/themes/4.webp",
         },
         {
           id: 3,
           name: "ls-themes3",
           imgurl:
-            "https://cdn.ldstatic.com/original/3X/2/5/25f83e28507a9ec9fe8ad41874ed578c2e007ff6.jpeg",
+            "https://raw.githubusercontent.com/ezyshu/linuxdo-scripts/refs/heads/main/public/themes/3.webp",
         },
         {
           id: 2,
           name: "ls-themes2",
           imgurl:
-            "https://cdn.ldstatic.com/original/3X/b/b/bbaa57335e0eab7e4db7ddb5944b613ce0cb5b89.jpeg",
+            "https://raw.githubusercontent.com/ezyshu/linuxdo-scripts/refs/heads/main/public/themes/2.webp",
         },
         {
           id: 1,
           name: "ls-themes1",
           imgurl:
-            "https://cdn.ldstatic.com/original/3X/2/f/2f1a0d87acb496eb544e17a72022c58ccfd72104.jpeg",
+            "https://raw.githubusercontent.com/ezyshu/linuxdo-scripts/refs/heads/main/public/themes/1.webp",
         },
       ],
       jsonData: [
