@@ -53,7 +53,7 @@ node: v22.12.0
 ### التطوير المحلي
 1. استنساخ المستودع وتثبيت التبعيات:
 ```shell
-git clone https://github.com/ezyshu/linuxdo-scripts
+git clone https://github.com/anghunk/linuxdo-scripts
 npm install
 ```
 
@@ -73,7 +73,7 @@ npm run dev
 
 ## 🚀 المساهمون
 
-![Contributor](https://contrib.rocks/image?repo=ezyshu/linuxdo-scripts)
+![Contributor](https://contrib.rocks/image?repo=anghunk/linuxdo-scripts)
 
 ## 🤝 دليل المساهمة
 
@@ -84,7 +84,7 @@ npm run dev
 
 ## ⭐️ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=ezyshu/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#ezyshu/linuxdo-scripts&Timeline)
+[![Star History Chart](https://api.star-history.com/svg?repos=anghunk/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#anghunk/linuxdo-scripts&Timeline)
 
 ## 📄 الرخصة
 
@@ -94,4 +94,4 @@ npm run dev
 
 هذا المشروع مجاني ومفتوح المصدر، ولكن لا يوجد ضمان بأنه خالٍ تمامًا من الأخطاء. استخدمه على مسؤوليتك الخاصة. يرجى الامتثال للقوانين واللوائح ذات الصلة وعدم إساءة استخدامه.
 
-إذا كان هناك أي انتهاك للحقوق، يرجى التواصل مع [ezyshu](https://github.com/ezyshu) وسيتم التعامل مع الأمر بسرعة. 
+إذا كان هناك أي انتهاك للحقوق، يرجى التواصل مع [anghunk](https://github.com/anghunk) وسيتم التعامل مع الأمر بسرعة. 

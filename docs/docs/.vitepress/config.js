@@ -9,7 +9,7 @@ export default {
   head: [
     ['link', {
       rel: 'icon',
-      href: 'https://github.com/ezyshu/linuxdo-scripts/blob/main/public/icon/128.png?raw=true'
+      href: 'https://github.com/anghunk/linuxdo-scripts/blob/main/public/icon/128.png?raw=true'
     }]
   ],
   vite: {
@@ -39,18 +39,18 @@ export default {
     siteTitle: 'LinuxDo Scripts 文档',
     nav,
     editLink: {
-      pattern: 'https://github.com/ezyshu/linuxdo-scripts/blob/main/docs/docs/:path',
+      pattern: 'https://github.com/anghunk/linuxdo-scripts/blob/main/docs/docs/:path',
       text: '在 GitHub 上编辑此页面'
     },
     socialLinks: [{
       icon: 'github',
-      link: 'https://github.com/ezyshu/linuxdo-scripts'
+      link: 'https://github.com/anghunk/linuxdo-scripts'
     }, ],
     lastUpdated: true,
     lastUpdatedText: '最后更新于',
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright 2024 ezyshu'
+      copyright: 'Copyright 2024 anghunk'
     },
     search: {
       provider: 'local',

@@ -5,7 +5,7 @@ hero:
   name: LinuxDo Scripts
   tagline: 持续更新，提供更强大的论坛体验，欢迎贡献您的创意！
   image:
-    src: https://github.com/ezyshu/linuxdo-scripts/blob/main/public/icon/128.png?raw=true
+    src: https://github.com/anghunk/linuxdo-scripts/blob/main/public/icon/128.png?raw=true
     alt: 文档封面
   actions:
     - theme: brand
@@ -13,7 +13,7 @@ hero:
       link: /guide/0-home/home.html
     - theme: alt
       text: GitHub
-      link: https://github.com/ezyshu/linuxdo-scripts
+      link: https://github.com/anghunk/linuxdo-scripts
     - theme: alt
       text: Chrome Web Store
       link: https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj

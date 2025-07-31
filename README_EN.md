@@ -10,8 +10,8 @@
 ```
 
 <div align="center">
-  <a href="https://github.com/ezyshu/linuxdo-scripts">
-    <img src="https://github.com/ezyshu/linuxdo-scripts/blob/main/public/icon/128.png?raw=true" alt="Logo" width="80" height="80">
+  <a href="https://github.com/anghunk/linuxdo-scripts">
+    <img src="https://github.com/anghunk/linuxdo-scripts/blob/main/public/icon/128.png?raw=true" alt="Logo" width="80" height="80">
   </a>
 
   <h1>LinuxDo Scripts</h1>
@@ -21,17 +21,17 @@
     ·
     <a href="https://linuxdo-scripts.zishu.me">Documentation</a>
     ·
-    <a href="https://github.com/ezyshu/linuxdo-scripts/issues/new/choose">Report an Issue</a>
+    <a href="https://github.com/anghunk/linuxdo-scripts/issues/new/choose">Report an Issue</a>
     ·
-    <a href="https://github.com/ezyshu/linuxdo-scripts/releases/latest">Latest Release</a>
+    <a href="https://github.com/anghunk/linuxdo-scripts/releases/latest">Latest Release</a>
   </p>
 
   <p>
-    <img src="https://img.shields.io/github/v/release/ezyshu/linuxdo-scripts?logo=github&label=Version">
-    <img src="https://img.shields.io/github/stars/ezyshu/linuxdo-scripts?logo=github&style=flat&label=Stars">
+    <img src="https://img.shields.io/github/v/release/anghunk/linuxdo-scripts?logo=github&label=Version">
+    <img src="https://img.shields.io/github/stars/anghunk/linuxdo-scripts?logo=github&style=flat&label=Stars">
     <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&logo=googlechrome&label=ChromeWebStore">
     <img src="https://img.shields.io/badge/License-Apache%202.0-blue?logo=apache">
-    <img src="https://img.shields.io/github/last-commit/ezyshu/linuxdo-scripts?logo=github&label=Last%20Commit">
+    <img src="https://img.shields.io/github/last-commit/anghunk/linuxdo-scripts?logo=github&label=Last%20Commit">
   </p>
 </div>
 
@@ -133,7 +133,7 @@ Forum Discussion Thread: [linuxdo 增强插件，持续更新欢迎反馈（浏�
 
 ```bash
 # 1. Clone the project
-git clone https://github.com/ezyshu/linuxdo-scripts.git
+git clone https://github.com/anghunk/linuxdo-scripts.git
 cd linuxdo-scripts
 
 # 2. Install dependencies
@@ -171,22 +171,22 @@ linuxdo-scripts/
 ## 🤝 Contributing
 
 ### 🎯 How to Contribute
-- 🐛 [Report Bugs](https://github.com/ezyshu/linuxdo-scripts/issues/new?template=bug_report.yml)
-- 💡 [Feature Suggestions](https://github.com/ezyshu/linuxdo-scripts/issues/new?template=feature_report.yml)
-- 🔧 [Submit Code](https://github.com/ezyshu/linuxdo-scripts/pulls)
+- 🐛 [Report Bugs](https://github.com/anghunk/linuxdo-scripts/issues/new?template=bug_report.yml)
+- 💡 [Feature Suggestions](https://github.com/anghunk/linuxdo-scripts/issues/new?template=feature_report.yml)
+- 🔧 [Submit Code](https://github.com/anghunk/linuxdo-scripts/pulls)
 - 🙍‍♂️ [Join Discussions](https://discord.gg/n2pErsD7Kg)
 
 ### 👥 Contributors
-![Contributors](https://contrib.rocks/image?repo=ezyshu/linuxdo-scripts)
+![Contributors](https://contrib.rocks/image?repo=anghunk/linuxdo-scripts)
 
 ## 📊 Project Statistics
 
 ### ⭐ Star History
-[![Star History Chart](https://api.star-history.com/svg?repos=ezyshu/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#ezyshu/linuxdo-scripts&Timeline)
+[![Star History Chart](https://api.star-history.com/svg?repos=anghunk/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#anghunk/linuxdo-scripts&Timeline)
 
 ## 📄 License
 
-This project is licensed under the [Apache License 2.0](https://github.com/ezyshu/linuxdo-scripts/blob/main/LICENSE).
+This project is licensed under the [Apache License 2.0](https://github.com/anghunk/linuxdo-scripts/blob/main/LICENSE).
 
 **You are free to:**
 - ✅ Use, copy, modify, and distribute this software
@@ -202,11 +202,11 @@ This project is licensed under the [Apache License 2.0](https://github.com/ezysh
 - This project is **free and open-source** and does not guarantee absolute perfection or freedom from errors
 - Please assess risks yourself before use and comply with relevant laws and regulations
 - Any form of abuse is strictly prohibited
-- For infringement issues, please contact [ezyshu](https://github.com/ezyshu) for prompt resolution
+- For infringement issues, please contact [anghunk](https://github.com/anghunk) for prompt resolution
 
 ---
 
 <div align="center">
   <p>If you find this project helpful, please consider giving us a ⭐ Star!</p>
-  <p>Made with ❤️ by <a href="https://github.com/ezyshu">ezyshu</a> and <a href="https://github.com/ezyshu/linuxdo-scripts/graphs/contributors">contributors</a></p>
+  <p>Made with ❤️ by <a href="https://github.com/anghunk">anghunk</a> and <a href="https://github.com/anghunk/linuxdo-scripts/graphs/contributors">contributors</a></p>
 </div>

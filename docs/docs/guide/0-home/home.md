@@ -14,8 +14,8 @@
 ```
 
 <div align="center">
-  <a href="https://github.com/ezyshu/linuxdo-scripts">
-    <img src="https://github.com/ezyshu/linuxdo-scripts/blob/main/public/icon/128.png?raw=true" alt="Logo" width="80" height="80">
+  <a href="https://github.com/anghunk/linuxdo-scripts">
+    <img src="https://github.com/anghunk/linuxdo-scripts/blob/main/public/icon/128.png?raw=true" alt="Logo" width="80" height="80">
   </a>
 
   <h1>LinuxDo Scripts</h1>
@@ -25,17 +25,17 @@
     ·
     <a href="https://linuxdo-scripts.zishu.me">使用文档</a>
     ·
-    <a href="https://github.com/ezyshu/linuxdo-scripts/issues/new/choose">问题反馈</a>
+    <a href="https://github.com/anghunk/linuxdo-scripts/issues/new/choose">问题反馈</a>
     ·
-    <a href="https://github.com/ezyshu/linuxdo-scripts/releases/latest">最新版本</a>
+    <a href="https://github.com/anghunk/linuxdo-scripts/releases/latest">最新版本</a>
   </p>
 
   <p style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;">
-    <img src="https://img.shields.io/github/v/release/ezyshu/linuxdo-scripts?logo=github&label=Version">
-    <img src="https://img.shields.io/github/stars/ezyshu/linuxdo-scripts?logo=github&style=flat&label=Stars">
+    <img src="https://img.shields.io/github/v/release/anghunk/linuxdo-scripts?logo=github&label=Version">
+    <img src="https://img.shields.io/github/stars/anghunk/linuxdo-scripts?logo=github&style=flat&label=Stars">
     <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&logo=googlechrome&label=ChromeWebStore">
     <img src="https://img.shields.io/badge/License-Apache%202.0-blue?logo=apache">
-    <img src="https://img.shields.io/github/last-commit/ezyshu/linuxdo-scripts?logo=github&label=最后提交">
+    <img src="https://img.shields.io/github/last-commit/anghunk/linuxdo-scripts?logo=github&label=最后提交">
   </p>
 </div>
 
@@ -135,7 +135,7 @@ LinuxDo Scripts 是一个功能丰富的浏览器扩展，专为提升 LinuxDo �
 
 ```bash
 # 1. 克隆项目
-git clone https://github.com/ezyshu/linuxdo-scripts.git
+git clone https://github.com/anghunk/linuxdo-scripts.git
 cd linuxdo-scripts
 
 # 2. 安装依赖
@@ -173,22 +173,22 @@ linuxdo-scripts/
 ## 🤝 参与贡献
 
 ### 🎯 贡献方式
-- 🐛 [报告 Bug](https://github.com/ezyshu/linuxdo-scripts/issues/new?template=bug_report.yml)
-- 💡 [功能建议](https://github.com/ezyshu/linuxdo-scripts/issues/new?template=feature_report.yml)
-- 🔧 [提交代码](https://github.com/ezyshu/linuxdo-scripts/pulls)
+- 🐛 [报告 Bug](https://github.com/anghunk/linuxdo-scripts/issues/new?template=bug_report.yml)
+- 💡 [功能建议](https://github.com/anghunk/linuxdo-scripts/issues/new?template=feature_report.yml)
+- 🔧 [提交代码](https://github.com/anghunk/linuxdo-scripts/pulls)
 - 🙍‍♂️ [加入讨论](https://discord.gg/n2pErsD7Kg)
 
 ### 👥 贡献者
-![Contributors](https://contrib.rocks/image?repo=ezyshu/linuxdo-scripts)
+![Contributors](https://contrib.rocks/image?repo=anghunk/linuxdo-scripts)
 
 ## 📊 项目统计
 
 ### ⭐ Star History
-[![Star History Chart](https://api.star-history.com/svg?repos=ezyshu/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#ezyshu/linuxdo-scripts&Timeline)
+[![Star History Chart](https://api.star-history.com/svg?repos=anghunk/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#anghunk/linuxdo-scripts&Timeline)
 
 ## 📄 开源协议
 
-本项目采用 [Apache License 2.0](https://github.com/ezyshu/linuxdo-scripts/blob/main/LICENSE) 开源协议。
+本项目采用 [Apache License 2.0](https://github.com/anghunk/linuxdo-scripts/blob/main/LICENSE) 开源协议。
 
 **您可以自由地：**
 - ✅ 使用、复制、修改和分发本软件
@@ -204,11 +204,11 @@ linuxdo-scripts/
 - 本项目为**免费开源**项目，不保证绝对完善无误
 - 使用前请自行评估风险，遵守相关法律法规
 - 严禁任何形式的滥用行为
-- 如有侵权问题，请联系 [ezyshu](https://github.com/ezyshu) 及时处理
+- 如有侵权问题，请联系 [anghunk](https://github.com/anghunk) 及时处理
 
 ---
 
 <div align="center">
   <p>如果这个项目对您有帮助，请考虑给我们一个 ⭐ Star！</p>
-  <p>Made with ❤️ by <a href="https://github.com/ezyshu">ezyshu</a> and <a href="https://github.com/ezyshu/linuxdo-scripts/graphs/contributors">contributors</a></p>
+  <p>Made with ❤️ by <a href="https://github.com/anghunk">anghunk</a> and <a href="https://github.com/anghunk/linuxdo-scripts/graphs/contributors">contributors</a></p>
 </div>

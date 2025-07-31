@@ -53,7 +53,7 @@ node: v22.12.0
 ### ローカル開発
 1. リポジトリをクローンし、依存関係をインストール：
 ```shell
-git clone https://github.com/ezyshu/linuxdo-scripts
+git clone https://github.com/anghunk/linuxdo-scripts
 npm install
 ```
 
@@ -73,7 +73,7 @@ npm run dev
 
 ## 🚀 コントリビューター
 
-![Contributor](https://contrib.rocks/image?repo=ezyshu/linuxdo-scripts)
+![Contributor](https://contrib.rocks/image?repo=anghunk/linuxdo-scripts)
 
 ## 🤝 貢献ガイド
 
@@ -84,7 +84,7 @@ npm run dev
 
 ## ⭐️ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=ezyshu/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#ezyshu/linuxdo-scripts&Timeline)
+[![Star History Chart](https://api.star-history.com/svg?repos=anghunk/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#anghunk/linuxdo-scripts&Timeline)
 
 ## 📄 ライセンス
 
@@ -94,4 +94,4 @@ npm run dev
 
 本プロジェクトは無料かつオープンソースですが、完全にバグがないことを保証するものではありません。ご利用は自己責任でお願いします。関連する法律や規則を遵守し、悪用しないでください。
 
-万が一、権利侵害があれば[ezyshu](https://github.com/ezyshu)までご連絡ください。迅速に対応いたします。 
+万が一、権利侵害があれば[anghunk](https://github.com/anghunk)までご連絡ください。迅速に対応いたします。 

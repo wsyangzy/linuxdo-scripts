@@ -46,37 +46,37 @@ export default {
           id: 6,
           name: "ls-themes6",
           imgurl:
-            "https://raw.githubusercontent.com/ezyshu/linuxdo-scripts/refs/heads/main/public/themes/6.webp",
+            "https://raw.githubusercontent.com/anghunk/linuxdo-scripts/refs/heads/main/public/themes/6.webp",
         },
         {
           id: 5,
           name: "ls-themes5",
           imgurl:
-            "https://raw.githubusercontent.com/ezyshu/linuxdo-scripts/refs/heads/main/public/themes/5.webp",
+            "https://raw.githubusercontent.com/anghunk/linuxdo-scripts/refs/heads/main/public/themes/5.webp",
         },
         {
           id: 4,
           name: "ls-themes4",
           imgurl:
-            "https://raw.githubusercontent.com/ezyshu/linuxdo-scripts/refs/heads/main/public/themes/4.webp",
+            "https://raw.githubusercontent.com/anghunk/linuxdo-scripts/refs/heads/main/public/themes/4.webp",
         },
         {
           id: 3,
           name: "ls-themes3",
           imgurl:
-            "https://raw.githubusercontent.com/ezyshu/linuxdo-scripts/refs/heads/main/public/themes/3.webp",
+            "https://raw.githubusercontent.com/anghunk/linuxdo-scripts/refs/heads/main/public/themes/3.webp",
         },
         {
           id: 2,
           name: "ls-themes2",
           imgurl:
-            "https://raw.githubusercontent.com/ezyshu/linuxdo-scripts/refs/heads/main/public/themes/2.webp",
+            "https://raw.githubusercontent.com/anghunk/linuxdo-scripts/refs/heads/main/public/themes/2.webp",
         },
         {
           id: 1,
           name: "ls-themes1",
           imgurl:
-            "https://raw.githubusercontent.com/ezyshu/linuxdo-scripts/refs/heads/main/public/themes/1.webp",
+            "https://raw.githubusercontent.com/anghunk/linuxdo-scripts/refs/heads/main/public/themes/1.webp",
         },
       ],
       jsonData: [

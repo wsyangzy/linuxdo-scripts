@@ -53,7 +53,7 @@ node: v22.12.0
 ### Local Development
 1. Clone the repository and install dependencies:
 ```shell
-git clone https://github.com/ezyshu/linuxdo-scripts
+git clone https://github.com/anghunk/linuxdo-scripts
 npm install
 ```
 
@@ -73,7 +73,7 @@ npm run dev
 
 ## 🚀 Contributors
 
-![Contributor](https://contrib.rocks/image?repo=ezyshu/linuxdo-scripts)
+![Contributor](https://contrib.rocks/image?repo=anghunk/linuxdo-scripts)
 
 ## 🤝 Contribution Guide
 
@@ -84,7 +84,7 @@ You are welcome to propose new features and suggestions for improvement! You can
 
 ## ⭐️ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=ezyshu/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#ezyshu/linuxdo-scripts&Timeline)
+[![Star History Chart](https://api.star-history.com/svg?repos=anghunk/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#anghunk/linuxdo-scripts&Timeline)
 
 ## 📄 License
 
@@ -94,4 +94,4 @@ This project is open-sourced under the MIT License. For details, please see the 
 
 This project is free and open-source, but there is no guarantee that it is completely bug-free. Please use it at your own risk. Please comply with relevant laws and regulations and do not abuse it.
 
-If there is any infringement, please contact [ezyshu](https://github.com/ezyshu), and it will be handled promptly. 
+If there is any infringement, please contact [anghunk](https://github.com/anghunk), and it will be handled promptly. 

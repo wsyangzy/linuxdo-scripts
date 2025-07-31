@@ -40,7 +40,7 @@ export default {
 
     // Obtain configuration from: https://giscus.app/
     giscusTalk({
-      repo: 'ezyshu/linuxdo-scripts',
+      repo: 'anghunk/linuxdo-scripts',
       repoId: 'R_kgDOMfjPXA',
       category: 'Announcements', // default: `General`
       categoryId: 'DIC_kwDOMfjPXM4Chc6M',
