@@ -52,7 +52,7 @@ export default {
           let previewData = {};
           let previewurl = $(this).attr("data-id");
 
-          fetch(`/t/${previewurl}.json`)
+          fetch(`https://linux.do/t/${previewurl}.json`)
             .then((response) => response.json())
             .then((data) => {
               previewData = data;
@@ -75,7 +75,7 @@ export default {
                   previewData.created_at
                 )}</p>
                 <div class="topicpreview-content"></div>
-                <p style="text-align: center;">仅显示前 20 条，<a class="preview-link" href="/t/topic/${previewurl}/">查看更多</a></p>
+                <p style="text-align: center;">仅显示前 20 条，<a class="preview-link" href="https://linux.do/t/topic/${previewurl}/">查看更多</a></p>
               `);
 
               $.each(previewData.post_stream.posts, function (index, post) {

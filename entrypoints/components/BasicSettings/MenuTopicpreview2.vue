@@ -94,7 +94,7 @@ html.modal-open-html{overflow:hidden!important}
       function handleTopicLinks() {
         $(".topicpreview-btn").each(function () {
           const $link = $(this);
-          const originalHref = `/t/topic/${$(this).attr("data-id")}`;
+          const originalHref = `https://linux.do/t/topic/${$(this).attr("data-id")}`;
 
           // 添加自定义点击事件
           $link.click(function (e) {
