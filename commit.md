@@ -23,3 +23,4 @@ feat: 新增了 xx 功能
 - `types:` 类型定义文件更改
 - `wip:` 开发中
 - `workflow:` 工作流更改
+- `releases:` 发布版本
