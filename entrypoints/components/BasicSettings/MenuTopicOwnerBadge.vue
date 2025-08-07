@@ -25,7 +25,7 @@ export default {
       $(".post-stream .topic-post.topic-owner").each(function () {
         // 检查是否已经添加了楼主标识
         if ($(this).find(".topic-owner-badge").length < 1) {
-          $(this).find(".names").append(`<span class="topic-owner-badge">楼主</span>`);
+          $(this).find(".onscreen-post>.row>.topic-avatar+.topic-body .names").append(`<span class="topic-owner-badge">楼主</span>`);
         }
       });
     },
