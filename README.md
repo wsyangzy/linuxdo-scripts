@@ -48,15 +48,15 @@ LinuxDo Scripts 是一个功能丰富的浏览器扩展，专为提升 LinuxDo �
 - ⚡ **体验优化** - 快捷操作、自动化功能
 - 🔧 **高度可定制** - 支持自定义 CSS、快捷回复等
 
-![主图](https://github.com/user-attachments/assets/13b83ca0-3927-4261-8e29-15e152de4846)
+![主图](https://github.com/user-attachments/assets/1b0039de-3f3e-420b-9a91-6bc651e8c8e5)
 
 <details>
 <summary>📸 更多截图展示</summary>
   
-![设置面板](https://github.com/user-attachments/assets/880539ab-7a56-4b2f-aaaa-218ee4f8e699)
-![功能演示](https://github.com/user-attachments/assets/6ee3d75c-b4ff-489d-942d-1526a9793f4f)
-![界面优化](https://github.com/user-attachments/assets/2d106967-bb7d-49c8-af5a-9a551904cb5d)
-  
+![使用方式](https://github.com/user-attachments/assets/514b92b7-deb3-4eee-80cd-c2203f4661b8)
+![收藏夹增强](https://github.com/user-attachments/assets/0523929c-c825-40b8-817e-1f9ea06a01ea)
+![分享贴子](https://github.com/user-attachments/assets/07728ccc-4032-431d-bf70-e32b7a8e2289)
+
 </details>
 
 ## 📥 快速安装
