@@ -186,7 +186,7 @@ linuxdo-scripts/
 
 ## 📽️ 参考项目
 
-- https://linux.do/t/topic/850824
+- https://linux.do/t/topic/850824 - 始皇酱表情包功能
 
 ## 📄 开源协议
 
