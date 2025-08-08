@@ -31,97 +31,97 @@
     <img src="https://img.shields.io/github/stars/anghunk/linuxdo-scripts?logo=github&style=flat&label=Stars">
     <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&logo=googlechrome&label=ChromeWebStore">
     <img src="https://img.shields.io/badge/License-Apache%202.0-blue?logo=apache">
-    <img src="https://img.shields.io/github/last-commit/anghunk/linuxdo-scripts?logo=github&label=Last%20Commit">
+    <img src="https://img.shields.io/github/last-commit/anghunk/linuxdo-scripts?logo=github&label=Last Commit">
   </p>
 </div>
 
-## 📖 Project Overview
+## 📖 Project Introduction
 
-LinuxDo Scripts is a feature-rich browser extension designed to enhance the user experience on the LinuxDo forum. It integrates a wide range of practical features, from basic interface optimizations to advanced AI assistance, making your forum browsing and interaction smoother and more efficient.
+LinuxDo Scripts is a feature-rich browser extension designed to enhance the user experience on the LinuxDo forum. It integrates a variety of practical features, from basic interface optimizations to advanced AI assistance, making your forum browsing and interaction smoother and more efficient.
 
-Forum Discussion Thread: [linuxdo 增强插件，持续更新欢迎反馈（浏览器扩展，油猴已失效不再更新）- LINUX DO](https://linux.do/t/topic/170951)
+Forum Discussion Thread: [LinuxDo Enhanced Plugin, Continuous Updates Welcome for Feedback (Browser Extension, Tampermonkey is Invalid and No Longer Updated) - LINUX DO](https://linux.do/t/topic/170951)
 
-### ✨ Key Highlights
-- 🎨 **UI Beautification** - Multiple theme skins, personalized customization
-- 🤖 **AI Intelligence** - Topic summarization, smart reply generation
-- 📚 **Content Management** - Bookmarks, user tags, content filtering
-- ⚡ **Experience Optimization** - Quick actions, automation features
-- 🔧 **Highly Customizable** - Supports custom CSS, quick reply templates, and more
+### ✨ Core Highlights
+- 🎨 **Interface Beautification** - Multiple theme skins, personalized customization
+- 🤖 **AI Intelligence** - Topic summarization, intelligent reply generation
+- 📚 **Content Management** - Favorites, user tagging, content filtering
+- ⚡ **Experience Optimization** - Quick operations, automation features
+- 🔧 **Highly Customizable** - Supports custom CSS, quick replies, etc.
 
-![Main image](https://github.com/user-attachments/assets/13b83ca0-3927-4261-8e29-15e152de4846)
+![Main Image](https://github.com/user-attachments/assets/1b0039de-3f3e-420b-9a91-6bc651e8c8e5)
 
 <details>
 <summary>📸 More Screenshots</summary>
   
-![Settings Panel](https://github.com/user-attachments/assets/880539ab-7a56-4b2f-aaaa-218ee4f8e699)
-![Feature Demo](https://github.com/user-attachments/assets/6ee3d75c-b4ff-489d-942d-1526a9793f4f)
-![UI Optimization](https://github.com/user-attachments/assets/2d106967-bb7d-49c8-af5a-9a551904cb5d)
-  
+![Usage](https://github.com/user-attachments/assets/514b92b7-deb3-4eee-80cd-c2203f4661b8)
+![Favorite Enhancement](https://github.com/user-attachments/assets/0523929c-c825-40b8-817e-1f9ea06a01ea)
+![Share Post](https://github.com/user-attachments/assets/07728ccc-4032-431d-bf70-e32b7a8e2289)
+
 </details>
 
 ## 📥 Quick Installation
 
 ### 🌐 Supported Browsers
 
-| Browser                         | Installation Link                                                                             | Note            |
-| ------------------------------- | --------------------------------------------------------------------------------------------- | --------------- |
-| **Chrome / Edge / Arc / Brave** | [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj) | Recommended     |
-| **Firefox**                     | [Firefox Addons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)            | Fully Supported |
-| **Mainland China Users**        | [Crx Store](https://www.crxsoso.com/webstore/detail/fbgblmjbeebanackldpbmpacppflgmlj)         | No VPN Required |
+| Browser                          | Installation Link                                                                                   | Notes     |
+| -------------------------------- | --------------------------------------------------------------------------------------------------- | -------- |
+| **Chrome / Edge / Arc / Brave** | [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj) | Recommended |
+| **Firefox**                     | [Firefox Addons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)                  | Full Support |
+| **Domestic Users**              | [Crx Store](https://www.crxsoso.com/webstore/detail/fbgblmjbeebanackldpbmpacppflgmlj)               | No VPN Required |
 
 ### 🚀 Installation Steps
-1. Click the installation link for your browser above
-2. Click "Add to Browser" in the extension store
-3. Confirm installation permissions
-4. Visit the [LinuxDo Forum](https://linux.do) to start using
+1. Click the installation link for your browser above.
+2. Click "Add to Browser" in the extension store.
+3. Confirm installation permissions.
+4. Visit the [LinuxDo Forum](https://linux.do) to start using.
 
 ## ✨ Features
 
 ### 🔍 Browsing Experience Optimization
-- ⏰ Show topic creation time in lists
-- 🏢 Display floor numbers and OP badge
-- 🆕 Open topics in new tabs
-- 👀 Preview details and comments directly in topic lists
-- 📝 Optimized display for mixed Chinese and English
-- 🖼️ Improved signature image display to prevent broken images
-- 🌙 Auto switch to dark mode
-- 📱 Ultra-wide monitor optimization
+- ⏰ Display creation time in topic lists.
+- 🏢 Show floor number and original poster identifier.
+- 🆕 Open topics in new tabs.
+- 👀 Directly preview details and comments in the topic list.
+- 📝 Optimize display for mixed Chinese and English.
+- 🖼️ Optimize signature image display to prevent broken images.
+- 🌙 Automatic switching to dark mode.
+- 📱 Optimize display width for ultra-wide monitors.
 
 ### 📚 Content Management
-- ⭐ Comprehensive bookmark functionality
-- 🏷️ User tag system
-- 🚫 Force block topics from specified users
-- 👑 Toggle to view only OP's posts
-- 🔍 Keyword and tag filtering
-- 📅 Block old posts by date
+- ⭐ Comprehensive favorites functionality.
+- 🏷️ User tagging system.
+- 🚫 Force block topics from specified users.
+- 👑 Toggle to view only the original poster's content.
+- 🔍 Keyword and tag filtering.
+- 📅 Block old posts by time.
 
 ### 💬 Interaction Enhancement
-- ⚡ Quick reply to topics (supports custom templates)
-- 😊 Optimized emoji in comment boxes
-- 📊 User level information query
-- 👍 Quick like button
-- 🔄 Auto-expand replies
+- ⚡ Quick replies to topics (supports custom templates).
+- 😊 Optimize emoticons in the comment box.
+- 📊 Query level information.
+- 👍 Quick like buttons.
+- 🔄 Automatically expand replies.
 
-### 🤖 AI Assistant
-- 📋 AI topic summarization
-- 💡 Smart reply generation
-- 🤝 AI-assisted replies
-- 🎯 Intelligent content analysis
+### 🤖 AI Intelligent Assistant
+- 📋 AI topic summarization.
+- 💡 Intelligent reply generation.
+- 🤝 AI-assisted replies.
+- 🎯 Intelligent content analysis.
 
 ### 🎨 Personalization
-- 🎭 Multiple forum theme skins
-- 😀 Switch forum emoji styles
-- 🎨 Custom CSS support
-- ☁️ Cloud sync for settings data
-- 🖼️ Custom forum logo
-- 📑 Custom tab icon and title
+- 🎭 Multiple forum theme skins.
+- 😀 Forum emoticon style switching.
+- 🎨 Support for custom CSS styles.
+- ☁️ Cloud synchronization of settings.
+- 🖼️ Customize forum logo.
+- 📑 Customize tab icons and titles.
 
-### 🛠️ Practical Tools
-- 📸 Convert topics to images for sharing
-- 📄 Export forum articles
-- ⬆️ Back to top / jump to first floor
-- 🔕 Quick mute for posts
-- 🎯 View your own reply floors
+### 🔧 Utility Tools
+- 📸 Convert topics to images for sharing.
+- 📄 Export forum articles.
+- ⬆️ Scroll to top / Go to first post.
+- 🔕 Quickly mute posts.
+- 🎯 View your own reply floors.
 
 ## 🛠️ Development Guide
 
@@ -144,12 +144,12 @@ npm run dev
 ```
 
 ### 📦 Load the Extension
-1. Open your browser's extension management page
+1. Open your browser's extension management page:
    - Chrome: `chrome://extensions/`
    - Firefox: `about:addons`
-2. Enable "Developer Mode"
-3. Click "Load unpacked extension"
-4. Select the `.output/chrome-mv3` folder in the project root directory
+2. Enable "Developer mode".
+3. Click "Load unpacked extension".
+4. Select the `.output/chrome-mv3` folder in the project's root directory.
 
 ### 🏗️ Project Structure
 ```
@@ -162,19 +162,19 @@ linuxdo-scripts/
 └── package.json          # Project configuration
 ```
 
-### 💡 Development Guidelines
-- 🧩 **Component-based development**: Each feature is an independent component to avoid conflicts
-- 📝 **Code standards**: Follow ESLint configuration
-- 🔄 **Submission process**: PR → Code review → Merge
-- 📚 **Documentation updates**: New features must be documented
+### 💡 Development Conventions
+- 🧩 **Component-based Development**: Each feature as an independent component to avoid conflicts.
+- 📝 **Code Standards**: Follow ESLint configurations.
+- 🔄 **Contribution Workflow**: PR → Code Review → Merge.
+- 📚 **Documentation Updates**: New features require synchronized documentation updates.
 
-## 🤝 Contributing
+## 🤝 Contribute
 
-### 🎯 How to Contribute
-- 🐛 [Report Bugs](https://github.com/anghunk/linuxdo-scripts/issues/new?template=bug_report.yml)
-- 💡 [Feature Suggestions](https://github.com/anghunk/linuxdo-scripts/issues/new?template=feature_report.yml)
+### 🎯 Ways to Contribute
+- 🐛 [Report a Bug](https://github.com/anghunk/linuxdo-scripts/issues/new?template=bug_report.yml)
+- 💡 [Suggest a Feature](https://github.com/anghunk/linuxdo-scripts/issues/new?template=feature_report.yml)
 - 🔧 [Submit Code](https://github.com/anghunk/linuxdo-scripts/pulls)
-- 🙍‍♂️ [Join Discussions](https://discord.gg/n2pErsD7Kg)
+- 🙍‍♂️ [Join the Discussion](https://discord.gg/n2pErsD7Kg)
 
 ### 👥 Contributors
 ![Contributors](https://contrib.rocks/image?repo=anghunk/linuxdo-scripts)
@@ -189,25 +189,25 @@ linuxdo-scripts/
 This project is licensed under the [Apache License 2.0](https://github.com/anghunk/linuxdo-scripts/blob/main/LICENSE).
 
 **You are free to:**
-- ✅ Use, copy, modify, and distribute this software
-- ✅ Use for commercial purposes
-- ✅ Re-license under the terms of the license
+- ✅ Use, copy, modify, and distribute this software.
+- ✅ Use for commercial purposes.
+- ✅ Re-license under the terms of the agreement.
 
-**You must:**
-- 📋 Retain the original copyright notice
-- 📋 Indicate any changes made to the original code
+**But you must:**
+- 📋 Retain the original copyright notice.
+- 📋 Indicate modifications to the original code.
 
 ## ⚠️ Disclaimer
 
-- This project is **free and open-source** and does not guarantee absolute perfection or freedom from errors
-- Please assess risks yourself before use and comply with relevant laws and regulations
-- Any form of abuse is strictly prohibited
-- For infringement issues, please contact [anghunk](https://github.com/anghunk) for prompt resolution
+- This project is a **free and open-source** project, and does not guarantee absolute perfection or error-freeness.
+- Please assess the risks yourself before use and comply with relevant laws and regulations.
+- Any form of misuse is strictly prohibited.
+- If there are any infringement issues, please contact [anghunk](https://github.com/anghunk) for timely resolution.
 
 ---
 
 <div align="center">
-  <p>If you find this project helpful, please consider giving us a ⭐ Star!</p>
+  <p>If this project has been helpful to you, please consider giving us a ⭐ Star!</p>
   <p>Made with ❤️ by <a href="https://github.com/anghunk">anghunk</a> and <a href="https://github.com/anghunk/linuxdo-scripts/graphs/contributors">contributors</a></p>
 </div>
 
