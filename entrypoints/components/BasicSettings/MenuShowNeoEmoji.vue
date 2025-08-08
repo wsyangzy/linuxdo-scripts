@@ -10,15 +10,6 @@
 </template>
 
 <script>
-// const emojiSet = [
-//   {
-//     size: "30x30",
-//     name: "tieba_001",
-//     url:
-//       "https://linux.do/uploads/default/original/3X/9/a/9ac368cc8eafad165bbcf61b0263803d3b2dc2a7.png?v=12",
-//   },
-// ];
-
 const emojiSet = [
   {
     packet: 1,
