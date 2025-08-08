@@ -1,8 +1,4 @@
-```shell
 # 首页
-```
-
-[简体中文](README.md) | [English](README_EN.md)
 
 ```
   _     _                  ____          ____            _       _       
@@ -13,35 +9,11 @@
                                                           |_|            
 ```
 
-<div align="center">
-  <a href="https://github.com/anghunk/linuxdo-scripts">
-    <img src="https://github.com/anghunk/linuxdo-scripts/blob/main/public/icon/128.png?raw=true" alt="Logo" width="80" height="80">
-  </a>
-
-  <h1>LinuxDo Scripts</h1>
-
-  <p>
-    <a href="https://discord.gg/n2pErsD7Kg">Discord</a>
-    ·
-    <a href="https://linuxdo-scripts.zishu.me">使用文档</a>
-    ·
-    <a href="https://github.com/anghunk/linuxdo-scripts/issues/new/choose">问题反馈</a>
-    ·
-    <a href="https://github.com/anghunk/linuxdo-scripts/releases/latest">最新版本</a>
-  </p>
-
-  <p style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;">
-    <img src="https://img.shields.io/github/v/release/anghunk/linuxdo-scripts?logo=github&label=Version">
-    <img src="https://img.shields.io/github/stars/anghunk/linuxdo-scripts?logo=github&style=flat&label=Stars">
-    <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&logo=googlechrome&label=ChromeWebStore">
-    <img src="https://img.shields.io/badge/License-Apache%202.0-blue?logo=apache">
-    <img src="https://img.shields.io/github/last-commit/anghunk/linuxdo-scripts?logo=github&label=最后提交">
-  </p>
-</div>
-
 ## 📖 项目简介
 
 LinuxDo Scripts 是一个功能丰富的浏览器扩展，专为提升 LinuxDo 论坛的使用体验而设计。它集成了从基础界面优化到高级 AI 辅助的多项实用功能，让您的论坛浏览和互动体验更加流畅高效。
+
+论坛交流贴：[linuxdo 增强插件，持续更新欢迎反馈（浏览器扩展，油猴已失效不再更新）- LINUX DO](https://linux.do/t/topic/170951)
 
 ### ✨ 核心亮点
 - 🎨 **界面美化** - 多种主题皮肤，个性化定制
@@ -50,15 +22,15 @@ LinuxDo Scripts 是一个功能丰富的浏览器扩展，专为提升 LinuxDo �
 - ⚡ **体验优化** - 快捷操作、自动化功能
 - 🔧 **高度可定制** - 支持自定义 CSS、快捷回复等
 
-![功能展示](https://github.com/user-attachments/assets/13b83ca0-3927-4261-8e29-15e152de4846)
+![主图](https://github.com/user-attachments/assets/1b0039de-3f3e-420b-9a91-6bc651e8c8e5)
 
 <details>
 <summary>📸 更多截图展示</summary>
   
-![设置面板](https://github.com/user-attachments/assets/880539ab-7a56-4b2f-aaaa-218ee4f8e699)
-![功能演示](https://github.com/user-attachments/assets/6ee3d75c-b4ff-489d-942d-1526a9793f4f)
-![界面优化](https://github.com/user-attachments/assets/2d106967-bb7d-49c8-af5a-9a551904cb5d)
-  
+![使用方式](https://github.com/user-attachments/assets/514b92b7-deb3-4eee-80cd-c2203f4661b8)
+![收藏夹增强](https://github.com/user-attachments/assets/0523929c-c825-40b8-817e-1f9ea06a01ea)
+![分享贴子](https://github.com/user-attachments/assets/07728ccc-4032-431d-bf70-e32b7a8e2289)
+
 </details>
 
 ## 📥 快速安装
@@ -76,115 +48,6 @@ LinuxDo Scripts 是一个功能丰富的浏览器扩展，专为提升 LinuxDo �
 2. 在扩展商店中点击"添加到浏览器"
 3. 确认安装权限
 4. 访问 [LinuxDo 论坛](https://linux.do) 开始使用
-
-## ✨ 功能特性
-
-### 🔍 浏览体验优化
-- ⏰ 话题列表显示创建时间
-- 🏢 显示楼层数和楼主标识
-- 🆕 新标签页打开话题
-- 👀 话题列表直接预览详情及评论
-- 📝 中英文混排优化显示
-- 🖼️ 优化签名图显示，防止图片损坏
-- 🌙 自动切换黑夜模式
-- 📱 超长显示器宽度优化
-
-### 📚 内容管理
-- ⭐ 完善的收藏夹功能
-- 🏷️ 用户标签系统
-- 🚫 强制屏蔽指定用户话题
-- 👑 只看楼主切换功能
-- 🔍 关键词和标签过滤
-- 📅 按时间屏蔽旧帖子
-
-### 💬 互动增强
-- ⚡ 话题快捷回复（支持自定义模板）
-- 😊 评论框表情优化
-- 📊 等级信息查询
-- 👍 快捷点赞按钮
-- 🔄 自动展开回复
-
-### 🤖 AI 智能助手
-- 📋 AI 话题总结
-- 💡 智能生成回复
-- 🤝 AI 辅助回帖
-- 🎯 内容智能分析
-
-### 🎨 个性化定制
-- 🎭 多种论坛主题皮肤
-- 😀 论坛表情风格切换
-- 🎨 自定义 CSS 样式支持
-- ☁️ 设置数据云端同步
-- 🖼️ 自定义论坛 Logo
-- 📑 自定义标签页图标和标题
-
-### � 实用工具
-- 📸 话题转图片分享
-- 📄 论坛文章导出
-- ⬆️ 返回顶部/直达一楼
-- 🔕 快速免打扰帖子
-- 🎯 查看自己的回复楼层
-
-## 🛠️ 开发指南
-
-### 📋 环境要求
-- **Node.js**: `v22.12.0`
-- **包管理器**: npm
-
-### 🚀 本地开发
-
-```bash
-# 1. 克隆项目
-git clone https://github.com/anghunk/linuxdo-scripts.git
-cd linuxdo-scripts
-
-# 2. 安装依赖
-npm install
-
-# 3. 启动开发服务
-npm run dev
-```
-
-### 📦 加载扩展
-1. 打开浏览器扩展管理页面
-   - Chrome: `chrome://extensions/`
-   - Firefox: `about:addons`
-2. 开启"开发者模式"
-3. 点击"加载已解压的扩展程序"
-4. 选择项目根目录下的 `.output/chrome-mv3` 文件夹
-
-### 🏗️ 项目架构
-```
-linuxdo-scripts/
-├── entrypoints/          # 入口文件
-├── components/           # Vue 组件
-├── public/              # 静态资源
-├── docs/                # 文档
-├── i18n/                # 国际化文件
-└── package.json         # 项目配置
-```
-
-### 💡 开发规范
-- 🧩 **组件化开发**: 每个功能独立组件，避免冲突
-- 📝 **代码规范**: 遵循 ESLint 配置
-- 🔄 **提交流程**: PR → 代码审核 → 合并
-- 📚 **文档更新**: 新功能需同步更新文档
-
-## 🤝 参与贡献
-
-### 🎯 贡献方式
-- 🐛 [报告 Bug](https://github.com/anghunk/linuxdo-scripts/issues/new?template=bug_report.yml)
-- 💡 [功能建议](https://github.com/anghunk/linuxdo-scripts/issues/new?template=feature_report.yml)
-- 🔧 [提交代码](https://github.com/anghunk/linuxdo-scripts/pulls)
-- 🙍‍♂️ [加入讨论](https://discord.gg/n2pErsD7Kg)
-
-### 👥 贡献者
-![Contributors](https://contrib.rocks/image?repo=anghunk/linuxdo-scripts)
-
-## 📊 项目统计
-
-### ⭐ Star History
-[![Star History Chart](https://api.star-history.com/svg?repos=anghunk/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#anghunk/linuxdo-scripts&Timeline)
 
 ## 📄 开源协议
 
@@ -212,3 +75,7 @@ linuxdo-scripts/
   <p>如果这个项目对您有帮助，请考虑给我们一个 ⭐ Star！</p>
   <p>Made with ❤️ by <a href="https://github.com/anghunk">anghunk</a> and <a href="https://github.com/anghunk/linuxdo-scripts/graphs/contributors">contributors</a></p>
 </div>
+
+<a href="https://www.netlify.com">
+  <img src="https://www.netlify.com/assets/badges/netlify-badge-color-accent.svg" alt="Deploys by Netlify" />
+</a>
