@@ -184,6 +184,10 @@ linuxdo-scripts/
 ### ⭐ Star History
 [![Star History Chart](https://api.star-history.com/svg?repos=anghunk/linuxdo-scripts&type=Timeline)](https://www.star-history.com/#anghunk/linuxdo-scripts&Timeline)
 
+## 📽️ 参考项目
+
+- https://linux.do/t/topic/850824
+
 ## 📄 开源协议
 
 本项目采用 [Apache License 2.0](https://github.com/anghunk/linuxdo-scripts/blob/main/LICENSE) 开源协议。
@@ -210,7 +214,3 @@ linuxdo-scripts/
   <p>如果这个项目对您有帮助，请考虑给我们一个 ⭐ Star！</p>
   <p>Made with ❤️ by <a href="https://github.com/anghunk">anghunk</a> and <a href="https://github.com/anghunk/linuxdo-scripts/graphs/contributors">contributors</a></p>
 </div>
-
-<a href="https://www.netlify.com">
-  <img src="https://www.netlify.com/assets/badges/netlify-badge-color-accent.svg" alt="Deploys by Netlify" />
-</a>
