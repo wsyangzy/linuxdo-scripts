@@ -986,6 +986,33 @@ body.body-preview #main-outlet-wrapper {
   height: 30px;
 }
 
+.emojiPickerNeo {
+  width: 560px;
+  top: 0;
+  left: 100%;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 9;
+}
+
+.emojiPickerNeo img {
+  cursor: pointer;
+  width: 100px;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+}
+
+.emoji-picker-button-neo {
+  color: rgb(100.3, 100.3, 100.3) !important;
+}
+
 .UsageTip {
   position: static;
   margin: 0;
