@@ -210,3 +210,7 @@ This project is licensed under the [Apache License 2.0](https://github.com/anghu
   <p>If you find this project helpful, please consider giving us a ⭐ Star!</p>
   <p>Made with ❤️ by <a href="https://github.com/anghunk">anghunk</a> and <a href="https://github.com/anghunk/linuxdo-scripts/graphs/contributors">contributors</a></p>
 </div>
+
+<a href="https://www.netlify.com">
+  <img src="https://www.netlify.com/assets/badges/netlify-badge-color-accent.svg" alt="Deploys by Netlify" />
+</a>
