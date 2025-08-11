@@ -72,8 +72,11 @@ export default {
 
         if (!href) return;
 
-        // 排除跳转到解决方案帖子的a标签
-        if ($el.hasClass('back')) {
+        // 排除跳转到解决方案帖子和跳转到具体帖子的a标签
+        if (
+            $el.hasClass('back') ||
+            ($el.hasClass('post-info') && $el.hasClass('arrow'))
+        ) {
           return;
         }
 
