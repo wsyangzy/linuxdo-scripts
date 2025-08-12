@@ -1,12 +1,13 @@
 <template>
   <div class="item">
     <div class="tit">{{ sort }}. 话题始终打开1楼</div>
-    <input type="checkbox" :checked="modelValue" @change="$emit('update:modelValue', $event.target.checked)" />
+    <input type="checkbox" :checked="modelValue" @change="$emit('update:modelValue', $event.target.checked)"/>
   </div>
 </template>
 
 <script>
 import $ from "jquery";
+
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
@@ -21,13 +22,13 @@ export default {
     if (this.modelValue) {
       this.$nextTick(() => {
         this.originalUrl = window.location.href;
-        
+
         // 处理当前URL
         this.redirectToFirstPost();
-        
+
         // 开始链接监控
         this.startLinkMonitoring();
-        
+
         // 监听浏览器前进后退
         window.addEventListener('popstate', this.handlePopState);
       });
@@ -40,16 +41,16 @@ export default {
     startLinkMonitoring() {
       // 清除可能已有的监控
       this.stopLinkMonitoring();
-      
+
       // 立即处理一次
       this.modifyTopicLinks();
-      
+
       // 设置定时监控，处理动态加载的内容
       this.intervalId = setInterval(() => {
         this.modifyTopicLinks();
       }, 1000);
     },
-    
+
     /**
      * 停止链接监控
      */
@@ -59,7 +60,7 @@ export default {
         this.intervalId = null;
       }
     },
-    
+
     /**
      * 修改页面上所有带楼层参数的链接
      */
@@ -68,17 +69,25 @@ export default {
       $("a").each((_, element) => {
         const $el = $(element);
         const href = $el.attr("href");
-        
+
         if (!href) return;
-        
+
+        // 排除跳转到解决方案帖子和跳转到具体帖子的a标签
+        if (
+            $el.hasClass('back') ||
+            ($el.hasClass('post-info') && $el.hasClass('arrow'))
+        ) {
+          return;
+        }
+
         // 匹配带楼层参数的话题链接
         const pattern = /\/t\/topic\/(\d+)\/\d+/;
         const match = href.match(pattern);
-        
+
         if (match) {
           // 找到话题ID
           const topicId = match[1];
-          
+
           // 构建不带楼层参数的URL
           if (href.startsWith('http')) {
             // 完整URL
@@ -94,7 +103,7 @@ export default {
         }
       });
     },
-    
+
     /**
      * 处理popstate事件（浏览器前进/后退按钮）
      */
@@ -103,7 +112,7 @@ export default {
         this.redirectToFirstPost();
       }
     },
-    
+
     /**
      * 修改当前页面URL，移除楼层参数
      */
@@ -111,28 +120,28 @@ export default {
       // 防止处理循环
       if (this.processingUrl) return;
       this.processingUrl = true;
-      
+
       try {
         // 检查当前URL是否是帖子页面，并且包含楼层参数
         const currentUrl = window.location.href;
         const topicRegex = /\/t\/topic\/(\d+)\/(\d+)/;
         const match = currentUrl.match(topicRegex);
-        
+
         if (match) {
           const topicId = match[1];
-          
+
           // 构建指向1楼的URL
           const baseUrl = window.location.origin;
           const pathWithoutFloor = `/t/topic/${topicId}/`;
           const newUrl = `${baseUrl}${pathWithoutFloor}`;
-          
+
           // 只在URL不同时才执行替换
           if (currentUrl !== newUrl) {
             // 使用replaceState修改URL，不刷新页面
             window.history.replaceState(
-              history.state, 
-              document.title, 
-              pathWithoutFloor
+                history.state,
+                document.title,
+                pathWithoutFloor
             );
           }
         }
