@@ -1,3 +1,7 @@
+## 1.3.9
+
+- fix(alwaysfirstpost): Fix unable to navigate to the original post and post marked as solution #219
+
 ## 1.3.8
 
 - feat: 新增始皇酱表情包 https://linux.do/t/topic/850824
