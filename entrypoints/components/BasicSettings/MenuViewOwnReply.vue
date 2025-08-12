@@ -32,8 +32,18 @@ export default {
       vm.messageToast('正在查询中，请勿重复点击！');
 
       const id = $('#topic').attr('data-topic-id');
-      const myusernameStr = $('.d-header-icons #toggle-current-user img.avatar').attr('src');
-      const username_filters = myusernameStr.replace(/^.*\/user_avatar\/linux\.do\//, '').split('/')[0];
+      // const myusernameStr = $('.d-header-icons #toggle-current-user img.avatar').attr('src');
+      // const username_filters = myusernameStr.replace(/^.*\/user_avatar\/linux\.do\//, '').split('/')[0];
+
+      /*
+      * 2025/08/12 
+      https://github.com/anghunk/linuxdo-scripts/issues/204#issuecomment-3178024745
+      如果用户没有设置过头像，则无法获取到用户名，因此换一种获取用户名的方式做兼容性
+
+      */
+      const myusernameStr = $('a.post-date').attr('href');
+      const username_filters = myusernameStr.split('u=')[1];
+      console.log(username_filters)
 
       fetch(`https://linux.do/t/${id}.json?username_filters=${username_filters}`)
         .then((response) => response.json())

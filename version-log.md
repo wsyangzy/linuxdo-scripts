@@ -1,3 +1,7 @@
+## 1.3.10
+
+- fix: 修复未设置头像时获取用户名失败（查看回复楼层显示功能） #204
+
 ## 1.3.9
 
 - fix(alwaysfirstpost): Fix unable to navigate to the original post and post marked as solution #219
