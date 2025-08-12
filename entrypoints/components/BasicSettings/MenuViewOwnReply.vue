@@ -43,7 +43,6 @@ export default {
       */
       const myusernameStr = $('a.post-date').attr('href');
       const username_filters = myusernameStr.split('u=')[1];
-      console.log(username_filters)
 
       fetch(`https://linux.do/t/${id}.json?username_filters=${username_filters}`)
         .then((response) => response.json())
