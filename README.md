@@ -35,8 +35,6 @@
   </p>
 </div>
 
-![](https://invidget.wdh.app/rVSUdxtU)
-
 ## 📖 项目简介
 
 LinuxDo Scripts 是一个功能丰富的浏览器扩展，专为提升 LinuxDo 论坛的使用体验而设计。它集成了从基础界面优化到高级 AI 辅助的多项实用功能，让您的论坛浏览和互动体验更加流畅高效。
@@ -211,6 +209,8 @@ linuxdo-scripts/
 - 如有侵权问题，请联系 [anghunk](https://github.com/anghunk) 及时处理
 
 ---
+
+![](https://invidget.wdh.app/rVSUdxtU)
 
 <div align="center">
   <p>如果这个项目对您有帮助，请考虑给我们一个 ⭐ Star！</p>
