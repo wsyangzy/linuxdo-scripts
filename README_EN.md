@@ -35,6 +35,8 @@
   </p>
 </div>
 
+![](https://invidget.wdh.app/rVSUdxtU)
+
 ## 📖 Project Introduction
 
 LinuxDo Scripts is a feature-rich browser extension designed to enhance the user experience on the LinuxDo forum. It integrates a variety of practical features, from basic interface optimizations to advanced AI assistance, making your forum browsing and interaction smoother and more efficient.
