@@ -223,7 +223,7 @@ This project is licensed under the [Apache License 2.0](https://github.com/anghu
 
 ---
 
-![](https://invidget.wdh.app/rVSUdxtU)
+![](https://invidget.wdh.app/n2pErsD7Kg)
 
 <div align="center">
   <p>If this project has been helpful to you, please consider giving us a ⭐ Star!</p>
