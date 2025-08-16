@@ -36,8 +36,8 @@ export default {
         messageElement.remove();
       }, 3000);
     },
-    addButtons() {
-      if (window.location.href != "https://linux.do/latest?state=muted") {
+    init() {
+      if (!isMutedPostPage) {
         $(".topic-list .main-link a.title").each(function () {
           const id = $(this).attr("data-topic-id");
           if ($(this).parents(".link-top-line").find(".donottopic-btn").length < 1) {
