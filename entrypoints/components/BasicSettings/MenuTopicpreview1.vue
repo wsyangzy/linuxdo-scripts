@@ -143,7 +143,7 @@ export default {
       ).checked1;
       
       this.mainTimer = setInterval(() => {
-        if (window.location.href != "https://linux.do/latest?state=muted") {
+        if (!isMutedPostPage) {
           this.init();
         }
 

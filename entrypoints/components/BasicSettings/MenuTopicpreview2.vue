@@ -69,7 +69,7 @@ html.modal-open-html{overflow:hidden!important}
       </style>`);
 
       this.initTimer = setInterval(() => {
-        if (window.location.href != "https://linux.do/latest?state=muted") {
+        if (!isMutedPostPage) {
           this.init();
         }
       }, 1000);

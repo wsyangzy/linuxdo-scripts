@@ -36,7 +36,7 @@ export default {
       }, 3000);
     },
     init() {
-      if (window.location.href != "https://linux.do/latest?state=muted") {
+      if (!isMutedPostPage) {
         $(".topic-list .main-link a.title").each(function () {
           const id = $(this).attr("data-topic-id");
           if ($(this).parents(".link-top-line").find(".donottopic-btn").length < 1) {
