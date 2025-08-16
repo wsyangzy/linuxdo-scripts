@@ -11,6 +11,7 @@
 
 <script>
 import $ from "jquery";
+import { isMutedPostPage } from "../../utilities/post";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
@@ -143,7 +144,7 @@ export default {
       ).checked1;
       
       this.mainTimer = setInterval(() => {
-        if (!isMutedPostPage) {
+        if (!isMutedPostPage()) {
           this.init();
         }
 

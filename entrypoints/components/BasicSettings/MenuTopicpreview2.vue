@@ -11,6 +11,7 @@
 
 <script>
 import $ from "jquery";
+import { isMutedPostPage } from "../../utilities/post";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
@@ -69,7 +70,7 @@ html.modal-open-html{overflow:hidden!important}
       </style>`);
 
       this.initTimer = setInterval(() => {
-        if (!isMutedPostPage) {
+        if (!isMutedPostPage()) {
           this.init();
         }
       }, 1000);
