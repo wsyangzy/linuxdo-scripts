@@ -31,7 +31,6 @@
     <img src="https://img.shields.io/github/stars/anghunk/linuxdo-scripts?logo=github&style=flat&label=Stars">
     <img src="https://img.shields.io/chrome-web-store/users/fbgblmjbeebanackldpbmpacppflgmlj?style=flat&logo=googlechrome&label=ChromeWebStore">
     <img src="https://img.shields.io/badge/License-Apache%202.0-blue?logo=apache">
-    <img src="https://img.shields.io/github/last-commit/anghunk/linuxdo-scripts?logo=github&label=最后提交">
   </p>
 </div>
 
@@ -39,7 +38,7 @@
 
 LinuxDo Scripts 是一个功能丰富的浏览器扩展，专为提升 LinuxDo 论坛的使用体验而设计。它集成了从基础界面优化到高级 AI 辅助的多项实用功能，让您的论坛浏览和互动体验更加流畅高效。
 
-论坛交流贴：[linuxdo 增强插件，持续更新欢迎反馈- LINUX DO](https://linux.do/t/topic/170951)
+论坛交流贴：[linuxdo 增强插件，持续更新欢迎反馈 - LINUX DO](https://linux.do/t/topic/170951)
 
 ### 1. 核心亮点
 - 🎨 **界面美化** - 多种主题皮肤，个性化定制
