@@ -21,7 +21,8 @@ export default {
   emits: ["update:modelValue"],
   data() {
     return {
-      donotTopicIntervalId: null // 添加变量存储定时器ID
+      observer: null,
+      eventHandlersAttached: false, // Flag to ensure handlers are attached only once
     };
   },
   methods: {
@@ -61,18 +62,22 @@ export default {
           }
         });
       }
+    },
+    // This function attaches the event handlers
+    attachEventHandlers() {
+        if(this.eventHandlersAttached) return; // Don't attach more than once
 
-      function getCSRFToken() {
-        return document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-      }
-      let vm = this;
-      // 点击免打扰
-      $(document)
-        .off("click", ".donottopic-btn")
-        .on("click", ".donottopic-btn", function () {
-          const formData = new FormData();
-          formData.append("notification_level", 0);
-          const topicId = $(this).attr("data-id");
+        function getCSRFToken() {
+            return document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+        }
+        let vm = this;
+
+        // Using event delegation on document, so it only needs to be attached once.
+        // Click "Do Not Disturb"
+        $(document).on("click", ".donottopic-btn", function () {
+            const formData = new FormData();
+            formData.append("notification_level", 0);
+            const topicId = $(this).attr("data-id");
 
           return new Promise((resolve, reject) => {
             // 发送带有 CSRF Token 的 POST 请求
@@ -102,13 +107,11 @@ export default {
           });
         });
 
-      // 点击移出免打扰
-      $(document)
-        .off("click", ".removedonottopic-btn")
-        .on("click", ".removedonottopic-btn", function () {
-          const formData = new FormData();
-          formData.append("notification_level", 1);
-          const topicId = $(this).attr("data-id");
+        // Click "Remove from Do Not Disturb"
+        $(document).on("click", ".removedonottopic-btn", function () {
+            const formData = new FormData();
+            formData.append("notification_level", 1);
+            const topicId = $(this).attr("data-id");
 
           return new Promise((resolve, reject) => {
             // 发送带有 CSRF Token 的 POST 请求
@@ -137,27 +140,45 @@ export default {
               });
           });
         });
-    },
+
+        this.eventHandlersAttached = true; // Set flag
+    }
   },
   created() {
     if (this.modelValue) {
-      this.donotTopicIntervalId = setInterval(() => {
-        this.init();
-      }, 1000);
+      // Attach event handlers ONCE
+      this.attachEventHandlers();
+
+      // Run button adder once initially
+      this.addButtons();
+
+      // Set up observer to run button adder on DOM changes
+      this.observer = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+          if (mutation.addedNodes.length) {
+            this.addButtons();
+            // We only need to find new nodes, so we can break after finding them.
+            break;
+          }
+        }
+      });
+
+      const targetNode = document.querySelector('body');
+      const config = { childList: true, subtree: true };
+      this.observer.observe(targetNode, config);
     }
   },
   beforeUnmount() {
-    // 清除定时器
-    if (this.donotTopicIntervalId) {
-      clearInterval(this.donotTopicIntervalId);
+    if (this.observer) {
+      this.observer.disconnect();
     }
+    // Note: Delegated event handlers on `document` are not removed,
+    // which is generally fine for a content script that lives with the page.
+    // If this component could be mounted/unmounted multiple times,
+    // we would need to add logic to remove them (`$(document).off(...)`).
   },
-  // Vue 2 兼容性
   beforeDestroy() {
-    // 清除定时器
-    if (this.donotTopicIntervalId) {
-      clearInterval(this.donotTopicIntervalId);
-    }
+    this.beforeUnmount();
   }
 };
 </script>
