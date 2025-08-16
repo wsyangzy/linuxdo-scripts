@@ -166,7 +166,7 @@ export default {
     return {
       localChecked: this.value,
       connectionStatus: null,
-      checkIntervalId: null, // 添加变量存储定时器ID
+      checkIntervalId: null, // 添加变量存储定时器 ID
       mainPostSummaryIntervalId: null, // 主贴总结按钮定时器
       summaryIntervalId: null, // 检查缓存和自动总结定时器
       allPostsSummaryIntervalId: null, // 回帖总结按钮定时器
@@ -538,7 +538,12 @@ ${str}`;
     // AI 根据新建话题内容生成标题
     async getCreateNewTopicTitle() {
       return new Promise((resolve, reject) => {
-        const topic_contentdata = $(".d-editor-preview").html();
+        let topic_contentdata = "";
+        if ($(".ProseMirror-container").length > 0) {
+          topic_contentdata = $(".ProseMirror-container").html();
+        } else {
+          topic_contentdata = $(".d-editor-preview").html();
+        }
         const config = JSON.parse(localStorage.getItem("linxudoscriptssettingDMI"))
           .gptdata;
         const prompt = `${config.prompt2}
@@ -677,7 +682,7 @@ ${topic_contentdata}`;
         </div>
       `);
 
-      // 将setInterval的返回值保存到data中
+      // 将 setInterval 的返回值保存到 data 中
       this.checkIntervalId = setInterval(() => {
         if ($(".aireplay-btn").length < 1) {
           $("#topic-title").after(
