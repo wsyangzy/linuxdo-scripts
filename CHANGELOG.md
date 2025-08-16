@@ -1,1 +1,4 @@
-- fix: 修复未设置头像时获取用户名失败（查看回复楼层显示功能） #204
+- fix: 修复因免打扰按钮导致的通知面板误触问题 #155 #224
+- fix: correct correct muted post page detection in multiple components #223
+
+欢迎新的贡献者 @qixing-jk
