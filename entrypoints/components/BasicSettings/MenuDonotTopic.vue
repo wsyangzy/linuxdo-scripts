@@ -16,6 +16,7 @@
 
 <script>
 import $ from "jquery";
+import { isMutedPostPage } from "../../utilities/post";
 export default {
   props: ["modelValue", "sort"],
   emits: ["update:modelValue"],
@@ -37,7 +38,7 @@ export default {
       }, 3000);
     },
     init() {
-      if (!isMutedPostPage) {
+      if (!isMutedPostPage()) {
         $(".topic-list .main-link a.title").each(function () {
           const id = $(this).attr("data-topic-id");
           if ($(this).parents(".link-top-line").find(".donottopic-btn").length < 1) {
@@ -150,13 +151,13 @@ export default {
       this.attachEventHandlers();
 
       // Run button adder once initially
-      this.addButtons();
+      this.init();
 
       // Set up observer to run button adder on DOM changes
       this.observer = new MutationObserver((mutations) => {
         for (const mutation of mutations) {
           if (mutation.addedNodes.length) {
-            this.addButtons();
+            this.init();
             // We only need to find new nodes, so we can break after finding them.
             break;
           }
