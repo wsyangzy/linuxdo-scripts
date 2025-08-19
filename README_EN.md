@@ -226,5 +226,5 @@ This project is licensed under the [Apache License 2.0](https://github.com/anghu
 
 <div align="center">
   <p>If this project has been helpful to you, please consider giving us a ⭐ Star!</p>
-  <p>Made with ❤️ by <a href="https://github.com/anghunk">anghunk</a> and <a href="https://github.com/anghunk/linuxdo-scripts/graphs/contributors">contributors</a></p>
+  <p>Made with ❤️ by <a href="https://github.com/anghunk">@anghunk</a> and <a href="https://github.com/anghunk/linuxdo-scripts/graphs/contributors">contributors</a></p>
 </div>
