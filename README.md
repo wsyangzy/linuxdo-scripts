@@ -218,7 +218,7 @@ npm run dev
 - 本项目为**免费开源**项目，不保证绝对完善无误
 - 使用前请自行评估风险，遵守相关法律法规
 - 严禁任何形式的滥用行为
-- 如有侵权问题，请联系 [anghunk](https://github.com/anghunk) 及时处理
+- 如有侵权问题，请联系 [@anghunk](https://github.com/anghunk) 及时处理
 
 ---
 
