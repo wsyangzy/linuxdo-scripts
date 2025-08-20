@@ -17,7 +17,7 @@
   <h1>LinuxDo Scripts</h1>
 
   <p>
-    <a href="https://discord.gg/n2pErsD7Kg">Discord</a>
+    <a href="https://discord.gg/3wDmhCsVeU">Discord</a>
     ·
     <a href="https://linuxdo-scripts.zishu.me">Documentation</a>
     ·
@@ -185,7 +185,7 @@ npm run dev
 - 🐛 [Report a Bug](https://github.com/anghunk/linuxdo-scripts/issues/new?template=bug_report.yml)
 - 💡 [Suggest a Feature](https://github.com/anghunk/linuxdo-scripts/issues/new?template=feature_report.yml)
 - 🔧 [Submit Code](https://github.com/anghunk/linuxdo-scripts/pulls)
-- 🙍‍♂️ [Join the Discussion](https://discord.gg/n2pErsD7Kg)
+- 🙍‍♂️ [Join the Discussion](https://discord.gg/3wDmhCsVeU)
 
 ### 2. Contributors
 ![Contributors](https://contrib.rocks/image?repo=anghunk/linuxdo-scripts)
@@ -222,7 +222,7 @@ This project is licensed under the [Apache License 2.0](https://github.com/anghu
 
 ---
 
-![](https://invidget.wdh.app/n2pErsD7Kg)
+![](https://invidget.wdh.app/3wDmhCsVeU)
 
 <div align="center">
   <p>If this project has been helpful to you, please consider giving us a ⭐ Star!</p>

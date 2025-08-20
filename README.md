@@ -17,7 +17,7 @@
   <h1>LinuxDo Scripts</h1>
 
   <p>
-    <a href="https://discord.gg/n2pErsD7Kg">Discord</a>
+    <a href="https://discord.gg/3wDmhCsVeU">Discord</a>
     ·
     <a href="https://linuxdo-scripts.zishu.me">使用文档</a>
     ·
@@ -185,7 +185,7 @@ npm run dev
 - 🐛 [报告 Bug](https://github.com/anghunk/linuxdo-scripts/issues/new?template=bug_report.yml)
 - 💡 [功能建议](https://github.com/anghunk/linuxdo-scripts/issues/new?template=feature_report.yml)
 - 🔧 [提交代码](https://github.com/anghunk/linuxdo-scripts/pulls)
-- 🙍‍♂️ [加入讨论](https://discord.gg/n2pErsD7Kg)
+- 🙍‍♂️ [加入讨论](https://discord.gg/3wDmhCsVeU)
 
 ### 2. 贡献列表
 ![Contributors](https://contrib.rocks/image?repo=anghunk/linuxdo-scripts)
@@ -222,7 +222,7 @@ npm run dev
 
 ---
 
-![](https://invidget.wdh.app/n2pErsD7Kg)
+![](https://invidget.wdh.app/3wDmhCsVeU)
 
 <div align="center">
   <p>如果这个项目对您有帮助，请考虑给我们一个 ⭐ Star！</p>
