@@ -1,39 +1,23 @@
 <template>
   <div class="linuxdoscripts-setting-wrap" v-show="!isShow">
     <button class="linuxdoscripts-setting" title="设置" type="button" @click="setting">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon icon-tabler icons-tabler-outline icon-tabler-settings"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path
-          d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
-        />
-        <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-settings"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/></svg>
     </button>
   </div>
   <div id="linuxdoscripts">
     <div class="linuxdoscripts-opacity" v-show="opacity"></div>
-    <div class="setting-btn">
-      <BackToTop v-show="showbacktotop" />
-      <!-- 返回顶部按钮 -->
-      <BackToOneFloor v-show="showbacktoonefloor" />
-      <!-- 直达一楼按钮 -->
-      <ReplyBtn v-show="showreplybtn" />
-      <!-- 显示回复按钮 -->
-      <LookOP v-show="showlookop" />
-      <!-- 只看楼主 -->
-      <LevelDiglog v-show="showlevelsearch" />
-      <!-- 查询等级功能 -->
+    <div class="setting-btn" :class="{ active: isMenuOpen,'menu-items': settingData.checked54,}" id="menuItems">
+      <BackToTop v-show="showbacktotop" /> <!-- 返回顶部按钮 -->
+      <BackToOneFloor v-show="showbacktoonefloor" /> <!-- 直达一楼按钮 -->
+      <ReplyBtn v-show="showreplybtn" /> <!-- 显示回复按钮 -->
+      <LookOP v-show="showlookop" /> <!-- 只看楼主 -->
+      <LevelDiglog v-show="showlevelsearch" /> <!-- 查询等级功能 -->
+      <BookmarkBtn v-show="showbookmarkbtn" /> <!-- 右下角收藏按钮 -->
+      <BookmarkFolderBtn v-show="showbookmarkfolderbtn" /> <!-- 右下角收藏按钮 -->
+    </div>
+
+    <div class="main-btn" v-if="settingData.checked54" :class="{active:isMenuOpen}" id="mainBtn" @click="toggleMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-grid-icon lucide-layout-grid"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
     </div>
 
     <dialog open id="menu_suspendedball" v-show="showdialog">
@@ -93,273 +77,105 @@
 
             <div class="group-line">外观设置</div>
             <!-- 简洁模式 -->
-            <MenuSimpleMode
-              :sort="1"
-              v-model="settingData.checked0"
-              v-show="matchesSearch('简洁模式')"
-            />
+            <MenuSimpleMode :sort="1" v-model="settingData.checked0" v-show="matchesSearch('简洁模式')"/>
             <!-- 智能限制楼层高度 -->
-            <MenuFloorHeight
-              :sort="2"
-              v-model="settingData.checked10"
-              v-show="matchesSearch('智能限制楼层高度')"
-            />
+            <MenuFloorHeight :sort="2" v-model="settingData.checked10" v-show="matchesSearch('智能限制楼层高度')"/>
             <!-- 中英文混排优化显示 -->
-            <MenuPangu
-              :sort="3"
-              v-model="settingData.checked11"
-              v-show="matchesSearch('中英文混排优化显示')"
-            />
+            <MenuPangu :sort="3" v-model="settingData.checked11" v-show="matchesSearch('中英文混排优化显示')"/>
             <!-- 隐藏话题详情顶部大标题 -->
-            <MenuHidetopicdetailtitle
-              :sort="4"
-              v-model="settingData.checked6"
-              v-show="matchesSearch('隐藏话题详情顶部大标题')"
-            />
+            <MenuHidetopicdetailtitle :sort="4" v-model="settingData.checked6" v-show="matchesSearch('隐藏话题详情顶部大标题')"/>
             <!-- 只看自己签名 -->
-            <MenuLookmeSign
-              :sort="5"
-              v-model="settingData.checked15"
-              v-show="matchesSearch('只看自己签名')"
-            />
+            <MenuLookmeSign :sort="5" v-model="settingData.checked15" v-show="matchesSearch('只看自己签名')"/>
             <!-- 切换论坛表情风格 -->
-            <MenureplaceEmojiStyle
-              :sort="6"
-              v-model="settingData.checked17"
-              v-show="matchesSearch('切换论坛表情风格')"
-            />
+            <MenureplaceEmojiStyle :sort="6" v-model="settingData.checked17" v-show="matchesSearch('切换论坛表情风格')"/>
             <!-- 开启列表页导航栏浮动 -->
-            <MenuStickyNav
-              :sort="7"
-              v-model="settingData.checked20"
-              v-show="matchesSearch('列表页导航栏浮动')"
-            />
+            <MenuStickyNav :sort="7" v-model="settingData.checked20" v-show="matchesSearch('列表页导航栏浮动')"/>
             <!-- 自动切换黑夜模式 -->
-            <MenuAutoDark
-              :sort="8"
-              v-model="settingData.checked27"
-              v-show="matchesSearch('自动切换黑夜模式')"
-            />
+            <MenuAutoDark :sort="8" v-model="settingData.checked27" v-show="matchesSearch('自动切换黑夜模式')"/>
             <!-- 是否移除话题上的头像 (减少网络请求) -->
-            <MenuRemovePostAvatar
-              :sort="9"
-              v-model="settingData.removePostavatarData"
-              v-show="matchesSearch('移除话题上的头像')"
-            />
+            <MenuRemovePostAvatar :sort="9" v-model="settingData.removePostavatarData" v-show="matchesSearch('移除话题上的头像')"/>
             <!-- 隐藏新消息小蓝点（除帖子未读小蓝点） -->
-            <MenuHideNewBluedot
-              :sort="10"
-              v-model="settingData.checked37"
-              v-show="matchesSearch('隐藏新消息小蓝点')"
-            />
+            <MenuHideNewBluedot :sort="10" v-model="settingData.checked37" v-show="matchesSearch('隐藏新消息小蓝点')"/>
             <!-- gif 头像转静态图片 -->
-            <MenuGifToPng
-              :sort="11"
-              v-model="settingData.checked38"
-              v-show="matchesSearch('gif 头像转静态图片')"
-            />
+            <MenuGifToPng :sort="11" v-model="settingData.checked38" v-show="matchesSearch('gif 头像转静态图片')"/>
             <!-- 新增是否隐藏首页 banner 区域 -->
-            <MenuHideHomeBanner
-              :sort="12"
-              v-model="settingData.checked39"
-              v-show="matchesSearch('隐藏首页 banner 区域')"
-            />
+            <MenuHideHomeBanner :sort="12" v-model="settingData.checked39" v-show="matchesSearch('隐藏首页 banner 区域')"/>
             <!-- 是否美化过长的昵称 -->
-            <MenuUsernameLength
-              :sort="13"
-              v-model="settingData.checked45"
-              v-show="matchesSearch('美化过长的昵称')"
-            />
+            <MenuUsernameLength :sort="13" v-model="settingData.checked45" v-show="matchesSearch('美化过长的昵称')"/>
             <!-- 是否开启超长显示器宽度优化 -->
-            <MenuMonitorWidthOptimization
-              :sort="14"
-              v-model="settingData.checked46"
-              v-show="matchesSearch('超长显示器宽度优化')"
-            />
+            <MenuMonitorWidthOptimization :sort="14" v-model="settingData.checked46" v-show="matchesSearch('超长显示器宽度优化')"/>
             <!-- 类别页优化 banner 显示 -->
-            <MenuCatePageOptimizeBanner
-              :sort="15"
-              v-model="settingData.checked47"
-              v-show="matchesSearch('类别页优化 banner 显示')"
-            />
+            <MenuCatePageOptimizeBanner :sort="15" v-model="settingData.checked47" v-show="matchesSearch('类别页优化 banner 显示')"/>
             <!-- 是否自动隐藏"福利羊毛"中已领完的帖子 -->
-            <MenuHideWelfareDone
-              :sort="16"
-              v-model="settingData.checked42"
-              v-show="matchesSearch('隐藏福利羊毛中已领完的帖子')"
-            />
+            <MenuHideWelfareDone :sort="16" v-model="settingData.checked42" v-show="matchesSearch('隐藏福利羊毛中已领完的帖子')"/>
 
             <div class="group-line">功能点设置</div>
             <!-- 新标签页打开 -->
-            <MenuOpenpostblank
-              :sort="1"
-              v-model="settingData.checked1"
-              v-show="matchesSearch('新标签页打开')"
-            />
+            <MenuOpenpostblank :sort="1" v-model="settingData.checked1" v-show="matchesSearch('新标签页打开')"/>
             <!-- 话题列表显示创建时间 -->
-            <MenuShowcreatetime
-              :sort="2"
-              v-model="settingData.checked4"
-              v-show="matchesSearch('话题列表显示创建时间')"
-            />
-            <MenuShowcreatetime1
-              :sort="3"
-              v-model="settingData.checked41"
-              v-show="matchesSearch('话题列表显示创建时间')"
-            />
+            <MenuShowcreatetime :sort="2" v-model="settingData.checked4" v-show="matchesSearch('话题列表显示创建时间')"/>
+            <MenuShowcreatetime1 :sort="3" v-model="settingData.checked41" v-show="matchesSearch('话题列表显示创建时间')"/>
             <!-- 显示楼层数 -->
-            <MenuShowfloors
-              :sort="4"
-              v-model="settingData.checked5"
-              v-show="matchesSearch('显示楼层数')"
-            />
+            <MenuShowfloors :sort="4" v-model="settingData.checked5" v-show="matchesSearch('显示楼层数')"/>
             <!-- 新话题提醒 -->
-            <MenuNewtopicreminder
-              :sort="5"
-              v-model="settingData.checked2"
-              v-show="matchesSearch('新话题提醒')"
-            />
+            <MenuNewtopicreminder :sort="5" v-model="settingData.checked2" v-show="matchesSearch('新话题提醒')"/>
             <!-- 自动展开回复 -->
-            <MenuAutoexpandreply
-              :sort="6"
-              v-model="settingData.checked3"
-              v-show="matchesSearch('自动展开回复')"
-            />
+            <MenuAutoexpandreply :sort="6" v-model="settingData.checked3" v-show="matchesSearch('自动展开回复')"/>
             <!-- 禁用视频自动播放 -->
-            <MenuDisableAutoplay
-              :sort="7"
-              v-model="settingData.checked24"
-              v-show="matchesSearch('禁用视频自动播放')"
-            />
+            <MenuDisableAutoplay :sort="7" v-model="settingData.checked24" v-show="matchesSearch('禁用视频自动播放')"/>
             <!-- 是否显示快捷点赞主题按钮 -->
-            <MenuQuickLikeTopic
-              :sort="8"
-              v-model="settingData.checked35"
-              v-show="matchesSearch('快捷点赞主题按钮')"
-            />
-            <!-- 是否开启收藏功能 -->
-            <MenuBookmark
-              :sort="9"
-              v-model="settingData.checked40"
-              v-show="matchesSearch('收藏功能')"
-            />
+            <MenuQuickLikeTopic :sort="8" v-model="settingData.checked35" v-show="matchesSearch('快捷点赞主题按钮')"/>
             <!-- 楼主头衔显示 -->
-            <MenuTopicOwnerBadge
-              :sort="10"
-              v-model="settingData.checked49"
-              v-show="matchesSearch('楼主头衔显示')"
-            />
+            <MenuTopicOwnerBadge :sort="9" v-model="settingData.checked49" v-show="matchesSearch('楼主头衔显示')"/>
             <!-- 话题始终打开 1 楼 -->
-            <MenuAlwaysFirstPost
-              :sort="11"
-              v-model="settingData.checked50"
-              v-show="matchesSearch('话题始终打开1楼')"
-            />
+            <MenuAlwaysFirstPost :sort="10" v-model="settingData.checked50" v-show="matchesSearch('话题始终打开1楼')"/>
             <!-- 消息通知仅显示未读 -->
-            <MenuShowUnread
-              :sort="12"
-              v-model="settingData.checked13"
-              v-show="matchesSearch('消息通知仅显示未读')"
-            />
+            <MenuShowUnread :sort="11" v-model="settingData.checked13" v-show="matchesSearch('消息通知仅显示未读')"/>
             <!-- 是否屏蔽模糊文字 -->
-            <MenuFilterText
-              :sort="13"
-              v-model="settingData.checked14"
-              v-show="matchesSearch('屏蔽模糊文字')"
-            />
+            <MenuFilterText :sort="12" v-model="settingData.checked14" v-show="matchesSearch('屏蔽模糊文字')"/>
             <!-- 禁用选中文字分享功能 -->
-            <MenuSelectedShare
-              :sort="14"
-              v-model="settingData.checked23"
-              v-show="matchesSearch('禁用选中文字分享功能')"
-            />
+            <MenuSelectedShare :sort="13" v-model="settingData.checked23" v-show="matchesSearch('禁用选中文字分享功能')"/>
             <!-- 查看话题内自己回复的楼层数（抽奖贴适用） -->
-            <MenuViewOwnReply
-              :sort="15"
-              v-model="settingData.checked44"
-              v-show="matchesSearch('查看话题内自己回复的楼层数')"
-            />
+            <MenuViewOwnReply :sort="14" v-model="settingData.checked44" v-show="matchesSearch('查看话题内自己回复的楼层数')"/>
 
             <div class="group-line">编辑器设置</div>
             <!-- 编辑器切换 ja 字体 -->
-            <MenuEditorJa
-              :sort="1"
-              v-model="settingData.checked19"
-              v-show="matchesSearch('编辑器切换 ja 字体')"
-            />
+            <MenuEditorJa :sort="1" v-model="settingData.checked19" v-show="matchesSearch('编辑器切换 ja 字体')"/>
             <!-- 是否隐藏输入框提示文字 -->
-            <MenuHiddenPlaceholder
-              :sort="2"
-              v-model="settingData.checked28"
-              v-show="matchesSearch('隐藏输入框提示文字')"
-            />
-            <!-- 是否显示Neo表情包 -->
-            <MenuShowNeoEmoji
-              :sort="3"
-              v-model="settingData.checked51"
-              v-show="matchesSearch('Neo表情包')"
-            />
+            <MenuHiddenPlaceholder :sort="2" v-model="settingData.checked28" v-show="matchesSearch('隐藏输入框提示文字')"/>
+            <!-- 是否显示 Neo 表情包 -->
+            <MenuShowNeoEmoji :sort="3" v-model="settingData.checked51" v-show="matchesSearch('Neo表情包')"/>
 
             <div class="group-line">外置按钮</div>
+            <!-- 启用新 UI：收缩右下角按钮  -->
+            <MenuUIContractionBtn :sort="0" v-model="settingData.checked54" v-show="matchesSearch('启用新 UI：收缩右下角按钮')"/>
             <!-- 列表快速免打扰帖子 -->
-            <MenuDonotTopic
-              :sort="1"
-              v-model="settingData.checked26"
-              v-show="matchesSearch('列表快速免打扰帖子')"
-            />
+            <MenuDonotTopic :sort="1" v-model="settingData.checked26" v-show="matchesSearch('列表快速免打扰帖子')"/>
             <!-- 话题预览功能 -->
-            <MenuTopicpreview1
-              :sort="2"
-              v-model="settingData.checked7"
-              v-show="matchesSearch('话题预览功能')"
-            />
-            <MenuTopicpreview2
-              :sort="2.1"
-              v-model="settingData.checked7_1"
-              v-show="matchesSearch('话题预览功能')"
-            />
+            <MenuTopicpreview1 :sort="2" v-model="settingData.checked7" v-show="matchesSearch('话题预览功能')"/>
+            <MenuTopicpreview2 :sort="2.1" v-model="settingData.checked7_1" v-show="matchesSearch('话题预览功能')"/>
             <!-- 回复悬浮按钮 -->
-            <MenuShowRepltBtn
-              :sort="3"
-              v-model="settingData.checked25"
-              v-show="matchesSearch('回复悬浮按钮')"
-            />
+            <MenuShowRepltBtn :sort="3" v-model="settingData.checked25" v-show="matchesSearch('回复悬浮按钮')"/>
             <!-- 只看楼主按钮 -->
-            <MenuLookOP
-              :sort="4"
-              v-model="settingData.checked9"
-              v-show="matchesSearch('只看楼主按钮')"
-            />
+            <MenuLookOP :sort="4" v-model="settingData.checked9" v-show="matchesSearch('只看楼主按钮')"/>
             <!-- 是否显示等级查询按钮 -->
-            <MenuLevelSearch
-              :sort="5"
-              v-model="settingData.checked12"
-              v-show="matchesSearch('等级查询按钮')"
-            />
+            <MenuLevelSearch :sort="5" v-model="settingData.checked12" v-show="matchesSearch('等级查询按钮')"/>
             <!-- 是否显示返回顶部按钮 -->
-            <MenuBackToTop
-              :sort="6"
-              v-model="settingData.checked34"
-              v-show="matchesSearch('返回顶部按钮')"
-            />
+            <MenuBackToTop :sort="6" v-model="settingData.checked34" v-show="matchesSearch('返回顶部按钮')"/>
             <!-- 添加直达一楼按钮 -->
-            <MenuBackToOneFloor
-              :sort="6.1"
-              v-model="settingData.checked48"
-              v-show="matchesSearch('直达一楼按钮')"
-            />
+            <MenuBackToOneFloor :sort="6.1" v-model="settingData.checked48" v-show="matchesSearch('直达一楼按钮')"/>
             <!-- 是否开启话题转为图片进行分享 -->
-            <MenuTopicToImages
-              :sort="7"
-              v-model="settingData.checked43"
-              v-show="matchesSearch('话题转为图片进行分享')"
-            />
+            <MenuTopicToImages :sort="7" v-model="settingData.checked43" v-show="matchesSearch('话题转为图片进行分享')"/>
             <!-- 是否开启论坛文章导出功能 -->
-            <MenuExportArticle
-              :sort="8"
-              v-model="settingData.checkedExportArticle"
-              v-show="matchesSearch('论坛文章导出')"
-            />
+            <MenuExportArticle :sort="8" v-model="settingData.checkedExportArticle" v-show="matchesSearch('论坛文章导出')"/>
+
+            <div class="group-line">收藏功能</div>
+            <!-- 是否开启收藏功能 -->
+            <MenuBookmark :sort="1" v-model="settingData.checked40" v-show="matchesSearch('收藏功能')"/>
+            <!-- 是否在右下角显示收藏按钮 -->
+            <MenuBookmarkBtn :sort="2" v-model="settingData.checked52" v-show="matchesSearch('右下角显示收藏按钮')"/>
+            <!-- 是否显示跳转到文件夹按钮 -->
+            <MenuBookmarkFolderBtn :sort="3" v-model="settingData.checked53" v-show="matchesSearch('右下角显示收藏按钮')"/>
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->
@@ -463,6 +279,8 @@ import MenuExportArticle from "./components/BasicSettings/MenuExportArticle.vue"
 import MenuTopicOwnerBadge from "./components/BasicSettings/MenuTopicOwnerBadge.vue";
 import MenuAlwaysFirstPost from "./components/BasicSettings/MenuAlwaysFirstPost.vue";
 import MenuShowNeoEmoji from "./components/BasicSettings/MenuShowNeoEmoji.vue";
+import MenuBookmarkBtn from "./components/BasicSettings/MenuBookmarkBtn.vue";
+import MenuBookmarkFolderBtn from "./components/BasicSettings/MenuBookmarkFolderBtn.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -488,11 +306,14 @@ import Themes from "./components/Themes/index.vue";
 import SyncBackup from "./components/Sync/SyncBackup.vue";
 
 // 按钮
+import MenuUIContractionBtn from "./components/Button/MenuUIContractionBtn.vue";
 import LookOP from "./components/Button/LookOP.vue";
 import LevelDiglog from "./components/Button/LevelDiglog.vue";
 import ReplyBtn from "./components/Button/ReplyBtn.vue";
 import BackToTop from "./components/Button/BackToTop.vue";
 import BackToOneFloor from "./components/Button/BackToOneFloor.vue";
+import BookmarkBtn from "./components/Button/BookmarkBtn.vue";
+import BookmarkFolderBtn from "./components/Button/BookmarkFolderBtn.vue";
 
 // 其他组件
 import Updates from "./components/Other/Updates.vue";
@@ -534,12 +355,15 @@ export default {
     MenuLookOP,
     LookOP,
     LevelDiglog,
+    BookmarkBtn,
+    BookmarkFolderBtn,
     UsageTip,
     MenuFloorHeight,
     UserTags,
     MenuOtherCss,
     MenuLogoUrl,
     ReplyTBEnjoy,
+    MenuUIContractionBtn,
     MenuPangu,
     MenuLevelSearch,
     MenuShowUnread,
@@ -584,6 +408,8 @@ export default {
     MenuAlwaysFirstPost,
     MenuBlockTags,
     MenuShowNeoEmoji,
+    MenuBookmarkBtn,
+    MenuBookmarkFolderBtn,
   },
   data() {
     return {
@@ -661,6 +487,9 @@ export default {
         checked49: false,
         checked50: false,
         checked51: false,
+        checked52: false,
+        checked53: false,
+        checked54: false,
         removePostavatarData: {
           enable: false,
           showAuthor: false,
@@ -697,11 +526,19 @@ export default {
       showreplybtn: false,
       showbacktotop: false,
       showbacktoonefloor: false,
+      showbookmarkbtn: false,
+      showbookmarkfolderbtn: false,
       settingsSearchQuery: "", // 添加搜索查询字段
       observer: null,
+
+      isMenuOpen: false,
     };
   },
   methods: {
+    // 启用新 UI：右下角按钮收缩
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+    },
     handleKeyDown(e) {
       if (e.altKey && e.key === "-") {
         e.preventDefault();
@@ -845,6 +682,9 @@ export default {
       this.showreplybtn = this.settingData.checked25;
       this.showbacktotop = this.settingData.checked34;
       this.showbacktoonefloor = this.settingData.checked48;
+      this.showbookmarkbtn = this.settingData.checked52;
+      this.showbookmarkfolderbtn = this.settingData.checked53;
+      
     } else {
       localStorage.setItem("linxudoscriptssettingDMI", JSON.stringify(this.settingData));
     }
@@ -874,7 +714,7 @@ export default {
     }
 
     $("head").append(
-      `<style>.linuxdoscripts-setting-wrap{position:fixed;left:0;bottom:0;width:60px;height:100vh;z-index:9;display:flex;flex-direction:column;justify-content:flex-end;padding:10px;box-sizing:border-box}.linuxdoscripts-setting-wrap>button{opacity:0;margin-left:-50px;transition:all .2s linear}.linuxdoscripts-setting-wrap:hover>button{opacity:1;margin-left:0}@media (max-width:768px){.linuxdoscripts-setting-wrap{height:auto;position:fixed}.linuxdoscripts-setting-wrap>button{opacity:1;margin-left:0}}.linuxdoscripts-setting{display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;outline:0;background:#000;color:#fff;width:40px;height:40px;border-radius:5px;box-shadow:1px 2px 5px rgba(0,0,0,.6)}.timeline-container .topic-timeline .timeline-scrollarea{max-width:100px!important}#linuxdoscripts{font-size:14px}#linuxdoscripts input[type=text]{width:100%;background:var(--d-input-bg-color)}#linuxdoscripts input[disabled]{background:#fafafa;color:#666}#linuxdoscripts input[type=checkbox]{width:auto;transform:scale(1.2)}#linuxdoscripts input[type=radio]{width:auto}#linuxdoscripts img{vertical-align:bottom;max-width:100%;height:auto}#linuxdoscripts .close{position:absolute;right:10px;top:45%;cursor:pointer;font-size:34px;color:#999;transform:translateY(-50%) rotate(45deg)}#linuxdoscripts .setting-btn{z-index:199;position:fixed;bottom:20px;right:20px}#linuxdoscripts .setting-btn .el-button{width:50px;height:50px;border-radius:50%;position:relative;display:inline-flex;align-items:center;justify-content:center;padding:0;margin:0;margin-top:10px;font-size:13px;font-weight:500;color:#fff;background:linear-gradient(135deg,var(--primary) 0,var(--primary-medium) 100%);border:none;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 15px rgba(var(--primary-rgb),.2);overflow:hidden}#linuxdoscripts .setting-btn .el-button::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(255,255,255,.1) 0,rgba(255,255,255,0) 100%);opacity:0;transition:opacity .3s ease}#linuxdoscripts .setting-btn .el-button:hover{box-shadow:0 6px 20px rgba(var(--primary-rgb),.3)}#linuxdoscripts .setting-btn .el-button:hover::before{opacity:1}#linuxdoscripts .setting-btn .el-button:active{box-shadow:0 2px 10px rgba(var(--primary-rgb),.2)}#linuxdoscripts .setting-btn .el-button svg{margin:0}#linuxdoscripts .setting-btn .el-button span{position:relative;z-index:1}#linuxdoscripts .hint{margin-top:5px;color:#d94f4f;font-size:14px}#linuxdoscripts dialog{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;max-width:100vw;background:var(--header_background);color:var(--primary);box-shadow:0 8px 32px rgba(0,0,0,.1);border-radius:16px;padding:15px;z-index:99999;overflow-x:hidden;box-sizing:border-box;margin:0;border:none;outline:0}#linuxdoscripts dialog .menu-about{padding:5px 0;line-height:2}#linuxdoscripts dialog .menu-about .initialization{color:#999;border-bottom:1px dashed #999;cursor:pointer}#linuxdoscripts dialog .menu-about .initialization:hover{color:#333;border-color:#333}#linuxdoscripts dialog p{margin:0;font-size:14px}#linuxdoscripts .menu-header{padding:.5rem .5rem 1rem;border-bottom:1px solid #eee;position:relative}#linuxdoscripts .title{font-size:18px;font-weight:600;display:flex;align-items:center}#linuxdoscripts .title img{margin-left:10px}#linuxdoscripts button{padding:8px 16px;border-radius:4px;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s ease;border:none;display:inline-flex;align-items:center;justify-content:center;background-color:var(--primary-low)}#linuxdoscripts button+button{margin-left:8px}#linuxdoscripts button.saveload{background:#000;color:#fff}#linuxdoscripts button:hover{opacity:.9}#linuxdoscripts .test-btn{background:#0084ff;color:#fff;border:none;border-radius:4px;cursor:pointer;margin-top:10px}#linuxdoscripts .test-btn:hover{background:#0073e6}#linuxdoscripts .menu-flex{display:flex;justify-content:space-between;align-items:flex-start}#linuxdoscripts .menu-nav{width:140px;display:flex;flex-direction:column;padding:0;margin:0;padding-top:15px;margin-right:20px}#linuxdoscripts .menu-nav li{border-radius:4px;height:32px;width:100%;margin-bottom:5px;box-sizing:border-box;padding:0 10px;display:inline-flex;align-items:center;justify-content:flex-start;font-size:14px;cursor:pointer;line-height:1}#linuxdoscripts .menu-nav li svg{width:16px;margin-right:5px}#linuxdoscripts .menu-nav li.act{background:var(--d-selected)}#linuxdoscripts .menu-body{flex:1;height:480px;overflow-y:auto;box-sizing:border-box}#linuxdoscripts .menu-body::-webkit-scrollbar{height:8px;width:8px}#linuxdoscripts .menu-body::-webkit-scrollbar-corner{background:0 0}#linuxdoscripts .menu-body::-webkit-scrollbar-thumb{background:#dee0e1;border-radius:8px}#linuxdoscripts .menu-footer{display:flex;margin-top:10px;padding-top:6px}#linuxdoscripts .import{margin-left:auto!important}#linuxdoscripts .export,#linuxdoscripts .import{background:#d1f0ff;color:#559095}#linuxdoscripts .menu-body-item{padding-left:5px;padding-bottom:30px}#linuxdoscripts .menu-body-item .item{border-top:1px solid rgba(0,0,0,.05);padding:15px 0;display:flex;align-items:center;justify-content:space-between}#linuxdoscripts .menu-body-item .item .tit{height:100%;display:flex;align-items:center}#linuxdoscripts .menu-body-item .item input{margin-top:0;margin-bottom:0}#linuxdoscripts .menu-body-item .item select{margin-top:0;margin-bottom:0}#linuxdoscripts .menu-body-item .item input[type=checkbox]{width:30px;height:16px;position:relative;background-color:#dcdfe6;box-shadow:#dfdfdf 0 0 0 0 inset;border-radius:20px;background-clip:content-box;display:inline-block;appearance:none;-webkit-appearance:none;-moz-appearance:none;user-select:none;outline:0;padding:0;border:none}#linuxdoscripts .menu-body-item .item input[type=checkbox]::before{content:"";position:absolute;width:12px;height:12px;background-color:#fff;border-radius:50%;left:2px;top:0;bottom:0;margin:auto;transition:.3s}#linuxdoscripts .menu-body-item .item input[type=checkbox]:checked{background-color:var(--tertiary);transition:.6s}#linuxdoscripts .menu-body-item .item input[type=checkbox]:checked::before{left:14px;transition:.3s}#linuxdoscripts input{font-family:inherit;width:100%;border:1px solid #999;outline:0;padding:5px;font-size:14px;margin:0;resize:none;border-radius:0;color:var(--d-input-text-color);background:var(--d-input-bg-color)}#linuxdoscripts input:focus{border-color:var(--tertiary);outline:2px solid var(--tertiary);outline-offset:-2px}#linuxdoscripts textarea{font-family:inherit;width:100%;min-height:100px!important;border:1px solid #999;outline:0;padding:5px;font-size:14px;margin:0;resize:none;border-radius:0;color:var(--d-input-text-color);background:var(--d-input-bg-color)}#linuxdoscripts textarea:focus{border-color:var(--tertiary);outline:2px solid var(--tertiary);outline-offset:-2px}#linuxdoscripts .el-checkbox__inner{border:1px solid #979797}#linuxdoscripts label{margin:0}.linuxdoscripts-opacity{position:fixed;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,.5);z-index:9999}.linuxlevel.four{background:linear-gradient(to right,red,#00f);-webkit-background-clip:text;color:transparent}.topic-post{position:relative}.linuxfloor{display:flex;color:var(--tertiary);width:30px;height:30px;align-items:center;justify-content:center;border-radius:6px;font-size:16px;border:0;background:0 0;outline:0;padding:0;margin-left:6px}.signature-p{color:#279a36;font-size:14px;word-break:break-word;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.topic-list .views{font-weight:400!important;white-space:nowrap!important}.createreply{display:flex;flex-direction:column;max-width:300px}.createreply button{margin-bottom:10px;justify-content:flex-start;text-align:left}.donottopic-btn,.removedonottopic-btn,.topicpreview-btn{padding:4px 12px!important;font-size:14px!important;opacity:0!important;margin-right:5px!important}.topic-list-item:hover .donottopic-btn,.topic-list-item:hover .removedonottopic-btn,.topic-list-item:hover .topicpreview-btn{opacity:1!important}.topicpreview{position:fixed;top:0;left:0;z-index:99999;width:100vw;height:100vh;display:flex;justify-content:center;align-items:center;display:none}.topicpreview .topicpreview-container{padding:30px 0;border-radius:5px;width:100%;max-width:800px;overflow-y:auto;height:80vh;z-index:10;background:var(--header_background);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}.topicpreview .topicpreview-container .topicpreview-title{font-size:22px;font-weight:600;padding:0 30px}.topicpreview .topicpreview-container .topicpreview-date{padding:0 30px;color:#666}.topicpreview .topicpreview-container .topicpreview-content>.item{display:flex;align-items:flex-start;padding:20px 30px}.topicpreview .topicpreview-container .topicpreview-content>.item .itemfloor{width:50px;text-align:left;font-size:16px;padding-top:15px;color:#25b4cf}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost{flex:1;background:var(--tertiary-low);padding:15px 15px;border-radius:10px;font-size:15px;word-break:break-all}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost pre code{max-width:620px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost img{max-width:100%;max-height:100%;height:auto}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname{font-size:16px;color:#8f3a3a;display:flex;justify-content:space-between;align-items:center}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span{color:#9e9e9e;margin-left:20px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate{color:#b9b9b9;font-size:16px;margin-left:auto}.topicpreview-opacity{position:absolute;top:0;left:0;width:100%;height:100%;opacity:1;background:rgba(0,0,0,.6);z-index:9}.body-preview .sidebar-wrapper{display:none!important}body.body-preview #main-outlet-wrapper{display:block!important;padding-left:50px!important}.body-preview .d-header-wrap{display:none!important}.body-preview .menu_suspendedball{display:none!important}.post-activity{white-space:nowrap;display:inline-block;width:100%;text-align:left}.d-header img{height:var(--d-logo-height);width:auto;max-width:100%;object-fit:contain}.aicreated-btn,.aireplay-btn{outline:0;border:none;background:var(--tertiary-low);display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:14px;padding:4px 10px;border-radius:3px;margin-bottom:10px;margin-right:10px}.aicreated-all-btn{outline:0;border:none;background:var(--tertiary-low);display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:14px;padding:4px 10px;border-radius:3px;margin-bottom:10px;margin-right:10px}.aicreated-btn{display:none}.gpt-summary-wrap{background:var(--tertiary-low);border-radius:5px;padding:10px;font-size:14px;margin:0 0 10px 0;line-height:1.6}.gpt-summary-wrap .airegenerate{display:none;margin-top:6px;outline:0;border:1px solid #eee;background:#ffe27d;color:#626262;padding:4px 10px;cursor:pointer;border-radius:3px}.gpt-summary-wrap table{width:100%;border-collapse:collapse}.gpt-summary-wrap table tbody,.gpt-summary-wrap table thead,.gpt-summary-wrap table tr{border:none}.gpt-summary-wrap table th{font-weight:700}.gpt-summary-wrap table td,.gpt-summary-wrap table th{border:1px solid var(--primary-medium);padding:4px 10px;color:var(--primary)}.aicreatenewtopictitle{margin-left:20px}.aicreatenewtopictitle:hover{text-decoration:underline;cursor:pointer}.aireply-popup{z-index:999999;position:fixed;top:10%;left:50%;transform:translateX(-50%);width:500px;padding:20px;background:var(--tertiary-low);color:#333;box-shadow:transparent 0 0 0 0,transparent 0 0 0 0,rgba(0,0,0,.1) 0 20px 25px -5px,rgba(0,0,0,.1) 0 8px 10px -6px;border-radius:10px;display:none}.aireply-popup .aireply-popup-text{width:100%;height:120px}.aireply-popup .aireply-popup-close{outline:0;min-width:80px;height:32px;border:none;background-color:var(--header_background);text-shadow:0 -1px 0 rgba(0,0,0,.12);box-shadow:0 2px 0 rgba(0,0,0,.045);border-radius:4px;padding:0 10px;box-sizing:border-box;transition:all .1s linear}#messageToast{z-index:9999999;position:fixed;left:50%;transform:translateX(-50%);top:10%;width:100%;display:flex;flex-direction:column;align-items:center}#messageToast .messageToast-text{background:#4caf50;color:#fff;border-radius:6px;width:auto;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;text-align:center;line-height:1;min-height:40px;min-width:240px;font-size:16px;padding:0 30px;box-sizing:border-box;margin-bottom:10px;opacity:0;animation:messageToast .2s forwards;padding:12px 24px;color:#fff;border-radius:4px;font-size:14px;z-index:9999;box-shadow:0 2px 5px rgba(0,0,0,.2)}@keyframes messageToast{0%{transform:translateY(10px);opacity:0}100%{transform:translateY(0);opacity:1}}.pangutext{cursor:pointer;margin-left:20px}.pangutext:hover{color:#279a36}.navigation-container.is-active{position:fixed;top:65px;background:var(--header_background);z-index:9;box-shadow:1px 3px 7px 0 rgba(0,0,0,.2);margin-left:-30px;padding-left:30px;border-radius:5px;padding-top:10px;padding-right:20px;min-width:1000px;width:auto}.topic-body.clearfix.highlighted{background-color:var(--tertiary-low)!important}.hotranking-container{position:fixed;right:100px;bottom:20px;background:#fff;box-shadow:1px 10px 20px rgba(0,0,0,.2);border-radius:10px;width:400px;min-height:380px;padding:20px;box-sizing:border-box;z-index:999}.hotranking-container .flex{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}.hotranking-container ol li,.hotranking-container ul li{padding:2px 0}.hotranking-container ol li a:hover,.hotranking-container ul li a:hover{text-decoration:underline}.menu-body{padding:0 15px 0 0}.inner{display:flex;align-items:center;margin-bottom:10px}.inner label{width:70px;font-weight:400}.inner input{flex:1;margin:0;max-width:300px}.linxudoscripts-tag{align-items:center;justify-content:center;position:relative;min-width:36px;height:22px;line-height:20px;padding:0 8px;margin-left:8px;vertical-align:middle;color:rgba(255,255,255,.95);font-size:14px!important;font-weight:600;letter-spacing:.3px;text-shadow:0 1px 1px rgba(0,0,0,.15);background-color:#29a6a9;background-image:linear-gradient(135deg,rgba(255,255,255,.1) 0,rgba(255,255,255,.05) 50%,rgba(0,0,0,.05) 51%,rgba(0,0,0,.1) 100%);border-radius:3px;border:1px solid rgba(0,0,0,.12);box-sizing:border-box;box-shadow:0 1px 2px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.15);transition:all .2s cubic-bezier(.25,.46,.45,.94);overflow:hidden;z-index:1}.menu-table{width:100%;border-collapse:collapse;margin-top:10px}.menu-table td,.menu-table th{padding:6px 10px;font-size:14px;border:1px solid #cfcfcf}.menu-table .span{cursor:pointer}.menu-table .span+.span{margin-left:10px}.emojiPicker{top:0;left:100%;position:absolute;display:grid;grid-template-columns:repeat(12,1fr);gap:10px;height:100%;overflow:auto;background-color:rgba(0,0,0,.8);padding:10px;border-radius:5px;z-index:9}.emojiPicker img{cursor:pointer;width:30px;height:30px}.emojiPickerNeo{width:560px;top:0;left:100%;position:absolute;display:flex;flex-wrap:wrap;gap:10px;height:100%;overflow:auto;background-color:rgba(0,0,0,.8);padding:10px;border-radius:5px;z-index:9}.emojiPickerNeo img{cursor:pointer;width:100px;aspect-ratio:4/5;object-fit:cover}.emoji-picker-button-neo{color:rgb(100.3,100.3,100.3)!important}.UsageTip{position:static;margin:0;font-size:14px;line-height:1.6;background:var(--d-sidebar-background);color:var(--primary-medium)}.UsageTip>div{margin:10px 0}.UsageTip button{padding:8px 10px;margin-bottom:10px;border:none;outline:0;border-radius:4px}.linuxtime img{margin-right:5px}.topic-list .topic-list-data.posters{width:146px!important}@media (max-width:1000px){#linuxdoscripts .setting-btn{bottom:50px}}.linxudoscripts-btn{display:flex;align-items:center;justify-content:flex-end;width:100%}.linxudoscripts-btn>*{margin-right:8px!important;font-size:15px!important}.linxudoscripts-btn svg{width:1.5em!important;height:1.5em!important}.linxudoscripts-btn>:last-child{margin-right:0!important}#linuxdoscripts .group-line{text-align:center;font-weight:600;font-size:15px;position:relative;display:flex;align-items:center;justify-content:center;white-space:nowrap;margin-top:20px}#linuxdoscripts .group-line::after,#linuxdoscripts .group-line::before{content:'';display:inline-block;width:1920px;height:1px;background:var(--primary-300)}#linuxdoscripts .group-line::before{margin-right:15px}#linuxdoscripts .group-line::after{margin-left:15px}#linuxdoscripts .group-line+.item{border:none}</style>`
+      `<style>.linuxdoscripts-setting-wrap{position:fixed;left:0;bottom:0;width:60px;height:100vh;z-index:9;display:flex;flex-direction:column;justify-content:flex-end;padding:10px;box-sizing:border-box}.linuxdoscripts-setting-wrap>button{opacity:0;margin-left:-50px;transition:all .2s linear}.linuxdoscripts-setting-wrap:hover>button{opacity:1;margin-left:0}@media (max-width:768px){.linuxdoscripts-setting-wrap{height:auto;position:fixed}.linuxdoscripts-setting-wrap>button{opacity:1;margin-left:0}}.linuxdoscripts-setting{display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;outline:0;background:#000;color:#fff;width:40px;height:40px;border-radius:5px;box-shadow:1px 2px 5px rgba(0,0,0,.6)}.timeline-container .topic-timeline .timeline-scrollarea{max-width:100px!important}#linuxdoscripts{font-size:14px}#linuxdoscripts input[type=text]{width:100%;background:var(--d-input-bg-color)}#linuxdoscripts input[disabled]{background:#fafafa;color:#666}#linuxdoscripts input[type=checkbox]{width:auto;transform:scale(1.2)}#linuxdoscripts input[type=radio]{width:auto}#linuxdoscripts img{vertical-align:bottom;max-width:100%;height:auto}#linuxdoscripts .close{position:absolute;right:10px;top:45%;cursor:pointer;font-size:34px;color:#999;transform:translateY(-50%) rotate(45deg)}#linuxdoscripts .setting-btn{z-index:199;position:fixed;bottom:20px;right:20px}#linuxdoscripts .setting-btn .el-button{width:50px;height:50px;border-radius:50%;position:relative;display:inline-flex;align-items:center;justify-content:center;padding:0;margin:0;margin-top:10px;font-size:13px;font-weight:500;color:#fff;background:linear-gradient(135deg,var(--primary) 0,var(--primary-medium) 100%);border:none;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 15px rgba(var(--primary-rgb),.2);overflow:hidden}#linuxdoscripts .setting-btn .el-button::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(255,255,255,.1) 0,rgba(255,255,255,0) 100%);opacity:0;transition:opacity .3s ease}#linuxdoscripts .setting-btn .el-button:hover{box-shadow:0 6px 20px rgba(var(--primary-rgb),.3)}#linuxdoscripts .setting-btn .el-button:hover::before{opacity:1}#linuxdoscripts .setting-btn .el-button:active{box-shadow:0 2px 10px rgba(var(--primary-rgb),.2)}#linuxdoscripts .setting-btn .el-button svg{margin:0}#linuxdoscripts .setting-btn .el-button span{position:relative;z-index:1}#linuxdoscripts .hint{margin-top:5px;color:#d94f4f;font-size:14px}#linuxdoscripts dialog{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;max-width:100vw;background:var(--header_background);color:var(--primary);box-shadow:0 8px 32px rgba(0,0,0,.1);border-radius:16px;padding:15px;z-index:99999;overflow-x:hidden;box-sizing:border-box;margin:0;border:none;outline:0}#linuxdoscripts dialog .menu-about{padding:5px 0;line-height:2}#linuxdoscripts dialog .menu-about .initialization{color:#999;border-bottom:1px dashed #999;cursor:pointer}#linuxdoscripts dialog .menu-about .initialization:hover{color:#333;border-color:#333}#linuxdoscripts dialog p{margin:0;font-size:14px}#linuxdoscripts .menu-header{padding:.5rem .5rem 1rem;border-bottom:1px solid #eee;position:relative}#linuxdoscripts .title{font-size:18px;font-weight:600;display:flex;align-items:center}#linuxdoscripts .title img{margin-left:10px}#linuxdoscripts button{padding:8px 16px;border-radius:4px;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s ease;border:none;display:inline-flex;align-items:center;justify-content:center;background-color:var(--primary-low)}#linuxdoscripts button+button{margin-left:8px}#linuxdoscripts button.saveload{background:#000;color:#fff}#linuxdoscripts button:hover{opacity:.9}#linuxdoscripts .test-btn{background:#0084ff;color:#fff;border:none;border-radius:4px;cursor:pointer;margin-top:10px}#linuxdoscripts .test-btn:hover{background:#0073e6}#linuxdoscripts .menu-flex{display:flex;justify-content:space-between;align-items:flex-start}#linuxdoscripts .menu-nav{width:140px;display:flex;flex-direction:column;padding:0;margin:0;padding-top:15px;margin-right:20px}#linuxdoscripts .menu-nav li{border-radius:4px;height:32px;width:100%;margin-bottom:5px;box-sizing:border-box;padding:0 10px;display:inline-flex;align-items:center;justify-content:flex-start;font-size:14px;cursor:pointer;line-height:1}#linuxdoscripts .menu-nav li svg{width:16px;margin-right:5px}#linuxdoscripts .menu-nav li.act{background:var(--d-selected)}#linuxdoscripts .menu-body{flex:1;height:480px;overflow-y:auto;box-sizing:border-box}#linuxdoscripts .menu-body::-webkit-scrollbar{height:8px;width:8px}#linuxdoscripts .menu-body::-webkit-scrollbar-corner{background:0 0}#linuxdoscripts .menu-body::-webkit-scrollbar-thumb{background:#dee0e1;border-radius:8px}#linuxdoscripts .menu-footer{display:flex;margin-top:10px;padding-top:6px}#linuxdoscripts .import{margin-left:auto!important}#linuxdoscripts .export,#linuxdoscripts .import{background:#d1f0ff;color:#559095}#linuxdoscripts .menu-body-item{padding-left:5px;padding-bottom:30px}#linuxdoscripts .menu-body-item .item{border-top:1px solid rgba(0,0,0,.05);padding:15px 0;display:flex;align-items:center;justify-content:space-between}#linuxdoscripts .menu-body-item .item .tit{height:100%;display:flex;align-items:center}#linuxdoscripts .menu-body-item .item input{margin-top:0;margin-bottom:0}#linuxdoscripts .menu-body-item .item select{margin-top:0;margin-bottom:0}#linuxdoscripts .menu-body-item .item input[type=checkbox]{width:30px;height:16px;position:relative;background-color:#dcdfe6;box-shadow:#dfdfdf 0 0 0 0 inset;border-radius:20px;background-clip:content-box;display:inline-block;appearance:none;-webkit-appearance:none;-moz-appearance:none;user-select:none;outline:0;padding:0;border:none}#linuxdoscripts .menu-body-item .item input[type=checkbox]::before{content:"";position:absolute;width:12px;height:12px;background-color:#fff;border-radius:50%;left:2px;top:0;bottom:0;margin:auto;transition:.3s}#linuxdoscripts .menu-body-item .item input[type=checkbox]:checked{background-color:var(--tertiary);transition:.6s}#linuxdoscripts .menu-body-item .item input[type=checkbox]:checked::before{left:14px;transition:.3s}#linuxdoscripts input{font-family:inherit;width:100%;border:1px solid #999;outline:0;padding:5px;font-size:14px;margin:0;resize:none;border-radius:0;color:var(--d-input-text-color);background:var(--d-input-bg-color)}#linuxdoscripts input:focus{border-color:var(--tertiary);outline:2px solid var(--tertiary);outline-offset:-2px}#linuxdoscripts textarea{font-family:inherit;width:100%;min-height:100px!important;border:1px solid #999;outline:0;padding:5px;font-size:14px;margin:0;resize:none;border-radius:0;color:var(--d-input-text-color);background:var(--d-input-bg-color)}#linuxdoscripts textarea:focus{border-color:var(--tertiary);outline:2px solid var(--tertiary);outline-offset:-2px}#linuxdoscripts .el-checkbox__inner{border:1px solid #979797}#linuxdoscripts label{margin:0}.linuxdoscripts-opacity{position:fixed;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,.5);z-index:9999}.linuxlevel.four{background:linear-gradient(to right,red,#00f);-webkit-background-clip:text;color:transparent}.topic-post{position:relative}.linuxfloor{display:flex;color:var(--tertiary);width:30px;height:30px;align-items:center;justify-content:center;border-radius:6px;font-size:16px;border:0;background:0 0;outline:0;padding:0;margin-left:6px}.signature-p{color:#279a36;font-size:14px;word-break:break-word;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.topic-list .views{font-weight:400!important;white-space:nowrap!important}.createreply{display:flex;flex-direction:column;max-width:300px}.createreply button{margin-bottom:10px;justify-content:flex-start;text-align:left}.donottopic-btn,.removedonottopic-btn,.topicpreview-btn{padding:4px 12px!important;font-size:14px!important;opacity:0!important;margin-right:5px!important}.topic-list-item:hover .donottopic-btn,.topic-list-item:hover .removedonottopic-btn,.topic-list-item:hover .topicpreview-btn{opacity:1!important}.topicpreview{position:fixed;top:0;left:0;z-index:99999;width:100vw;height:100vh;display:flex;justify-content:center;align-items:center;display:none}.topicpreview .topicpreview-container{padding:30px 0;border-radius:5px;width:100%;max-width:800px;overflow-y:auto;height:80vh;z-index:10;background:var(--header_background);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}.topicpreview .topicpreview-container .topicpreview-title{font-size:22px;font-weight:600;padding:0 30px}.topicpreview .topicpreview-container .topicpreview-date{padding:0 30px;color:#666}.topicpreview .topicpreview-container .topicpreview-content>.item{display:flex;align-items:flex-start;padding:20px 30px}.topicpreview .topicpreview-container .topicpreview-content>.item .itemfloor{width:50px;text-align:left;font-size:16px;padding-top:15px;color:#25b4cf}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost{flex:1;background:var(--tertiary-low);padding:15px 15px;border-radius:10px;font-size:15px;word-break:break-all}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost pre code{max-width:620px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost img{max-width:100%;max-height:100%;height:auto}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname{font-size:16px;color:#8f3a3a;display:flex;justify-content:space-between;align-items:center}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemname span{color:#9e9e9e;margin-left:20px}.topicpreview .topicpreview-container .topicpreview-content>.item .itempost .itemdate{color:#b9b9b9;font-size:16px;margin-left:auto}.topicpreview-opacity{position:absolute;top:0;left:0;width:100%;height:100%;opacity:1;background:rgba(0,0,0,.6);z-index:9}.body-preview .sidebar-wrapper{display:none!important}body.body-preview #main-outlet-wrapper{display:block!important;padding-left:50px!important}.body-preview .d-header-wrap{display:none!important}.body-preview .menu_suspendedball{display:none!important}.post-activity{white-space:nowrap;display:inline-block;width:100%;text-align:left}.d-header img{height:var(--d-logo-height);width:auto;max-width:100%;object-fit:contain}.aicreated-btn,.aireplay-btn{outline:0;border:none;background:var(--tertiary-low);display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:14px;padding:4px 10px;border-radius:3px;margin-bottom:10px;margin-right:10px}.aicreated-all-btn{outline:0;border:none;background:var(--tertiary-low);display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:14px;padding:4px 10px;border-radius:3px;margin-bottom:10px;margin-right:10px}.aicreated-btn{display:none}.gpt-summary-wrap{background:var(--tertiary-low);border-radius:5px;padding:10px;font-size:14px;margin:0 0 10px 0;line-height:1.6}.gpt-summary-wrap .airegenerate{display:none;margin-top:6px;outline:0;border:1px solid #eee;background:#ffe27d;color:#626262;padding:4px 10px;cursor:pointer;border-radius:3px}.gpt-summary-wrap table{width:100%;border-collapse:collapse}.gpt-summary-wrap table tbody,.gpt-summary-wrap table thead,.gpt-summary-wrap table tr{border:none}.gpt-summary-wrap table th{font-weight:700}.gpt-summary-wrap table td,.gpt-summary-wrap table th{border:1px solid var(--primary-medium);padding:4px 10px;color:var(--primary)}.aicreatenewtopictitle{margin-left:20px}.aicreatenewtopictitle:hover{text-decoration:underline;cursor:pointer}.aireply-popup{z-index:999999;position:fixed;top:10%;left:50%;transform:translateX(-50%);width:500px;padding:20px;background:var(--tertiary-low);color:#333;box-shadow:transparent 0 0 0 0,transparent 0 0 0 0,rgba(0,0,0,.1) 0 20px 25px -5px,rgba(0,0,0,.1) 0 8px 10px -6px;border-radius:10px;display:none}.aireply-popup .aireply-popup-text{width:100%;height:120px}.aireply-popup .aireply-popup-close{outline:0;min-width:80px;height:32px;border:none;background-color:var(--header_background);text-shadow:0 -1px 0 rgba(0,0,0,.12);box-shadow:0 2px 0 rgba(0,0,0,.045);border-radius:4px;padding:0 10px;box-sizing:border-box;transition:all .1s linear}#messageToast{z-index:9999999;position:fixed;left:50%;transform:translateX(-50%);top:10%;width:100%;display:flex;flex-direction:column;align-items:center}#messageToast .messageToast-text{background:#4caf50;color:#fff;border-radius:6px;width:auto;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;text-align:center;line-height:1;min-height:40px;min-width:240px;font-size:16px;padding:0 30px;box-sizing:border-box;margin-bottom:10px;opacity:0;animation:messageToast .2s forwards;padding:12px 24px;color:#fff;border-radius:4px;font-size:14px;z-index:9999;box-shadow:0 2px 5px rgba(0,0,0,.2)}@keyframes messageToast{0%{transform:translateY(10px);opacity:0}100%{transform:translateY(0);opacity:1}}.pangutext{cursor:pointer;margin-left:20px}.pangutext:hover{color:#279a36}.navigation-container.is-active{position:fixed;top:65px;background:var(--header_background);z-index:9;box-shadow:1px 3px 7px 0 rgba(0,0,0,.2);margin-left:-30px;padding-left:30px;border-radius:5px;padding-top:10px;padding-right:20px;min-width:1000px;width:auto}.topic-body.clearfix.highlighted{background-color:var(--tertiary-low)!important}.hotranking-container{position:fixed;right:100px;bottom:20px;background:#fff;box-shadow:1px 10px 20px rgba(0,0,0,.2);border-radius:10px;width:400px;min-height:380px;padding:20px;box-sizing:border-box;z-index:999}.hotranking-container .flex{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}.hotranking-container ol li,.hotranking-container ul li{padding:2px 0}.hotranking-container ol li a:hover,.hotranking-container ul li a:hover{text-decoration:underline}.menu-body{padding:0 15px 0 0}.inner{display:flex;align-items:center;margin-bottom:10px}.inner label{width:70px;font-weight:400}.inner input{flex:1;margin:0;max-width:300px}.linxudoscripts-tag{align-items:center;justify-content:center;position:relative;min-width:36px;height:22px;line-height:20px;padding:0 8px;margin-left:8px;vertical-align:middle;color:rgba(255,255,255,.95);font-size:14px!important;font-weight:600;letter-spacing:.3px;text-shadow:0 1px 1px rgba(0,0,0,.15);background-color:#29a6a9;background-image:linear-gradient(135deg,rgba(255,255,255,.1) 0,rgba(255,255,255,.05) 50%,rgba(0,0,0,.05) 51%,rgba(0,0,0,.1) 100%);border-radius:3px;border:1px solid rgba(0,0,0,.12);box-sizing:border-box;box-shadow:0 1px 2px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.15);transition:all .2s cubic-bezier(.25,.46,.45,.94);overflow:hidden;z-index:1}.menu-table{width:100%;border-collapse:collapse;margin-top:10px}.menu-table td,.menu-table th{padding:6px 10px;font-size:14px;border:1px solid #cfcfcf}.menu-table .span{cursor:pointer}.menu-table .span+.span{margin-left:10px}.emojiPicker{top:0;left:100%;position:absolute;display:grid;grid-template-columns:repeat(12,1fr);gap:10px;height:100%;overflow:auto;background-color:rgba(0,0,0,.8);padding:10px;border-radius:5px;z-index:9}.emojiPicker img{cursor:pointer;width:30px;height:30px}.emojiPickerNeo{width:560px;top:0;left:100%;position:absolute;display:flex;flex-wrap:wrap;gap:10px;height:100%;overflow:auto;background-color:rgba(0,0,0,.8);padding:10px;border-radius:5px;z-index:9}.emojiPickerNeo img{cursor:pointer;width:100px;aspect-ratio:4/5;object-fit:cover}.emoji-picker-button-neo{color:rgb(100.3,100.3,100.3)!important}.UsageTip{position:static;margin:0;font-size:14px;line-height:1.6;background:var(--d-sidebar-background);color:var(--primary-medium)}.UsageTip>div{margin:10px 0}.UsageTip button{padding:8px 10px;margin-bottom:10px;border:none;outline:0;border-radius:4px}.linuxtime img{margin-right:5px}.topic-list .topic-list-data.posters{width:146px!important}@media (max-width:1000px){#linuxdoscripts .setting-btn{bottom:50px}}.linxudoscripts-btn{display:flex;align-items:center;justify-content:flex-end;width:100%}.linxudoscripts-btn>*{margin-right:8px!important;font-size:15px!important}.linxudoscripts-btn svg{width:1.5em!important;height:1.5em!important}.linxudoscripts-btn>:last-child{margin-right:0!important}#linuxdoscripts .group-line{text-align:center;font-weight:600;font-size:15px;position:relative;display:flex;align-items:center;justify-content:center;white-space:nowrap;margin-top:20px}#linuxdoscripts .group-line::after,#linuxdoscripts .group-line::before{content:'';display:inline-block;width:1920px;height:1px;background:var(--primary-300)}#linuxdoscripts .group-line::before{margin-right:15px}#linuxdoscripts .group-line::after{margin-left:15px}#linuxdoscripts .group-line+.item{border:none}#linuxdoscripts .main-btn{width:50px;height:50px;border-radius:50%;background:var(--d-button-primary-bg-color);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 15px rgba(var(--primary-rgb),.2);position:fixed;right:20px;bottom:20px;font-weight:400;line-height:1}#linuxdoscripts .main-btn svg{color:#fff}#linuxdoscripts .main-btn:hover{transform:scale(1.1);background:var(--d-button-primary-bg-color)}#linuxdoscripts .main-btn.active{transform:rotate(45deg);background:var(--d-button-primary-bg-color--hover)}#linuxdoscripts .menu-items{bottom:80px!important;opacity:0;pointer-events:none;transition:all .3s cubic-bezier(.4,0,.2,1)}#linuxdoscripts .menu-items.active{opacity:1;pointer-events:all}#linuxdoscripts .menu-items>div{transition:all .3s ease;transform:scale(0) rotate(180deg)}#linuxdoscripts .menu-items.active>div{transform:scale(1) rotate(0)}#linuxdoscripts .menu-items.active>div:nth-child(1){transition-delay:.1s}#linuxdoscripts .menu-items.active>div:nth-child(2){transition-delay:.15s}#linuxdoscripts .menu-items.active>div:nth-child(3){transition-delay:.2s}#linuxdoscripts .menu-items.active>div:nth-child(4){transition-delay:.25s}#linuxdoscripts .menu-items.active>div:nth-child(5){transition-delay:.3s}#linuxdoscripts .menu-items.active>div:nth-child(6){transition-delay:.35s}#linuxdoscripts .menu-items.active>div:nth-child(7){transition-delay:.4s}#linuxdoscripts .menu-items.active>div:nth-child(8){transition-delay:.45s}#linuxdoscripts .menu-items.active>div:nth-child(9){transition-delay:.5s}</style>`
     );
   },
 };

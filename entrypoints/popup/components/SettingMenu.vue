@@ -32,9 +32,7 @@ export default {
     // 收藏夹
     openBookmark() {
       const browserAPI = typeof browser !== "undefined" ? browser : chrome;
-      browserAPI.tabs.create({
-        url: browserAPI.runtime.getURL("bookmark.html"),
-      });
+      browserAPI.runtime.sendMessage({ action: "open_bookmark_page" });
     },
     // 分享话题
     openShare() {
@@ -66,9 +64,9 @@ export default {
           browserAPI.tabs.sendMessage(tabs[0].id, { action: "getData" });
         });
 
-        this.$message.success('切换成功！')
+        this.$message.success("切换成功！");
       });
-    }
+    },
   },
   created() {
     const isShowSettingConfig = localStorage.getItem("isShowSettingConfig");

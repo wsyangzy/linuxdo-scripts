@@ -20,8 +20,8 @@ browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
 // 进入 bookmark 收藏夹
 browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'open_bookmark_page') {
-    const extensionURL = browserAPI.runtime.getURL('bookmark.html');
-    browserAPI.tabs.create({ url: extensionURL });
+    const bookmarkPageURL = browserAPI.runtime.getURL('bookmark.html');
+    browserAPI.tabs.create({ url: bookmarkPageURL });
   }
 });
 
