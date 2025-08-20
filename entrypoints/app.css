@@ -1102,6 +1102,93 @@ body.body-preview #main-outlet-wrapper {
   border: none;
 }
 
-/* .timeline-container .topic-timeline .timeline-scrollarea {
-  background: #fafafa5c;
-} */
+
+#linuxdoscripts .main-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--d-button-primary-bg-color);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.2);
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+#linuxdoscripts .main-btn svg {
+  color: #fff;
+}
+
+#linuxdoscripts .main-btn:hover {
+  transform: scale(1.1);
+  background: var(--d-button-primary-bg-color);
+}
+
+#linuxdoscripts .main-btn.active {
+  transform: rotate(45deg);
+  background: var(--d-button-primary-bg-color--hover);
+}
+
+#linuxdoscripts .menu-items {
+  bottom: 80px !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#linuxdoscripts .menu-items.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#linuxdoscripts .menu-items>div {
+  transition: all 0.3s ease;
+  transform: scale(0) rotate(180deg);
+}
+
+#linuxdoscripts .menu-items.active>div {
+  transform: scale(1) rotate(0deg);
+}
+
+#linuxdoscripts .menu-items.active>div:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+#linuxdoscripts .menu-items.active>div:nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+#linuxdoscripts .menu-items.active>div:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+#linuxdoscripts .menu-items.active>div:nth-child(4) {
+  transition-delay: 0.25s;
+}
+
+#linuxdoscripts .menu-items.active>div:nth-child(5) {
+  transition-delay: 0.3s;
+}
+
+#linuxdoscripts .menu-items.active>div:nth-child(6) {
+  transition-delay: 0.35s;
+}
+
+#linuxdoscripts .menu-items.active>div:nth-child(7) {
+  transition-delay: 0.4s;
+}
+
+#linuxdoscripts .menu-items.active>div:nth-child(8) {
+  transition-delay: 0.45s;
+}
+
+#linuxdoscripts .menu-items.active>div:nth-child(9) {
+  transition-delay: 0.5s;
+}

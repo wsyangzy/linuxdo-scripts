@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import $ from "jquery";
 export default {
   methods: {
     scrollToTop() {
