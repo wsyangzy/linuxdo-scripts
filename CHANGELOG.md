@@ -1,5 +1,4 @@
-- fix: 修复因免打扰按钮导致的通知面板误触问题 #155 #224
-- fix: correct correct muted post page detection in multiple components #223
-- fix: 优化 AI 生成标题功能，兼容论坛新编辑器 #222
+v1.4.0 版本做出了一些大的调整，同时对 v1.3.x 小版本做了一些整理合并。
 
-欢迎新贡献者 @qixing-jk
+- feat: 新增外置按钮：收藏、跳转到收藏夹等 #228
+- feat: 在网址按钮数量过多时做出一些 UI 上的兼容性，可在设置中启用新 UI
