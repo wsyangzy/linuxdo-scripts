@@ -20,8 +20,11 @@ export default defineConfig({
     name: 'LinuxDo Scripts',
     version: pkg.version,
     description: '为 linux.do 用户提供了一些增强功能。',
-    permissions: ['storage'],
+    permissions: ['storage', 'sidePanel'],
     host_permissions: ['http://*/*', 'https://*/*'],
+    side_panel: {
+      default_path: 'sidepanel.html'
+    },
   },
   hooks: {
     'build:manifestGenerated': (wxt, manifest) => {

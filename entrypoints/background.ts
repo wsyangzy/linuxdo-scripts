@@ -3,6 +3,44 @@ export default defineBackground(() => {
 });
 const browserAPI = (typeof browser !== 'undefined' ? browser : chrome);
 
+// 根据用户偏好切换点击扩展图标时的打开行为（sidepanel 或 popup）
+const CLICK_BEHAVIOR_KEY = 'clickOpenTarget'; // 'sidepanel' | 'popup'
+
+async function applyClickBehavior(target) {
+  const isSidePanel = target === 'sidepanel';
+  try {
+    if (browserAPI.sidePanel && browserAPI.sidePanel.setPanelBehavior) {
+      await browserAPI.sidePanel.setPanelBehavior({ openPanelOnActionClick: isSidePanel });
+    }
+  } catch (err) {
+    console.warn('sidePanel.setPanelBehavior not available', err);
+  }
+
+  try {
+    // 当选择 sidepanel 时，清空 action 的 popup；选择 popup 时，设置为 popup.html
+    if (browserAPI.action && browserAPI.action.setPopup) {
+      await browserAPI.action.setPopup({ popup: isSidePanel ? '' : 'popup.html' });
+    }
+  } catch (err) {
+    console.warn('action.setPopup not available', err);
+  }
+}
+
+// 初始化：读取存储并应用行为；默认 sidepanel
+browserAPI.storage?.local.get([CLICK_BEHAVIOR_KEY], (res) => {
+  const target = res?.[CLICK_BEHAVIOR_KEY] || 'sidepanel';
+  applyClickBehavior(target);
+});
+
+// 监听存储变化，动态应用
+browserAPI.storage?.onChanged?.addListener((changes, area) => {
+  if (area !== 'local') return;
+  if (CLICK_BEHAVIOR_KEY in changes) {
+    const newValue = changes[CLICK_BEHAVIOR_KEY]?.newValue || 'sidepanel';
+    applyClickBehavior(newValue);
+  }
+});
+
 browserAPI.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'sendData') {
     // 查询所有打开的标签页
