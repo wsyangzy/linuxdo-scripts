@@ -12,12 +12,12 @@ export default {
   emits: ["update:modelValue"],
   data() {
     return {
-      autoExpandIntervalId: null // 添加变量存储定时器ID
+      autoExpandIntervalId: null // 添加变量存储定时器 ID
     };
   },
   methods: {
     init() {
-      $("nav.post-controls .show-replies").each(function () {
+      $("nav.post-controls .show-replies[aria-pressed='false']").each(function () {
         $(this).click();
       });
     },
