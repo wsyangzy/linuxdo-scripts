@@ -13,7 +13,7 @@ export default {
   emits: ["update:modelValue"],
   data() {
     return {
-      panguIntervalId: null // 添加变量存储定时器ID
+      panguIntervalId: null // 添加变量存储定时器 ID
     };
   },
   created() {
@@ -26,7 +26,10 @@ export default {
         });
 
         if ($(".pangutext").length < 1) {
-          $(".save-or-cancel .cancel").before(`<span class="pangutext">混排优化</span>`);
+          $("#reply-control .discard").prepend(`
+          <button class="btn btn-icon-text pangutext" type="button">
+            <span class="d-button-label">混排优化</span>
+          </button>`);
           $(".pangutext").click(function () {
             const $textarea = $(".d-editor-input");
             let text = pangu.spacing($textarea.val());

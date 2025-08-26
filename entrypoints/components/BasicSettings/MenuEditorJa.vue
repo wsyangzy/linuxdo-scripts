@@ -12,16 +12,17 @@ export default {
   emits: ["update:modelValue"],
   data() {
     return {
-      editorJaIntervalId: null // 添加变量存储定时器ID
+      editorJaIntervalId: null // 添加变量存储定时器 ID
     };
   },
   created() {
     if (this.modelValue) {
       this.editorJaIntervalId = setInterval(() => {
         if ($(".replyja").length < 1) {
-          $("#reply-control .save-or-cancel .create").after(
-            `<button class="btn btn-default replyja" style="margin-left:15px;" type="button">ja 字体</button>`
-          );
+          $("#reply-control .discard").prepend(`
+          <button class="btn btn-icon-text replyja" type="button">
+            <span class="d-button-label">ja 字体</span>
+          </button>`);
           $(".replyja").click(function () {
             let $textarea = $(".d-editor-textarea-wrapper textarea");
             let text = `<span lang="ja">

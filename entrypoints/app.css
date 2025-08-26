@@ -1192,3 +1192,15 @@ body.body-preview #main-outlet-wrapper {
 #linuxdoscripts .menu-items.active>div:nth-child(9) {
   transition-delay: 0.5s;
 }
+
+#reply-control .discard {
+  display: flex;
+}
+
+#reply-control .discard .replyja {
+  margin-right: 10px;
+}
+
+#reply-control .discard-button {
+  margin-left: auto;
+}
