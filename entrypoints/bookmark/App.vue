@@ -8,19 +8,7 @@
         :class="{ active: menutype == 'folder' }"
         title="文件夹"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          class="icon icon-tabler icons-tabler-filled icon-tabler-folder"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path
-            d="M9 3a1 1 0 0 1 .608 .206l.1 .087l2.706 2.707h6.586a3 3 0 0 1 2.995 2.824l.005 .176v8a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-11a3 3 0 0 1 2.824 -2.995l.176 -.005h4z"
-          />
-        </svg>
+       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-closed-icon lucide-folder-closed"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="M2 10h20"/></svg>
       </div>
       <!-- 分类 -->
       <div
@@ -29,28 +17,7 @@
         :class="{ active: menutype == 'cate' }"
         title="话题分类"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          class="icon icon-tabler icons-tabler-filled icon-tabler-category"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path
-            d="M10 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z"
-          />
-          <path
-            d="M20 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z"
-          />
-          <path
-            d="M10 13h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z"
-          />
-          <path
-            d="M17 13a4 4 0 1 1 -3.995 4.2l-.005 -.2l.005 -.2a4 4 0 0 1 3.995 -3.8z"
-          />
-        </svg>
+       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-column-stacked-icon lucide-chart-column-stacked"><path d="M11 13H7"/><path d="M19 9h-4"/><path d="M3 3v16a2 2 0 0 0 2 2h16"/><rect x="15" y="5" width="4" height="12" rx="1"/><rect x="7" y="8" width="4" height="9" rx="1"/></svg>
       </div>
       <!-- 标签 -->
       <div
@@ -59,66 +26,15 @@
         :class="{ active: menutype == 'tags' }"
         title="标签"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          class="icon icon-tabler icons-tabler-filled icon-tabler-tags"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path
-            d="M9.172 5a3 3 0 0 1 2.121 .879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3.41 3.41 0 0 1 -4.822 0l-5.71 -5.71a3 3 0 0 1 -.879 -2.121v-4.172a3 3 0 0 1 3 -3zm-2.172 4h-.01a1 1 0 1 0 .01 2a1 1 0 0 0 0 -2"
-          />
-          <path
-            d="M14.293 5.293a1 1 0 0 1 1.414 0l4.593 4.592a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1 -1.414 -1.414l1.592 -1.592a3.82 3.82 0 0 0 0 -5.402l-4.592 -4.592a1 1 0 0 1 0 -1.414"
-          />
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tags-icon lucide-tags"><path d="M13.172 2a2 2 0 0 1 1.414.586l6.71 6.71a2.4 2.4 0 0 1 0 3.408l-4.592 4.592a2.4 2.4 0 0 1-3.408 0l-6.71-6.71A2 2 0 0 1 6 9.172V3a1 1 0 0 1 1-1z"/><path d="M2 7v6.172a2 2 0 0 0 .586 1.414l6.71 6.71a2.4 2.4 0 0 0 3.191.193"/><circle cx="10.5" cy="6.5" r=".5" fill="currentColor"/></svg>
       </div>
       <!-- 手动新增 -->
       <div class="item" @click="openAddPostDialog" title="添加书签">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="icon icon-tabler icons-tabler-outline icon-tabler-file-plus"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-          <path
-            d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"
-          />
-          <path d="M12 11l0 6" />
-          <path d="M9 14l6 0" />
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark-plus-icon lucide-bookmark-plus"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/><line x1="12" x2="12" y1="7" y2="13"/><line x1="15" x2="9" y1="10" y2="10"/></svg>
       </div>
       <!-- Webdav 同步 -->
       <div class="item" @click="openWebdavDialog" title="WebDAV 同步">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="icon icon-tabler icons-tabler-outline icon-tabler-settings"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path
-            d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
-          />
-          <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings-icon lucide-settings"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>
       </div>
     </div>
 
@@ -645,7 +561,7 @@ export default {
     sortedBookmarklist() {
       // 返回根据sort字段降序排序的数组（数字大的在前，小的在后）
       return [...this.bookmarklist].sort((a, b) => {
-        // 确保sort存在，如果不存在则默认为1
+        // 确保 sort 存在，如果不存在则默认为 1
         const sortA = a.sort || 1;
         const sortB = b.sort || 1;
         return sortB - sortA; // 降序排列
@@ -658,9 +574,9 @@ export default {
         return [];
       }
 
-      // 返回根据sort字段降序排序的数组（数字大的在前，小的在后）
+      // 返回根据 sort 字段降序排序的数组（数字大的在前，小的在后）
       return [...this.tableData.list].sort((a, b) => {
-        // 确保sort存在，如果不存在则默认为1
+        // 确保 sort 存在，如果不存在则默认为 1
         const sortA = a.sort || 1;
         const sortB = b.sort || 1;
         return sortB - sortA; // 降序排列
@@ -703,7 +619,7 @@ export default {
       localStorage.setItem("bookmarkData", JSON.stringify(this.bookmarklist));
     },
     updateBookmarkList(record) {
-      // 确保sort是数字类型
+      // 确保 sort 是数字类型
       record.sort = Number(record.sort);
 
       // 找到当前选中的书签文件夹
@@ -1217,16 +1133,16 @@ export default {
 
             // 先处理现有数据
             this.bookmarklist.forEach((bookmark) => {
-              // 通过id查找是否已存在
+              // 通过 id 查找是否已存在
               const existingBookmark = Array.from(mergedMap.values()).find(
                 (item) => item.id === bookmark.id
               );
 
               if (existingBookmark) {
-                // 存在相同id的对象，只合并list数据，保留existingBookmark的其他数据
+                // 存在相同 id 的对象，只合并 list 数据，保留 existingBookmark 的其他数据
                 existingBookmark.list.push(...bookmark.list);
               } else {
-                // 不存在相同id，添加新条目
+                // 不存在相同 id，添加新条目
                 mergedMap.set(bookmark.name, {
                   id: bookmark.id,
                   name: bookmark.name,
@@ -1551,7 +1467,7 @@ export default {
 
       // 遍历书签列表中的每个分类
       this.bookmarklist.forEach((category) => {
-        // 若分类没有sort字段，添加默认值1
+        // 若分类没有 sort 字段，添加默认值 1
         if (!category.hasOwnProperty("sort")) {
           category.sort = 1;
         }
@@ -1559,7 +1475,7 @@ export default {
         // 遍历分类中的每个书签
         if (category.list && Array.isArray(category.list)) {
           category.list.forEach((bookmark) => {
-            // 若书签没有sort字段，添加默认值1
+            // 若书签没有 sort 字段，添加默认值 1
             if (!bookmark.hasOwnProperty("sort")) {
               bookmark.sort = 1;
             }
@@ -1626,7 +1542,7 @@ export default {
         }
 
         if (isUrlExist) {
-          // 如果URL已存在，先从所有列表中移除该书签
+          // 如果 URL 已存在，先从所有列表中移除该书签
           vm.bookmarklist.forEach((bookmarkGroup) => {
             bookmarkGroup.list = bookmarkGroup.list.filter(
               (item) => item.url !== result.bookmarkData.url
@@ -1666,7 +1582,7 @@ export default {
           );
           
           if (existingBookmarkGroup) {
-            // 找到包含此URL的书签组和书签索引
+            // 找到包含此 URL 的书签组和书签索引
             vm.bookmarklist.forEach((bookmarkGroup) => {
               const index = bookmarkGroup.list.findIndex(item => item.url === bookmark.url);
               if (index !== -1) {
@@ -1680,7 +1596,7 @@ export default {
           }
         });
         
-        // 已处理bookmarks，从storage中移除
+        // 已处理 bookmarks，从 storage 中移除
         browserAPI.storage.local.remove("bookmarks");
       }
       

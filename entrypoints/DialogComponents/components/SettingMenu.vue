@@ -23,27 +23,34 @@
   <a-divider />
 
   <div class="item">
-    <div class="label">点击扩展图标时打开</div>
+    <div class="label">点击扩展图标时打开
+      <Question @click="showCompatibilityReminder" />
+    </div>
     <a-radio-group v-model="clickTarget" type="button" @change="onClickTargetChange">
       <a-radio value="sidepanel">侧边栏</a-radio>
       <a-radio value="popup">弹窗</a-radio>
     </a-radio-group>
   </div>
   <!-- 兼容性提示 -->
-  <div class="CompatibilityReminder">
+  <div class="CompatibilityReminder" v-show="CompatibilityReminder">
     <p>兼容性提示：如果你使用 Arc 等不支持浏览器侧边的第三方软件，可以直接引入下方链接作为侧边。</p>
     <a href="javascript:void(0)" target="_blank" @click="gosidepanel">点击显示侧边链接</a>
   </div>
 </template>
 
 <script>
+import Question from './SVG/Question.vue';
+
 export default {
+  components: {
+    Question,
+  },
   data() {
     return {
       isShow: false,
       clickTarget: "sidepanel",
       activeKey: ["1"],
-      CompatibilityReminder: ``,
+      CompatibilityReminder: false,
     };
   },
   methods: {
@@ -98,6 +105,12 @@ export default {
         this.$message.success("已更新点击打开方式！");
       });
     },
+
+    // 切换兼容性提示显示
+    showCompatibilityReminder() {
+      this.CompatibilityReminder = !this.CompatibilityReminder;
+    },
+    
   },
   created() {
     const isShowSettingConfig = localStorage.getItem("isShowSettingConfig");
@@ -129,6 +142,19 @@ export default {
     color: var(--color-neutral-6);
     font-size: 14px;
     margin-right: 10px;
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      width: 20px;
+      margin-left: 5px;
+      transition: all 0.1s linear;
+      cursor: pointer;
+
+      &:hover {
+        color: #333;
+      }
+    }
   }
 }
 

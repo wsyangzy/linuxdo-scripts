@@ -235,102 +235,102 @@ import $ from "jquery";
 // 基础设置
 import packageJson from "../package.json";
 
-import MenuSimpleMode from "./components/BasicSettings/MenuSimpleMode.vue";
-import MenuOpenpostblank from "./components/BasicSettings/MenuOpenpostblank.vue";
-import MenuNewtopicreminder from "./components/BasicSettings/MenuNewtopicreminder.vue";
-import MenuAutoexpandreply from "./components/BasicSettings/MenuAutoexpandreply.vue";
-import MenuAutoexpandreply1 from "./components/BasicSettings/MenuAutoexpandreply1.vue";
-import MenuShowcreatetime from "./components/BasicSettings/MenuShowcreatetime.vue";
-import MenuShowcreatetime1 from "./components/BasicSettings/MenuShowcreatetime1.vue";
-import MenuShowfloors from "./components/BasicSettings/MenuShowfloors.vue";
-import MenuHidetopicdetailtitle from "./components/BasicSettings/MenuHidetopicdetailtitle.vue";
-import MenuTopicpreview1 from "./components/BasicSettings/MenuTopicpreview1.vue";
-import MenuTopicpreview2 from "./components/BasicSettings/MenuTopicpreview2.vue";
-import MenuLookOP from "./components/BasicSettings/MenuLookOP.vue";
-import MenuFloorHeight from "./components/BasicSettings/MenuFloorHeight.vue";
-import ReplyTBEnjoy from "./components/BasicSettings/ReplyTBEnjoy.vue";
-import MenuPangu from "./components/BasicSettings/MenuPangu.vue";
-import MenuLevelSearch from "./components/BasicSettings/MenuLevelSearch.vue";
-import MenuShowUnread from "./components/BasicSettings/MenuShowUnread.vue";
-import MenuFilterText from "./components/BasicSettings/MenuFilterText.vue";
-import MenuLookmeSign from "./components/BasicSettings/MenuLookmeSign.vue";
-import MenureplaceEmojiStyle from "./components/BasicSettings/MenureplaceEmojiStyle.vue";
-import MenuEditorJa from "./components/BasicSettings/MenuEditorJa.vue";
-import MenuStickyNav from "./components/BasicSettings/MenuStickyNav.vue";
-import MenuSelectedShare from "./components/BasicSettings/MenuSelectedShare.vue";
-import MenuDisableAutoplay from "./components/BasicSettings/MenuDisableAutoplay.vue";
-import MenuShowRepltBtn from "./components/BasicSettings/MenuShowRepltBtn.vue";
-import MenuDonotTopic from "./components/BasicSettings/MenuDonotTopic.vue";
-import MenuAutoDark from "./components/BasicSettings/MenuAutoDark.vue";
-import MenuHiddenPlaceholder from "./components/BasicSettings/MenuHiddenPlaceholder.vue";
-import MenuRemovePostAvatar from "./components/BasicSettings/MenuRemovePostAvatar.vue";
-import MenuBackToTop from "./components/BasicSettings/MenuBackToTop.vue";
-import MenuBackToOneFloor from "./components/BasicSettings/MenuBackToOneFloor.vue";
-import MenuQuickLikeTopic from "./components/BasicSettings/MenuQuickLikeTopic.vue";
-import MenuHideNewBluedot from "./components/BasicSettings/MenuHideNewBluedot.vue";
-import MenuGifToPng from "./components/BasicSettings/MenuGifToPng.vue";
-import MenuHideHomeBanner from "./components/BasicSettings/MenuHideHomeBanner.vue";
-import MenuBookmark from "./components/BasicSettings/MenuBookmark.vue";
-import MenuHideWelfareDone from "./components/BasicSettings/MenuHideWelfareDone.vue";
-import MenuTopicToImages from "./components/BasicSettings/MenuTopicToImages.vue";
-import MenuViewOwnReply from "./components/BasicSettings/MenuViewOwnReply.vue";
-import MenuUsernameLength from "./components/BasicSettings/MenuUsernameLength.vue";
-import MenuMonitorWidthOptimization from "./components/BasicSettings/MenuMonitorWidthOptimization.vue";
-import MenuCatePageOptimizeBanner from "./components/BasicSettings/MenuCatePageOptimizeBanner.vue";
-import MenuExportArticle from "./components/BasicSettings/MenuExportArticle.vue";
-import MenuTopicOwnerBadge from "./components/BasicSettings/MenuTopicOwnerBadge.vue";
-import MenuAlwaysFirstPost from "./components/BasicSettings/MenuAlwaysFirstPost.vue";
-import MenuShowNeoEmoji from "./components/BasicSettings/MenuShowNeoEmoji.vue";
-import MenuBookmarkBtn from "./components/BasicSettings/MenuBookmarkBtn.vue";
-import MenuBookmarkFolderBtn from "./components/BasicSettings/MenuBookmarkFolderBtn.vue";
-import MenuAutoLoadTopic from "./components/BasicSettings/MenuAutoLoadTopic.vue";
+import MenuSimpleMode from "./SettingComponents/BasicSettings/MenuSimpleMode.vue";
+import MenuOpenpostblank from "./SettingComponents/BasicSettings/MenuOpenpostblank.vue";
+import MenuNewtopicreminder from "./SettingComponents/BasicSettings/MenuNewtopicreminder.vue";
+import MenuAutoexpandreply from "./SettingComponents/BasicSettings/MenuAutoexpandreply.vue";
+import MenuAutoexpandreply1 from "./SettingComponents/BasicSettings/MenuAutoexpandreply1.vue";
+import MenuShowcreatetime from "./SettingComponents/BasicSettings/MenuShowcreatetime.vue";
+import MenuShowcreatetime1 from "./SettingComponents/BasicSettings/MenuShowcreatetime1.vue";
+import MenuShowfloors from "./SettingComponents/BasicSettings/MenuShowfloors.vue";
+import MenuHidetopicdetailtitle from "./SettingComponents/BasicSettings/MenuHidetopicdetailtitle.vue";
+import MenuTopicpreview1 from "./SettingComponents/BasicSettings/MenuTopicpreview1.vue";
+import MenuTopicpreview2 from "./SettingComponents/BasicSettings/MenuTopicpreview2.vue";
+import MenuLookOP from "./SettingComponents/BasicSettings/MenuLookOP.vue";
+import MenuFloorHeight from "./SettingComponents/BasicSettings/MenuFloorHeight.vue";
+import ReplyTBEnjoy from "./SettingComponents/BasicSettings/ReplyTBEnjoy.vue";
+import MenuPangu from "./SettingComponents/BasicSettings/MenuPangu.vue";
+import MenuLevelSearch from "./SettingComponents/BasicSettings/MenuLevelSearch.vue";
+import MenuShowUnread from "./SettingComponents/BasicSettings/MenuShowUnread.vue";
+import MenuFilterText from "./SettingComponents/BasicSettings/MenuFilterText.vue";
+import MenuLookmeSign from "./SettingComponents/BasicSettings/MenuLookmeSign.vue";
+import MenureplaceEmojiStyle from "./SettingComponents/BasicSettings/MenureplaceEmojiStyle.vue";
+import MenuEditorJa from "./SettingComponents/BasicSettings/MenuEditorJa.vue";
+import MenuStickyNav from "./SettingComponents/BasicSettings/MenuStickyNav.vue";
+import MenuSelectedShare from "./SettingComponents/BasicSettings/MenuSelectedShare.vue";
+import MenuDisableAutoplay from "./SettingComponents/BasicSettings/MenuDisableAutoplay.vue";
+import MenuShowRepltBtn from "./SettingComponents/BasicSettings/MenuShowRepltBtn.vue";
+import MenuDonotTopic from "./SettingComponents/BasicSettings/MenuDonotTopic.vue";
+import MenuAutoDark from "./SettingComponents/BasicSettings/MenuAutoDark.vue";
+import MenuHiddenPlaceholder from "./SettingComponents/BasicSettings/MenuHiddenPlaceholder.vue";
+import MenuRemovePostAvatar from "./SettingComponents/BasicSettings/MenuRemovePostAvatar.vue";
+import MenuBackToTop from "./SettingComponents/BasicSettings/MenuBackToTop.vue";
+import MenuBackToOneFloor from "./SettingComponents/BasicSettings/MenuBackToOneFloor.vue";
+import MenuQuickLikeTopic from "./SettingComponents/BasicSettings/MenuQuickLikeTopic.vue";
+import MenuHideNewBluedot from "./SettingComponents/BasicSettings/MenuHideNewBluedot.vue";
+import MenuGifToPng from "./SettingComponents/BasicSettings/MenuGifToPng.vue";
+import MenuHideHomeBanner from "./SettingComponents/BasicSettings/MenuHideHomeBanner.vue";
+import MenuBookmark from "./SettingComponents/BasicSettings/MenuBookmark.vue";
+import MenuHideWelfareDone from "./SettingComponents/BasicSettings/MenuHideWelfareDone.vue";
+import MenuTopicToImages from "./SettingComponents/BasicSettings/MenuTopicToImages.vue";
+import MenuViewOwnReply from "./SettingComponents/BasicSettings/MenuViewOwnReply.vue";
+import MenuUsernameLength from "./SettingComponents/BasicSettings/MenuUsernameLength.vue";
+import MenuMonitorWidthOptimization from "./SettingComponents/BasicSettings/MenuMonitorWidthOptimization.vue";
+import MenuCatePageOptimizeBanner from "./SettingComponents/BasicSettings/MenuCatePageOptimizeBanner.vue";
+import MenuExportArticle from "./SettingComponents/BasicSettings/MenuExportArticle.vue";
+import MenuTopicOwnerBadge from "./SettingComponents/BasicSettings/MenuTopicOwnerBadge.vue";
+import MenuAlwaysFirstPost from "./SettingComponents/BasicSettings/MenuAlwaysFirstPost.vue";
+import MenuShowNeoEmoji from "./SettingComponents/BasicSettings/MenuShowNeoEmoji.vue";
+import MenuBookmarkBtn from "./SettingComponents/BasicSettings/MenuBookmarkBtn.vue";
+import MenuBookmarkFolderBtn from "./SettingComponents/BasicSettings/MenuBookmarkFolderBtn.vue";
+import MenuAutoLoadTopic from "./SettingComponents/BasicSettings/MenuAutoLoadTopic.vue";
 
 // 自定义文字
-import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
-import MenuLogoUrl from "./components/CustomText/MenuLogoUrl.vue";
-import MenuIconTitle from "./components/CustomText/MenuIconTitle.vue";
-import MenuCreatereply from "./components/CustomText/MenuCreatereply.vue";
-import MenuBlockuserlist from "./components/CustomText/MenuBlockuserlist.vue";
-import MenuBlockKeyword from "./components/CustomText/MenuBlockKeyword.vue";
-import MenuShieldPosts from "./components/CustomText/MenuShieldPosts.vue";
-import MenuBlockTags from "./components/CustomText/MenuBlockTags.vue";
+import MenuOtherCss from "./SettingComponents/CustomText/MenuOtherCss.vue";
+import MenuLogoUrl from "./SettingComponents/CustomText/MenuLogoUrl.vue";
+import MenuIconTitle from "./SettingComponents/CustomText/MenuIconTitle.vue";
+import MenuCreatereply from "./SettingComponents/CustomText/MenuCreatereply.vue";
+import MenuBlockuserlist from "./SettingComponents/CustomText/MenuBlockuserlist.vue";
+import MenuBlockKeyword from "./SettingComponents/CustomText/MenuBlockKeyword.vue";
+import MenuShieldPosts from "./SettingComponents/CustomText/MenuShieldPosts.vue";
+import MenuBlockTags from "./SettingComponents/CustomText/MenuBlockTags.vue";
 
 // 用户标签
-import UserTags from "./components/UserTags/UserTags.vue";
-import MenuUserTags from "./components/UserTags/MenuUserTags.vue";
+import UserTags from "./SettingComponents/UserTags/UserTags.vue";
+import MenuUserTags from "./SettingComponents/UserTags/MenuUserTags.vue";
 
 // AI 配置
-import GPTconfig from "./components/AIConfig/GPTconfig.vue";
+import GPTconfig from "./SettingComponents/AIConfig/GPTconfig.vue";
 
 // 主题风格
-import Themes from "./components/Themes/index.vue";
+import Themes from "./SettingComponents/Themes/index.vue";
 
 // 数据同步备份
-import SyncBackup from "./components/Sync/SyncBackup.vue";
+import SyncBackup from "./SettingComponents/Sync/SyncBackup.vue";
 
 // 按钮
-import MenuUIContractionBtn from "./components/Button/MenuUIContractionBtn.vue";
-import LookOP from "./components/Button/LookOP.vue";
-import LevelDiglog from "./components/Button/LevelDiglog.vue";
-import ReplyBtn from "./components/Button/ReplyBtn.vue";
-import BackToTop from "./components/Button/BackToTop.vue";
-import BackToOneFloor from "./components/Button/BackToOneFloor.vue";
-import BookmarkBtn from "./components/Button/BookmarkBtn.vue";
-import BookmarkFolderBtn from "./components/Button/BookmarkFolderBtn.vue";
+import MenuUIContractionBtn from "./SettingComponents/Button/MenuUIContractionBtn.vue";
+import LookOP from "./SettingComponents/Button/LookOP.vue";
+import LevelDiglog from "./SettingComponents/Button/LevelDiglog.vue";
+import ReplyBtn from "./SettingComponents/Button/ReplyBtn.vue";
+import BackToTop from "./SettingComponents/Button/BackToTop.vue";
+import BackToOneFloor from "./SettingComponents/Button/BackToOneFloor.vue";
+import BookmarkBtn from "./SettingComponents/Button/BookmarkBtn.vue";
+import BookmarkFolderBtn from "./SettingComponents/Button/BookmarkFolderBtn.vue";
 
 // 其他组件
-import Updates from "./components/Other/Updates.vue";
-import UsageTip from "./components/Other/UsageTip.vue";
-import Signature from "./components/Other/Signature.vue";
+import Updates from "./SettingComponents/Other/Updates.vue";
+import UsageTip from "./SettingComponents/Other/UsageTip.vue";
+import Signature from "./SettingComponents/Other/Signature.vue";
 
 // svg 图标
-import Setting1 from "./components/Svg/Setting1.vue";
-import Setting2 from "./components/Svg/Setting2.vue";
-import Setting3 from "./components/Svg/Setting3.vue";
-import Setting4 from "./components/Svg/Setting4.vue";
-import Setting5 from "./components/Svg/Setting5.vue";
-import Setting6 from "./components/Svg/Setting6.vue";
-import Setting7 from "./components/Svg/Setting7.vue";
+import Setting1 from "./SettingComponents/Svg/Setting1.vue";
+import Setting2 from "./SettingComponents/Svg/Setting2.vue";
+import Setting3 from "./SettingComponents/Svg/Setting3.vue";
+import Setting4 from "./SettingComponents/Svg/Setting4.vue";
+import Setting5 from "./SettingComponents/Svg/Setting5.vue";
+import Setting6 from "./SettingComponents/Svg/Setting6.vue";
+import Setting7 from "./SettingComponents/Svg/Setting7.vue";
 
 export default {
   components: {
