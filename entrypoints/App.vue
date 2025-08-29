@@ -108,6 +108,8 @@
             <MenuCatePageOptimizeBanner :sort="15" v-model="settingData.checked47" v-show="matchesSearch('类别页优化 banner 显示')"/>
             <!-- 是否自动隐藏"福利羊毛"中已领完的帖子 -->
             <MenuHideWelfareDone :sort="16" v-model="settingData.checked42" v-show="matchesSearch('隐藏福利羊毛中已领完的帖子')"/>
+            <!-- 是否自动加载新话题 -->
+            <MenuAutoLoadTopic :sort="17" v-model="settingData.checked55" v-show="matchesSearch('是否自动加载新话题')"/>
 
             <div class="group-line">功能点设置</div>
             <!-- 新标签页打开 -->
@@ -281,6 +283,7 @@ import MenuAlwaysFirstPost from "./components/BasicSettings/MenuAlwaysFirstPost.
 import MenuShowNeoEmoji from "./components/BasicSettings/MenuShowNeoEmoji.vue";
 import MenuBookmarkBtn from "./components/BasicSettings/MenuBookmarkBtn.vue";
 import MenuBookmarkFolderBtn from "./components/BasicSettings/MenuBookmarkFolderBtn.vue";
+import MenuAutoLoadTopic from "./components/BasicSettings/MenuAutoLoadTopic.vue";
 
 // 自定义文字
 import MenuOtherCss from "./components/CustomText/MenuOtherCss.vue";
@@ -410,6 +413,7 @@ export default {
     MenuShowNeoEmoji,
     MenuBookmarkBtn,
     MenuBookmarkFolderBtn,
+    MenuAutoLoadTopic,
   },
   data() {
     return {
@@ -490,6 +494,7 @@ export default {
         checked52: false,
         checked53: false,
         checked54: false,
+        checked55: false,
         removePostavatarData: {
           enable: false,
           showAuthor: false,

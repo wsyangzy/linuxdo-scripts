@@ -12,7 +12,7 @@ export default {
   emits: ["update:modelValue"],
   data() {
     return {
-      replyParentIntervalId: null // 添加变量存储定时器ID
+      replyParentIntervalId: null // 添加变量存储定时器 ID
     };
   },
   methods: {
