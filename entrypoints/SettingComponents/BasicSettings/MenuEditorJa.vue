@@ -19,7 +19,7 @@ export default {
     if (this.modelValue) {
       this.editorJaIntervalId = setInterval(() => {
         if ($(".replyja").length < 1) {
-          $("#reply-control .discard").prepend(`
+          $(".save-or-cancel .create").after(`
           <button class="btn btn-icon-text replyja" type="button">
             <span class="d-button-label">ja 字体</span>
           </button>`);

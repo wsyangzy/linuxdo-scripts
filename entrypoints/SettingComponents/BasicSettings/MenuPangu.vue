@@ -26,7 +26,7 @@ export default {
         });
 
         if ($(".pangutext").length < 1) {
-          $("#reply-control .discard").prepend(`
+          $(".save-or-cancel .create").after(`
           <button class="btn btn-icon-text pangutext" type="button">
             <span class="d-button-label">混排优化</span>
           </button>`);
