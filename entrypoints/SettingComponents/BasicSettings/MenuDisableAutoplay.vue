@@ -12,13 +12,16 @@ export default {
   emits: ["update:modelValue"],
   data() {
     return {
-      disableAutoplayIntervalId: null // 添加变量存储定时器ID
+      disableAutoplayIntervalId: null // 添加变量存储定时器 ID
     };
   },
   created() {
     if (this.modelValue) {
       this.disableAutoplayIntervalId = setInterval(() => {
-        $(".cooked iframe, .cooked video").each(function () {
+        $(`
+        .cooked iframe[src*='player.bilibili.com'],
+        .cooked iframe[src*='youtube.com'],
+        .cooked video`).each(function () {
           const $element = $(this);
           let src = $element.attr("src");
 
