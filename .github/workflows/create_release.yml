@@ -55,9 +55,9 @@ jobs:
         ---
 
         使用方法:  
-        - **Chrome / Edge / Arc / Brave:** [Chrome Web Store](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
+        - **Chrome / Edge / Arc / Brave:** [Chrome 安装](https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj)
         - **国内用户:** [Crx 商店](https://www.crxsoso.com/webstore/detail/fbgblmjbeebanackldpbmpacppflgmlj)
-        - **Firefox:** [Firefox Addons](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
+        - **Firefox:** [Firefox 安装](https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/)
         
         发布于：$CURRENT_DATE"
       env:
