@@ -15,10 +15,10 @@ hero:
       text: GitHub
       link: https://github.com/anghunk/linuxdo-scripts
     - theme: alt
-      text: Chrome Web Store
+      text: Chrome 安装
       link: https://chromewebstore.google.com/detail/fbgblmjbeebanackldpbmpacppflgmlj
     - theme: alt
-      text: Firefox Addons
+      text: Firefox 安装
       link: https://addons.mozilla.org/zh-CN/firefox/addon/linux_do-scripts/
 
 features:
