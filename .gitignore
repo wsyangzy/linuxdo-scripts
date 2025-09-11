@@ -28,3 +28,7 @@ web-ext.config.ts
 package-lock.json
 .output
 entrypoints/demo
+.cunzhi-memory
+.claude
+.spec-workflow
+claude.md

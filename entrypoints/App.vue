@@ -14,6 +14,7 @@
       <LevelDiglog v-show="showlevelsearch" /> <!-- 查询等级功能 -->
       <BookmarkBtn v-show="showbookmarkbtn" /> <!-- 右下角收藏按钮 -->
       <BookmarkFolderBtn v-show="showbookmarkfolderbtn" /> <!-- 右下角收藏按钮 -->
+      <HistoryBtn v-show="showhistorybtn" /> <!-- 浏览历史按钮 -->
     </div>
 
     <div class="main-btn" v-if="settingData.checked54" :class="{active:isMenuOpen}" id="mainBtn" @click="toggleMenu()">
@@ -178,6 +179,8 @@
             <MenuBookmarkBtn :sort="2" v-model="settingData.checked52" v-show="matchesSearch('右下角显示收藏按钮')"/>
             <!-- 是否显示跳转到文件夹按钮 -->
             <MenuBookmarkFolderBtn :sort="3" v-model="settingData.checked53" v-show="matchesSearch('右下角显示收藏按钮')"/>
+            <!-- 是否显示浏览历史按钮 -->
+            <MenuHistoryBtn :sort="4" v-model="settingData.checkedHistory" v-show="matchesSearch('浏览历史按钮')"/>
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->
@@ -317,6 +320,8 @@ import BackToTop from "./SettingComponents/Button/BackToTop.vue";
 import BackToOneFloor from "./SettingComponents/Button/BackToOneFloor.vue";
 import BookmarkBtn from "./SettingComponents/Button/BookmarkBtn.vue";
 import BookmarkFolderBtn from "./SettingComponents/Button/BookmarkFolderBtn.vue";
+import HistoryBtn from "./SettingComponents/Button/HistoryBtn.vue";
+import MenuHistoryBtn from "./SettingComponents/Button/MenuHistoryBtn.vue";
 
 // 其他组件
 import Updates from "./SettingComponents/Other/Updates.vue";
@@ -360,6 +365,8 @@ export default {
     LevelDiglog,
     BookmarkBtn,
     BookmarkFolderBtn,
+    HistoryBtn,
+    MenuHistoryBtn,
     UsageTip,
     MenuFloorHeight,
     UserTags,
@@ -495,6 +502,7 @@ export default {
         checked53: false,
         checked54: false,
         checked55: false,
+        checkedHistory: false,
         removePostavatarData: {
           enable: false,
           showAuthor: false,
@@ -533,6 +541,7 @@ export default {
       showbacktoonefloor: false,
       showbookmarkbtn: false,
       showbookmarkfolderbtn: false,
+      showhistorybtn: false,
       settingsSearchQuery: "", // 添加搜索查询字段
       observer: null,
 
@@ -689,6 +698,7 @@ export default {
       this.showbacktoonefloor = this.settingData.checked48;
       this.showbookmarkbtn = this.settingData.checked52;
       this.showbookmarkfolderbtn = this.settingData.checked53;
+      this.showhistorybtn = this.settingData.checkedHistory;
       
     } else {
       localStorage.setItem("linxudoscriptssettingDMI", JSON.stringify(this.settingData));

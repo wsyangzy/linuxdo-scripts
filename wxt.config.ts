@@ -3,6 +3,13 @@ import pkg from './package.json';
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
+  runner: {
+    binaries: {
+      chrome: 'D:/software/Chrome/App/chrome.exe',
+      edge: 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
+    },
+    startUrls: ['https://linux.do'],
+  },
   vite: () => ({
     css: {
       preprocessorOptions: {
