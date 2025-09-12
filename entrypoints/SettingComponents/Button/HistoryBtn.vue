@@ -50,10 +50,16 @@
             @click="visitPost(item)"
           >
             <div class="history-item-content">
-              <div class="history-title" :title="item.title">{{ item.title }}</div>
+              <div class="history-title" :title="item.displayTitle">{{ item.displayTitle }}</div>
               <div class="history-info">
                 <span class="history-time">{{ formatTime(item.time) }}</span>
-                <span class="history-category" v-if="item.category">{{ item.category }}</span>
+                <span class="history-category" :class="`category-${getCategoryColorTheme(item.displayCategory)}`" v-if="item.displayCategory">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="category-icon">
+                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
+                    <line x1="7" y1="7" x2="7.01" y2="7"/>
+                  </svg>
+                  {{ item.displayCategory }}
+                </span>
               </div>
             </div>
             <button 
@@ -91,7 +97,80 @@ export default {
   },
   computed: {
     displayHistoryList() {
-      return this.historyList.slice(0, this.maxRecords)
+      return this.historyList.slice(0, this.maxRecords).map(item => {
+        // 拆分标题和标签：格式为 "帖子标题 - 标签名"
+        const splitTitleAndCategory = (title) => {
+          if (!title) return { displayTitle: title, displayCategory: '' }
+          
+          // 查找最后一个 " - " 分隔符，这通常是标题和标签的分界点
+          const lastDashIndex = title.lastIndexOf(' - ')
+          
+          if (lastDashIndex > 0) {
+            const potentialTitle = title.substring(0, lastDashIndex).trim()
+            const potentialCategory = title.substring(lastDashIndex + 3).trim()
+            
+            // 验证拆分的合理性
+            const isCategoryValid = () => {
+              // 标签长度应该在合理范围内
+              if (potentialCategory.length < 2 || potentialCategory.length > 30) return false
+              
+              // 标题部分不能太短
+              if (potentialTitle.length < 3) return false
+              
+              // 标签不应该包含某些特殊字符或格式，这些通常表示它是标题的一部分
+              const invalidCategoryPatterns = [
+                /^\d{4}-\d{2}-\d{2}/, // 日期格式
+                /^第\d+/, // "第X章"等
+                /^版本\d+/, // "版本X"等
+                /^v\d+\.\d+/, // 版本号
+                /[\(\)\[\]【】]/, // 包含括号的通常是标题的一部分
+                /^(上|下|续)$/, // 上下集标识
+              ]
+              
+              const hasInvalidPattern = invalidCategoryPatterns.some(pattern => pattern.test(potentialCategory))
+              if (hasInvalidPattern) return false
+              
+              // 检查是否是常见的LinuxDo分类名
+              const commonCategories = [
+                '搞七捻三', '开发调优', '资源荟萃', '文档共建', '跳蚤市场', '非我莫属',
+                '读书成诗', '扬帆起航', '前沿快讯', '福利羊毛', '运营反馈', '深海幽域',
+                '技术分享', '生活随笔', '项目展示', '求助问答', '闲聊水区'
+              ]
+              
+              // 如果匹配常见分类，直接认为是有效的
+              if (commonCategories.includes(potentialCategory)) return true
+              
+              // 其他情况下，检查字符组成：应该主要是中文、英文、数字
+              const validCategoryPattern = /^[\u4e00-\u9fff\w\s]+$/
+              return validCategoryPattern.test(potentialCategory)
+            }
+            
+            if (isCategoryValid()) {
+              console.log(`成功拆分标题: "${title}" -> 标题: "${potentialTitle}", 标签: "${potentialCategory}"`)
+              return {
+                displayTitle: potentialTitle,
+                displayCategory: potentialCategory
+              }
+            } else {
+              console.log(`拆分验证失败: "${title}" -> 标签 "${potentialCategory}" 不符合条件`)
+            }
+          }
+          
+          // 如果无法拆分或拆分不合理，返回原标题
+          return {
+            displayTitle: title,
+            displayCategory: item.category || ''  // 使用原有的category字段作为备选
+          }
+        }
+        
+        const { displayTitle, displayCategory } = splitTitleAndCategory(item.title)
+        
+        return {
+          ...item,
+          displayTitle,
+          displayCategory
+        }
+      })
     }
   },
   watch: {
@@ -165,6 +244,52 @@ export default {
     }
   },
   methods: {
+    // 根据标签名称获取颜色主题
+    getCategoryColorTheme(categoryName) {
+      if (!categoryName) return 'default'
+      
+      // 为每个具体标签分配唯一颜色
+      const uniqueColorMap = {
+        // 每个标签都有独特的颜色
+        '开发调优': 'blue',
+        '技术分享': 'indigo',
+        '项目展示': 'violet',
+        '资源荟萃': 'green',
+        '福利羊毛': 'emerald',
+        '文档共建': 'purple',
+        '求助问答': 'fuchsia',
+        '跳蚤市场': 'orange',
+        '非我莫属': 'amber',
+        '读书成诗': 'rose',
+        '生活随笔': 'pink',
+        '扬帆起航': 'cyan',
+        '前沿快讯': 'teal',
+        '搞七捻三': 'yellow',
+        '闲聊水区': 'lime',
+        '深海幽域': 'sky',
+        '运营反馈': 'slate',
+        // 可以继续为新标签添加更多颜色
+      }
+      
+      // 如果有预定义颜色，直接返回
+      if (uniqueColorMap[categoryName]) {
+        return uniqueColorMap[categoryName]
+      }
+      
+      // 为未知标签生成唯一颜色（使用更大的颜色池）
+      const extendedColors = [
+        'red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 
+        'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 
+        'rose', 'slate', 'gray', 'zinc', 'neutral', 'stone'
+      ]
+      
+      // 使用字符串哈希生成稳定的颜色索引
+      let hash = 0
+      for (let i = 0; i < categoryName.length; i++) {
+        hash = categoryName.charCodeAt(i) + ((hash << 5) - hash)
+      }
+      return extendedColors[Math.abs(hash) % extendedColors.length]
+    },
     async loadHistoryData() {
       try {
         this.historyList = await historyStorage.getHistory()
@@ -733,53 +858,320 @@ export default {
     async recordCurrentVisit() {
       try {
         const path = window.location.pathname
-        const postId = path.match(/\/t\/(\d+)/)?.[1] || path.match(/\/topic\/(\d+)/)?.[1]
+        const href = window.location.href
         
-        if (!postId) return
+        console.log('检查URL是否为帖子页面:', { path, href })
+        
+        // 严格匹配帖子页面URL格式，只允许/t/topic/编号格式
+        const isValidPostPage = () => {
+          // 必须严格匹配 /t/topic/数字 格式
+          const isPostDetailPage = /^\/t\/topic\/\d+/.test(path)
+          
+          if (!isPostDetailPage) {
+            console.log('URL不符合 /t/topic/数字 格式:', path)
+            return false
+          }
+          
+          // 额外安全检查：排除所有已知的系统页面类型
+          const systemPages = [
+            // 主页和列表页
+            /^\/$/,
+            /^\/latest/,
+            /^\/categories/,
+            /^\/top/,
+            /^\/unread/,
+            /^\/new/,
+            
+            // 分类相关页面
+            /^\/c\//,
+            
+            // 用户相关页面
+            /^\/u\//,
+            /^\/g\//,
+            /^\/leaderboard/,
+            /^\/filter/,
+            
+            // 日期相关页面
+            /^\/cakeday/,
+            
+            // 标签页面
+            /^\/tag/,
+            
+            // 系统页面
+            /^\/about/,
+            /^\/faq/,
+            /^\/tos/,
+            /^\/privacy/,
+            /^\/guidelines/,
+            /^\/badges/,
+            /^\/groups/,
+            /^\/muted/,
+            /^\/feeds/,
+            
+            // 管理和搜索
+            /^\/admin/,
+            /^\/search/,
+            
+            // API和静态资源
+            /^\/api/,
+            /^\/uploads/,
+            /^\/assets/,
+          ]
+          
+          // 检查是否匹配任何系统页面模式
+          const isSystemPage = systemPages.some(pattern => pattern.test(path))
+          
+          console.log('URL验证结果:', {
+            path,
+            isPostDetailPage,
+            isSystemPage,
+            finalResult: isPostDetailPage && !isSystemPage
+          })
+          
+          return isPostDetailPage && !isSystemPage
+        }
+        
+        if (!isValidPostPage()) {
+          console.log('跳过记录：不是有效的帖子页面', path)
+          return
+        }
+        
+        // 提取帖子ID，现在只需要匹配 /t/topic/数字 格式
+        const extractPostId = () => {
+          const match = path.match(/^\/t\/topic\/(\d+)/)
+          if (match) {
+            console.log('成功提取帖子ID:', match[1], '来源路径:', path)
+            return match[1]
+          }
+          
+          console.log('无法提取帖子ID，路径格式不正确:', path)
+          return null
+        }
+        
+        const postId = extractPostId()
+        
+        if (!postId) {
+          console.log('跳过记录：未找到有效的帖子ID', path)
+          return
+        }
+        
+        console.log('检测到有效的帖子页面，帖子ID:', postId)
 
-        // 等待页面加载完成后获取标题，使用改进的选择器和重试机制
-        setTimeout(async () => {
-          const getTitleFromPage = () => {
-            // 改进的标题选择器，适配更多页面结构
-            const selectors = [
-              'h1',                                          // 主标题
-              '.header-title .topic-link',                   // 原有选择器
-              '.fancy-title',                                // Discourse论坛常用
-              '.topic-title',                                // 话题标题
-              '#topic-title',                                // ID选择器
-              '.extra-info-wrapper .topic-link',             // 扩展信息中的链接
-              '.topic-category .topic-link',                 // 分类中的链接
-              '[data-topic-id]',                             // 数据属性选择器
-              '.cooked h1',                                  // 内容中的标题
-              '.d-header .title a',                          // 头部标题链接
-              'meta[property="og:title"]',                   // OpenGraph标题
-              'title'                                        // 页面标题元素
+        // 测试函数：您可以在浏览器控制台中调用测试函数来验证功能
+        if (typeof window !== 'undefined') {
+          // 标题拆分测试函数
+          window.testTitleSplit = (testTitles) => {
+            const defaultTestTitles = [
+              '头一次看完一部轻小说 - 深海幽域',    // ✅ 应该拆分成：标题="头一次看完一部轻小说", 标签="深海幽域"
+              'Linux系统使用技巧 - 搞七捻三',       // ✅ 应该拆分成：标题="Linux系统使用技巧", 标签="搞七捻三"
+              '关于AI的思考 - 开发调优',            // ✅ 应该拆分
+              '这是一个标题 - 第1章',              // ❌ "第1章"应该被识别为标题的一部分，不拆分
+              '项目介绍 - 版本1.0',               // ❌ "版本1.0"应该被识别为标题的一部分
+              '单纯的标题没有标签',                 // ❌ 没有分隔符，不拆分
+              '标题 - 标签 - 更多内容',             // ✅ 应该拆分成：标题="标题 - 标签", 标签="更多内容"
             ]
             
-            for (const selector of selectors) {
+            const titlesToTest = testTitles || defaultTestTitles
+            
+            console.log('=== 标题拆分测试开始 ===')
+            titlesToTest.forEach(testTitle => {
+              const lastDashIndex = testTitle.lastIndexOf(' - ')
+              if (lastDashIndex > 0) {
+                const potentialTitle = testTitle.substring(0, lastDashIndex).trim()
+                const potentialCategory = testTitle.substring(lastDashIndex + 3).trim()
+                
+                // 复制验证逻辑
+                const isValid = potentialCategory.length >= 2 && 
+                               potentialCategory.length <= 30 && 
+                               potentialTitle.length >= 3 &&
+                               !(/^\d{4}-\d{2}-\d{2}/.test(potentialCategory)) &&
+                               !(/^第\d+/.test(potentialCategory)) &&
+                               !(/^版本\d+/.test(potentialCategory)) &&
+                               !(/^v\d+\.\d+/.test(potentialCategory)) &&
+                               !(/[\(\)\[\]【】]/.test(potentialCategory)) &&
+                               !(/^(上|下|续)$/.test(potentialCategory))
+                
+                if (isValid) {
+                  console.log(`✅ "${testTitle}" -> 标题: "${potentialTitle}", 标签: "${potentialCategory}"`)
+                } else {
+                  console.log(`❌ "${testTitle}" -> 不拆分（标签验证失败）`)
+                }
+              } else {
+                console.log(`❌ "${testTitle}" -> 不拆分（无分隔符）`)
+              }
+            })
+            console.log('=== 标题拆分测试完成 ===')
+          }
+          
+          // URL过滤测试函数
+          window.testHistoryURLFilter = (testUrls) => {
+            const defaultTestUrls = [
+              '/t/topic/951533',           // ✅ 应该通过
+              '/t/topic/123456',           // ✅ 应该通过
+              '/c/job/27',                 // ❌ 应该被过滤
+              '/c/gossip/11',              // ❌ 应该被过滤
+              '/about',                    // ❌ 应该被过滤
+              '/u/username',               // ❌ 应该被过滤
+              '/g',                        // ❌ 应该被过滤
+              '/leaderboard',              // ❌ 应该被过滤
+              '/cakeday/anniversaries/today', // ❌ 应该被过滤
+              '/tag/标签名',                // ❌ 应该被过滤
+              '/',                         // ❌ 应该被过滤
+              '/latest',                   // ❌ 应该被过滤
+            ]
+            
+            const urlsToTest = testUrls || defaultTestUrls
+            
+            console.log('=== URL过滤测试开始 ===')
+            urlsToTest.forEach(testPath => {
+              // 使用相同的验证逻辑
+              const isPostDetailPage = /^\/t\/topic\/\d+/.test(testPath)
+              
+              const systemPages = [
+                /^\/$/,/^\/latest/,/^\/categories/,/^\/top/,/^\/unread/,/^\/new/,
+                /^\/c\//,/^\/u\//,/^\/g\//,/^\/leaderboard/,/^\/filter/,/^\/cakeday/,
+                /^\/tag/,/^\/about/,/^\/faq/,/^\/tos/,/^\/privacy/,/^\/guidelines/,
+                /^\/badges/,/^\/groups/,/^\/muted/,/^\/feeds/,/^\/admin/,/^\/search/,
+                /^\/api/,/^\/uploads/,/^\/assets/,
+              ]
+              
+              const isSystemPage = systemPages.some(pattern => pattern.test(testPath))
+              const shouldRecord = isPostDetailPage && !isSystemPage
+              
+              console.log(`${shouldRecord ? '✅' : '❌'} ${testPath} - ${shouldRecord ? '会记录' : '被过滤'}`)
+            })
+            console.log('=== 测试完成 ===')
+            console.log('提示：在LinuxDo网站上打开控制台，输入 window.testHistoryURLFilter() 即可测试')
+          }
+        }
+
+        // 等待页面加载完成后获取标题，使用改进的标题提取策略确保标签显示一致性
+        setTimeout(async () => {
+          const getTitleFromPage = () => {
+            // 标准化标题处理函数
+            const normalizeTitle = (rawTitle, foundVia) => {
+              if (!rawTitle) return null
+              
+              let title = rawTitle.trim()
+              
+              // 处理页面title格式："帖子标题 - 分类名 - LINUX DO"
+              if (foundVia === 'title' || foundVia === 'meta[property="og:title"]') {
+                // 移除末尾的 "- LINUX DO" 或类似后缀（支持多种变体）
+                title = title.replace(/\s*[-–—]\s*(LINUX\s*DO|Linux\s*Do|linux\.do)\s*$/i, '').trim()
+                
+                // 移除多余的站点信息
+                title = title.replace(/\s*[-–—]\s*(Linux\s*社区|社区|论坛|Community|Forum)\s*$/i, '').trim()
+                
+                console.log(`Normalized title from ${foundVia}: "${rawTitle}" -> "${title}"`)
+              }
+              
+              // 清理标题中的多余空白和特殊字符
+              title = title.replace(/\s+/g, ' ').trim()
+              
+              return title || null
+            }
+            
+            // 获取分类信息的函数
+            const getCategoryInfo = () => {
+              const categorySelectors = [
+                '.badge-category__name',                       // 分类徽章（最常见）
+                '.topic-category .badge-category__name',       // 话题分类
+                '.breadcrumbs .badge-category__name',          // 面包屑中的分类
+                'a[href*="/c/"] .badge-category__name',        // 分类链接中的名称
+                '.badge-category .badge-category__name',       // 分类徽章容器
+                '.category-name',                              // 分类名称
+                '.category-link',                              // 分类链接
+                '.topic-map .category-name',                   // 话题地图中的分类
+                '.categories-wrapper .badge-category__name:first-child', // 分类包装器中的第一个分类
+                '.topic-list-item .badge-category__name'       // 话题列表项中的分类
+              ]
+              
+              for (const selector of categorySelectors) {
+                try {
+                  const element = document.querySelector(selector)
+                  const categoryName = element?.textContent?.trim()
+                  if (categoryName && categoryName.length > 0) {
+                    console.log(`Found category via selector "${selector}":`, categoryName)
+                    return categoryName
+                  }
+                } catch (e) {
+                  console.warn(`Category selector "${selector}" failed:`, e)
+                }
+              }
+              
+              return null
+            }
+            
+            // 优先使用包含完整信息的选择器，确保标签一致性
+            const prioritizedSelectors = [
+              // 第一优先级：包含完整标题和分类的元素
+              { selector: 'title', priority: 1 },
+              { selector: 'meta[property="og:title"]', priority: 1 },
+              
+              // 第二优先级：主要标题元素
+              { selector: '.fancy-title', priority: 2 },
+              { selector: 'h1', priority: 2 },
+              { selector: '.topic-title', priority: 2 },
+              { selector: '#topic-title', priority: 2 },
+              
+              // 第三优先级：其他标题元素
+              { selector: '.header-title .topic-link', priority: 3 },
+              { selector: '.extra-info-wrapper .topic-link', priority: 3 },
+              { selector: '.d-header .title a', priority: 3 },
+              { selector: '.cooked h1', priority: 3 },
+              
+              // 第四优先级：备用选择器
+              { selector: '.topic-category .topic-link', priority: 4 },
+              { selector: '[data-topic-id]', priority: 4 }
+            ]
+            
+            // 按优先级尝试获取标题
+            let bestTitle = null
+            let bestPriority = Infinity
+            let foundVia = null
+            
+            for (const { selector, priority } of prioritizedSelectors) {
               try {
                 let element = document.querySelector(selector)
-                let title = null
+                let rawTitle = null
                 
                 if (selector === 'meta[property="og:title"]') {
-                  title = element?.getAttribute('content')?.trim()
+                  rawTitle = element?.getAttribute('content')?.trim()
                 } else if (selector === 'title') {
-                  title = element?.textContent?.trim()
+                  rawTitle = element?.textContent?.trim()
                 } else {
-                  title = element?.textContent?.trim() || element?.innerText?.trim()
+                  rawTitle = element?.textContent?.trim() || element?.innerText?.trim()
                 }
                 
-                if (title && title.length > 0) {
-                  console.log(`Found title via selector "${selector}":`, title)
-                  return title
+                if (rawTitle && rawTitle.length > 0 && priority < bestPriority) {
+                  const normalizedTitle = normalizeTitle(rawTitle, selector)
+                  if (normalizedTitle) {
+                    bestTitle = normalizedTitle
+                    bestPriority = priority
+                    foundVia = selector
+                    console.log(`Found better title (priority ${priority}) via selector "${selector}":`, normalizedTitle)
+                  }
                 }
               } catch (e) {
                 console.warn(`Selector "${selector}" failed:`, e)
               }
             }
             
-            console.warn('No title found with any selector')
-            return null
+            // 如果获取到的标题不包含分类信息，尝试单独获取分类并拼接
+            if (bestTitle && bestPriority > 1) {
+              const category = getCategoryInfo()
+              if (category && !bestTitle.includes(category)) {
+                const enhancedTitle = `${bestTitle} - ${category}`
+                console.log(`Enhanced title with category:`, enhancedTitle)
+                return enhancedTitle
+              }
+            }
+            
+            if (!bestTitle) {
+              console.warn('No title found with any selector')
+            }
+            
+            return bestTitle
           }
           
           let title = getTitleFromPage()
@@ -830,13 +1222,13 @@ export default {
           }
           
           const url = window.location.href
-          const category = document.querySelector('.categories-wrapper .badge-category__wrapper:nth-child(1) .badge-category__name')?.textContent?.trim() || ''
+          // 分类信息已在标题中处理，不再需要单独获取
 
           const historyItem = {
             id: postId,
             title: title,
             url: url,
-            category: category,
+            category: '', // 分类信息已整合到标题中，保持字段以兼容现有数据结构
             time: new Date().toISOString()
           }
 
@@ -1297,10 +1689,13 @@ export default {
 .history-info {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: flex-start;
+  gap: 6px;
   font-size: 13px;
   color: #6B7280;
   font-weight: 500;
+  margin-top: 4px;
+  flex-wrap: wrap;
 }
 
 .history-time {
@@ -1312,13 +1707,131 @@ export default {
 }
 
 .history-category {
-  background: linear-gradient(135deg, rgba(var(--primary-rgb, 79, 70, 229), 0.15) 0%, rgba(var(--primary-rgb, 79, 70, 229), 0.1) 100%);
-  color: var(--primary, #4f46e5);
-  padding: 4px 10px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  border: 1px solid rgba(var(--primary-rgb, 79, 70, 229), 0.1);
+  background: linear-gradient(135deg, 
+    rgba(var(--category-rgb, 79, 70, 229), 0.08) 0%, 
+    rgba(var(--category-rgb, 79, 70, 229), 0.12) 100%
+  );
+  color: rgba(var(--category-rgb, 79, 70, 229), 1);
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid rgba(var(--category-rgb, 79, 70, 229), 0.15);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(var(--category-rgb, 79, 70, 229), 0.1);
+  letter-spacing: 0.3px;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 4px;
+  gap: 4px;
+}
+
+.category-icon {
+  width: 10px;
+  height: 10px;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+/* 标签颜色主题定义 - 每个标签独特颜色 */
+/* 蓝色系 */
+.category-blue { --category-rgb: 59, 130, 246; }
+.category-sky { --category-rgb: 14, 165, 233; }
+.category-indigo { --category-rgb: 99, 102, 241; }
+.category-violet { --category-rgb: 139, 92, 246; }
+
+/* 绿色系 */
+.category-green { --category-rgb: 34, 197, 94; }
+.category-emerald { --category-rgb: 16, 185, 129; }
+.category-teal { --category-rgb: 20, 184, 166; }
+.category-lime { --category-rgb: 132, 204, 22; }
+
+/* 紫色系 */
+.category-purple { --category-rgb: 147, 51, 234; }
+.category-fuchsia { --category-rgb: 217, 70, 239; }
+
+/* 橙色系 */
+.category-orange { --category-rgb: 249, 115, 22; }
+.category-amber { --category-rgb: 245, 158, 11; }
+.category-yellow { --category-rgb: 234, 179, 8; }
+
+/* 粉红系 */
+.category-pink { --category-rgb: 236, 72, 153; }
+.category-rose { --category-rgb: 244, 63, 94; }
+
+/* 青色系 */
+.category-cyan { --category-rgb: 6, 182, 212; }
+
+/* 红色系 */
+.category-red { --category-rgb: 239, 68, 68; }
+
+/* 灰色系 */
+.category-gray { --category-rgb: 107, 114, 128; }
+.category-slate { --category-rgb: 100, 116, 139; }
+.category-zinc { --category-rgb: 113, 113, 122; }
+.category-neutral { --category-rgb: 115, 115, 115; }
+.category-stone { --category-rgb: 120, 113, 108; }
+
+/* 默认主题 */
+.category-default { --category-rgb: 79, 70, 229; }
+
+.history-category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(var(--category-rgb, 79, 70, 229), 0.1), 
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.history-item:hover .history-category {
+  background: linear-gradient(135deg, 
+    rgba(var(--category-rgb, 79, 70, 229), 0.12) 0%, 
+    rgba(var(--category-rgb, 79, 70, 229), 0.18) 100%
+  );
+  border-color: rgba(var(--category-rgb, 79, 70, 229), 0.2);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 2px 8px rgba(var(--category-rgb, 79, 70, 229), 0.15),
+    0 1px 3px rgba(var(--category-rgb, 79, 70, 229), 0.1);
+}
+
+.history-item:hover .category-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.history-item:hover .history-category::before {
+  left: 100%;
+}
+
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+  .history-category {
+    background: linear-gradient(135deg, 
+      rgba(var(--category-rgb, 79, 70, 229), 0.15) 0%, 
+      rgba(var(--category-rgb, 79, 70, 229), 0.2) 100%
+    );
+    color: rgba(var(--category-rgb, 79, 70, 229), 1);
+    border-color: rgba(var(--category-rgb, 79, 70, 229), 0.3);
+    box-shadow: 0 1px 3px rgba(var(--category-rgb, 79, 70, 229), 0.2);
+  }
+  
+  .history-item:hover .history-category {
+    background: linear-gradient(135deg, 
+      rgba(var(--category-rgb, 79, 70, 229), 0.2) 0%, 
+      rgba(var(--category-rgb, 79, 70, 229), 0.28) 100%
+    );
+    border-color: rgba(var(--category-rgb, 79, 70, 229), 0.4);
+  }
 }
 
 /* 现代化删除按钮 */
