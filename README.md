@@ -182,6 +182,7 @@ npm run dev
 ## 🤝 五、参与贡献
 
 ### 1. 贡献方式
+- 📋 [已知问题](KNOWN_ISSUES.md) - 查看当前已知问题和解决方案
 - 🐛 [报告 Bug](https://github.com/anghunk/linuxdo-scripts/issues/new?template=bug_report.yml)
 - 💡 [功能建议](https://github.com/anghunk/linuxdo-scripts/issues/new?template=feature_report.yml)
 - 🔧 [提交代码](https://github.com/anghunk/linuxdo-scripts/pulls)
