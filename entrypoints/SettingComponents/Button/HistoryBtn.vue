@@ -84,7 +84,9 @@ export default {
         left: '0px',
         top: '0px'
       },
-      popupShowTime: 0  // 记录弹窗显示时间，防止立即关闭
+      popupShowTime: 0,  // 记录弹窗显示时间，防止立即关闭
+      lastClickEvent: null, // 保存最后一次点击事件，用于准确的按钮位置计算
+      lastForceFixTime: 0   // 记录最后一次强制修复的时间，用于防抖
     }
   },
   computed: {
@@ -194,16 +196,26 @@ export default {
       }
     },
 
-    toggleHistoryPopup() {
-      console.log('History button clicked!') // 调试信息
+    toggleHistoryPopup(event) {
+      console.log('History button clicked!', {
+        event: event,
+        target: event?.target,
+        currentTarget: event?.currentTarget,
+        clientX: event?.clientX,
+        clientY: event?.clientY,
+        offsetX: event?.offsetX,
+        offsetY: event?.offsetY
+      }) // 详细调试信息
+      
       this.isPopupVisible = !this.isPopupVisible
-      console.log('Popup visibility changed to:', this.isPopupVisible) // 新增调试信息
+      console.log('Popup visibility changed to:', this.isPopupVisible)
       
       if (this.isPopupVisible) {
-        console.log('Opening popup, loading history...') // 调试信息
+        console.log('Opening popup, loading history...')
         
-        // 记录显示时间
+        // 记录显示时间和点击事件信息
         this.popupShowTime = Date.now()
+        this.lastClickEvent = event // 保存点击事件，用于准确的按钮位置计算
         
         // 立即计算并设置安全位置
         this.calculateSafePosition()
@@ -370,8 +382,49 @@ export default {
         let left, top
         let button = null
         
-        // 改进的按钮检测机制
+        // 改进的按钮检测机制 - 优先使用点击事件目标
         const findButton = () => {
+          // 优先策略1：使用点击事件目标
+          if (this.lastClickEvent && this.lastClickEvent.target) {
+            let clickTarget = this.lastClickEvent.target
+            
+            console.log('Click event analysis:', {
+              target: clickTarget,
+              targetClass: clickTarget.className,
+              targetTag: clickTarget.tagName,
+              clientX: this.lastClickEvent.clientX,
+              clientY: this.lastClickEvent.clientY
+            })
+            
+            // 向上遍历DOM树，寻找实际的按钮元素
+            while (clickTarget && clickTarget !== document.body) {
+              console.log('Checking element:', {
+                element: clickTarget,
+                className: clickTarget.className,
+                hasHistoryBtn: clickTarget.classList.contains('history-btn'),
+                title: clickTarget.title,
+                rect: clickTarget.getBoundingClientRect()
+              })
+              
+              if (clickTarget.classList.contains('history-btn') || 
+                  clickTarget.closest('.history-btn') ||
+                  clickTarget.title === '浏览历史') {
+                const actualButton = clickTarget.classList.contains('history-btn') ? 
+                  clickTarget : clickTarget.closest('.history-btn')
+                if (actualButton && actualButton.offsetWidth > 0 && actualButton.offsetHeight > 0) {
+                  console.log('Found button via click event:', {
+                    button: actualButton,
+                    rect: actualButton.getBoundingClientRect(),
+                    method: 'click-event'
+                  })
+                  return actualButton
+                }
+              }
+              clickTarget = clickTarget.parentElement
+            }
+          }
+          
+          // 备用策略2：传统选择器查找
           const selectors = [
             '.history-btn',
             '.history-btn-container .history-btn',
@@ -380,8 +433,18 @@ export default {
           
           for (const selector of selectors) {
             const btn = this.$el?.querySelector(selector) || document.querySelector(selector)
-            if (btn && btn.offsetWidth > 0 && btn.offsetHeight > 0) return btn
+            if (btn && btn.offsetWidth > 0 && btn.offsetHeight > 0) {
+              console.log('Found button via selector:', {
+                selector: selector,
+                button: btn,
+                rect: btn.getBoundingClientRect(),
+                method: 'selector'
+              })
+              return btn
+            }
           }
+          
+          console.warn('Button not found with any method')
           return null
         }
         
@@ -400,13 +463,27 @@ export default {
             popupSize: { width: popupWidth, height: popupHeight }
           })
           
-          // 智能位置计算 - 避免遮挡按钮
+          // 智能位置计算 - 避免遮挡按钮，特别处理左下角情况
+          const isBottomLeft = rect.left < window.innerWidth / 3 && rect.bottom > window.innerHeight * 2/3
+          const isBottomRight = rect.right > window.innerWidth * 2/3 && rect.bottom > window.innerHeight * 2/3
+          const isTopArea = rect.top < window.innerHeight / 3
+          
+          console.log('Button position analysis:', {
+            isBottomLeft,
+            isBottomRight, 
+            isTopArea,
+            rectPosition: {
+              leftPercent: (rect.left / window.innerWidth * 100).toFixed(1) + '%',
+              topPercent: (rect.top / window.innerHeight * 100).toFixed(1) + '%'
+            }
+          })
+          
           const positions = [
-            // 1. 左侧显示（优先，避免右下角溢出）
+            // 1. 左侧显示（优先，但在左下角时降低优先级）
             {
               left: rect.left - popupWidth - margin,
               top: Math.max(margin, Math.min(rect.top - popupHeight / 4, window.innerHeight - popupHeight - margin)),
-              priority: rect.left >= popupWidth + margin ? 10 : 0,
+              priority: rect.left >= popupWidth + margin ? (isBottomLeft ? 8 : 10) : 0,
               description: 'left'
             },
             // 2. 上方显示（避免遮挡按钮）
@@ -419,11 +496,12 @@ export default {
               priority: rect.top >= popupHeight + margin ? 9 : 0,
               description: 'top'
             },
-            // 3. 右侧显示
+            // 3. 右侧显示（在左下角时大幅降低优先级，避免右下角显示）
             {
               left: rect.right + margin,
               top: Math.max(margin, Math.min(rect.top - popupHeight / 4, window.innerHeight - popupHeight - margin)),
-              priority: (window.innerWidth - rect.right) >= popupWidth + margin ? 8 : 0,
+              priority: (window.innerWidth - rect.right) >= popupWidth + margin ? 
+                (isBottomLeft ? 3 : 8) : 0, // 左下角时优先级降低到3
               description: 'right'
             },
             // 4. 下方显示（可能遮挡按钮，优先级较低）
@@ -436,25 +514,25 @@ export default {
               priority: (window.innerHeight - rect.bottom) >= popupHeight + margin ? 7 : 0,
               description: 'bottom'
             },
-            // 5. 左上角安全区域
+            // 5. 左上角安全区域（在左下角时提高优先级）
             {
               left: margin,
               top: margin,
-              priority: 6,
+              priority: isBottomLeft ? 12 : 6, // 左下角时优先级提升
               description: 'top-left'
             },
-            // 6. 右上角安全区域
+            // 6. 右上角安全区域（在左下角时提高优先级）
             {
               left: window.innerWidth - popupWidth - margin,
               top: margin,
-              priority: 5,
+              priority: isBottomLeft ? 11 : 5, // 左下角时优先级提升
               description: 'top-right'
             },
-            // 7. 屏幕中心（最后选择）
+            // 7. 屏幕中心（最后选择，但在左下角时提高优先级）
             {
               left: (window.innerWidth - popupWidth) / 2,
               top: (window.innerHeight - popupHeight) / 2,
-              priority: 4,
+              priority: isBottomLeft ? 10 : 4, // 左下角时优先级提升
               description: 'center'
             }
           ]
@@ -509,13 +587,15 @@ export default {
             selectedPosition: bestPosition.description,
             priority: bestPosition.priority,
             overlap: bestPosition.overlap || false,
+            isBottomLeft: isBottomLeft,
+            finalCoords: { left: bestPosition.left, top: bestPosition.top },
             allPositions: positions.map(p => ({ 
               desc: p.description, 
               priority: p.priority, 
-              overlap: p.overlap || false 
-            }))
+              overlap: p.overlap || false,
+              coords: { left: p.left.toFixed(0), top: p.top.toFixed(0) }
+            })).sort((a, b) => b.priority - a.priority)
           })
-          
         } else {
           console.warn('Button not found, using safe center position')
           left = (window.innerWidth - popupWidth) / 2
@@ -540,6 +620,9 @@ export default {
           left: left + 'px',
           top: top + 'px'
         }
+        
+        // 清理点击事件引用，避免内存泄漏
+        this.lastClickEvent = null
         
         // 更新弹窗的动态高度
         this.$nextTick(() => {
@@ -599,26 +682,47 @@ export default {
 
     // DOM保护机制，确保弹窗在显示状态时不被意外隐藏
     setupDOMProtection() {
-      // 每100ms检查一次弹窗状态，确保显示正常
-      this.domProtectionInterval = setInterval(() => {
-        if (this.isPopupVisible) {
-          const popup = this.$el?.querySelector('.history-popup')
-          if (popup) {
-            const computedStyle = getComputedStyle(popup)
-            const rect = popup.getBoundingClientRect()
-            
-            // 如果弹窗应该显示但实际不可见，则强制修复
-            if (computedStyle.display === 'none' || 
-                computedStyle.visibility === 'hidden' || 
-                computedStyle.opacity === '0' ||
-                rect.width === 0 || rect.height === 0) {
+      // 延迟启动保护机制，给弹窗充分的初始化时间
+      setTimeout(() => {
+        // 每500ms检查一次弹窗状态（降低检查频率）
+        this.domProtectionInterval = setInterval(() => {
+          if (this.isPopupVisible) {
+            const popup = this.$el?.querySelector('.history-popup')
+            if (popup) {
+              const computedStyle = getComputedStyle(popup)
+              const rect = popup.getBoundingClientRect()
               
-              console.warn('Popup visibility issue detected, forcing display')
-              this.forceShowPopup()
+              // 改进的可见性检查，避免在正常渲染过程中误触发
+              const isDisplayNone = computedStyle.display === 'none'
+              const isVisibilityHidden = computedStyle.visibility === 'hidden'
+              const isCompletelyTransparent = parseFloat(computedStyle.opacity) === 0
+              const hasNoSize = rect.width === 0 && rect.height === 0
+              
+              // 只有在明确的隐藏状态才触发修复，排除渐变动画等正常情况
+              // 添加额外检查：确保弹窗已经有足够时间完成渲染
+              const timeSinceShow = Date.now() - this.popupShowTime
+              const isActuallyBroken = (isDisplayNone || isVisibilityHidden || 
+                                      (isCompletelyTransparent && hasNoSize)) && 
+                                      timeSinceShow > 1000 // 弹窗显示1秒后仍有问题才认为是真正的错误
+              
+              if (isActuallyBroken) {
+                // 防抖机制：避免重复触发修复
+                if (!this.lastForceFixTime || (Date.now() - this.lastForceFixTime > 2000)) {
+                  console.warn('Popup visibility issue detected after sufficient render time, forcing display', {
+                    display: computedStyle.display,
+                    visibility: computedStyle.visibility,
+                    opacity: computedStyle.opacity,
+                    rect: { width: rect.width, height: rect.height },
+                    timeSinceShow: timeSinceShow
+                  })
+                  this.lastForceFixTime = Date.now()
+                  this.forceShowPopup()
+                }
+              }
             }
           }
-        }
-      }, 100)
+        }, 500) // 降低检查频率到500ms
+      }, 1000) // 延迟1秒启动保护机制
     },
 
     updatePopupPosition() {
@@ -633,14 +737,98 @@ export default {
         
         if (!postId) return
 
-        // 等待页面加载完成后获取标题
+        // 等待页面加载完成后获取标题，使用改进的选择器和重试机制
         setTimeout(async () => {
-          const title = document.querySelector('h1')?.textContent?.trim() || 
-                       document.querySelector('.header-title .topic-link')?.textContent?.trim() || 
-                       document.title
+          const getTitleFromPage = () => {
+            // 改进的标题选择器，适配更多页面结构
+            const selectors = [
+              'h1',                                          // 主标题
+              '.header-title .topic-link',                   // 原有选择器
+              '.fancy-title',                                // Discourse论坛常用
+              '.topic-title',                                // 话题标题
+              '#topic-title',                                // ID选择器
+              '.extra-info-wrapper .topic-link',             // 扩展信息中的链接
+              '.topic-category .topic-link',                 // 分类中的链接
+              '[data-topic-id]',                             // 数据属性选择器
+              '.cooked h1',                                  // 内容中的标题
+              '.d-header .title a',                          // 头部标题链接
+              'meta[property="og:title"]',                   // OpenGraph标题
+              'title'                                        // 页面标题元素
+            ]
+            
+            for (const selector of selectors) {
+              try {
+                let element = document.querySelector(selector)
+                let title = null
+                
+                if (selector === 'meta[property="og:title"]') {
+                  title = element?.getAttribute('content')?.trim()
+                } else if (selector === 'title') {
+                  title = element?.textContent?.trim()
+                } else {
+                  title = element?.textContent?.trim() || element?.innerText?.trim()
+                }
+                
+                if (title && title.length > 0) {
+                  console.log(`Found title via selector "${selector}":`, title)
+                  return title
+                }
+              } catch (e) {
+                console.warn(`Selector "${selector}" failed:`, e)
+              }
+            }
+            
+            console.warn('No title found with any selector')
+            return null
+          }
           
-          if (!title || title === '话题 - Linux Do') return
-
+          let title = getTitleFromPage()
+          
+          // 如果第一次获取失败，进行重试（最多重试2次）
+          let retryCount = 0
+          const maxRetries = 2
+          const retryDelay = 500
+          
+          while (!title && retryCount < maxRetries) {
+            console.log(`Retrying title extraction, attempt ${retryCount + 1}`)
+            await new Promise(resolve => setTimeout(resolve, retryDelay))
+            title = getTitleFromPage()
+            retryCount++
+          }
+          
+          // 增强的过滤条件，排除无意义的通用标题
+          const invalidTitles = [
+            '话题 - Linux Do',
+            '所有最新话题',
+            '最新话题',
+            '所有话题',
+            'Linux Do',
+            'Linux.do',
+            '首页',
+            'Home',
+            'Categories',
+            '分类',
+            '话题',
+            'Topics',
+            'Latest',
+            'New',
+            'Unread',
+            'Top',
+            '加载中...',
+            'Loading...',
+            ''
+          ]
+          
+          if (!title || invalidTitles.some(invalid => 
+            title === invalid || 
+            title.toLowerCase() === invalid.toLowerCase() ||
+            title.startsWith(invalid + ' -') ||
+            title.endsWith('- Linux Do')
+          )) {
+            console.log('Invalid or empty title detected, skipping record:', title)
+            return
+          }
+          
           const url = window.location.href
           const category = document.querySelector('.categories-wrapper .badge-category__wrapper:nth-child(1) .badge-category__name')?.textContent?.trim() || ''
 
@@ -652,13 +840,14 @@ export default {
             time: new Date().toISOString()
           }
 
+          console.log('Recording history item:', historyItem)
           await historyStorage.addHistoryItem(historyItem)
           
           // 重新加载历史记录
           if (this.isPopupVisible) {
             this.loadHistoryData()
           }
-        }, 1000)
+        }, 1500) // 增加延迟时间到1.5秒
       } catch (error) {
         console.error('记录访问历史失败:', error)
       }

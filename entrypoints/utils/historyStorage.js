@@ -33,7 +33,7 @@ class HistoryStorage {
     return new Promise((resolve) => {
       this.browserAPI.storage.local.get([this.settingsKey], (result) => {
         const defaultSettings = {
-          maxRecords: 10,
+          maxRecords: 20,  // 与 HistoryBtn.vue 中的默认值保持一致
           autoRecord: true
         }
         resolve({ ...defaultSettings, ...(result[this.settingsKey] || {}) })
@@ -86,10 +86,11 @@ class HistoryStorage {
         time: item.time
       })
 
-      // 限制记录数量
-      const maxRecords = Math.min(settings.maxRecords || 10, 50)
-      if (history.length > maxRecords) {
-        history.splice(maxRecords)
+      // 添加固定的存储上限（1000条），防止存储空间无限增长
+      // maxRecords 设置仅用于控制显示数量，不影响实际存储
+      const STORAGE_LIMIT = 1000  // 最大存储1000条记录
+      if (history.length > STORAGE_LIMIT) {
+        history.splice(STORAGE_LIMIT)
       }
 
       // 保存到存储
