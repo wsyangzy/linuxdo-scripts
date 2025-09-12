@@ -1,7 +1,12 @@
 <template>
   <div>
-    <div class="el-button" @click="togglePopupSize" title="等级查询">
-      <span>等级</span>
+    <div class="el-button level-btn" @click="togglePopupSize" title="等级查询">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-award">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M12 9m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0"/>
+        <path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889"/>
+        <path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889"/>
+      </svg>
     </div>
     <div v-if="!isMinimized" id="linuxDoLevelPopupContent">
       <div v-html="content"></div>
@@ -191,6 +196,38 @@ export default {
 </script>
 
 <style scoped lang="less">
+.level-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.level-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.level-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 8px 25px rgba(var(--primary-rgb, 79, 70, 229), 0.3),
+    0 4px 8px rgba(var(--primary-rgb, 79, 70, 229), 0.15);
+}
+
+.level-btn:hover::before {
+  left: 100%;
+}
+
+.level-btn:active {
+  transform: translateY(-1px) scale(1.02);
+  transition: all 0.1s;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

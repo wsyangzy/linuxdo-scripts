@@ -15,6 +15,7 @@
       <BookmarkBtn v-show="showbookmarkbtn" /> <!-- 右下角收藏按钮 -->
       <BookmarkFolderBtn v-show="showbookmarkfolderbtn" /> <!-- 右下角收藏按钮 -->
       <HistoryBtn v-show="showhistorybtn" /> <!-- 浏览历史按钮 -->
+      <MutedListBtn v-show="showmutedlistbtn" /> <!-- 免打扰列表按钮 -->
     </div>
 
     <div class="main-btn" v-if="settingData.checked54" :class="{active:isMenuOpen}" id="mainBtn" @click="toggleMenu()">
@@ -181,6 +182,8 @@
             <MenuBookmarkFolderBtn :sort="3" v-model="settingData.checked53" v-show="matchesSearch('右下角显示收藏按钮')"/>
             <!-- 是否显示浏览历史按钮 -->
             <MenuHistoryBtn :sort="4" v-model="settingData.checkedHistory" v-show="matchesSearch('浏览历史按钮')"/>
+            <!-- 是否显示免打扰列表按钮 -->
+            <MenuMutedListBtn :sort="5" v-model="settingData.checkedMutedList" v-show="matchesSearch('免打扰列表按钮')"/>
           </div>
           <div class="menu-body-item" v-show="activeIndex == 1">
             <!-- 自定义论坛 logo -->
@@ -322,6 +325,8 @@ import BookmarkBtn from "./SettingComponents/Button/BookmarkBtn.vue";
 import BookmarkFolderBtn from "./SettingComponents/Button/BookmarkFolderBtn.vue";
 import HistoryBtn from "./SettingComponents/Button/HistoryBtn.vue";
 import MenuHistoryBtn from "./SettingComponents/Button/MenuHistoryBtn.vue";
+import MutedListBtn from "./SettingComponents/Button/MutedListBtn.vue";
+import MenuMutedListBtn from "./SettingComponents/Button/MenuMutedListBtn.vue";
 
 // 其他组件
 import Updates from "./SettingComponents/Other/Updates.vue";
@@ -367,6 +372,8 @@ export default {
     BookmarkFolderBtn,
     HistoryBtn,
     MenuHistoryBtn,
+    MutedListBtn,
+    MenuMutedListBtn,
     UsageTip,
     MenuFloorHeight,
     UserTags,
@@ -503,6 +510,7 @@ export default {
         checked54: false,
         checked55: false,
         checkedHistory: false,
+        checkedMutedList: false,
         removePostavatarData: {
           enable: false,
           showAuthor: false,
@@ -542,6 +550,7 @@ export default {
       showbookmarkbtn: false,
       showbookmarkfolderbtn: false,
       showhistorybtn: false,
+      showmutedlistbtn: false,
       settingsSearchQuery: "", // 添加搜索查询字段
       observer: null,
 
@@ -699,6 +708,7 @@ export default {
       this.showbookmarkbtn = this.settingData.checked52;
       this.showbookmarkfolderbtn = this.settingData.checked53;
       this.showhistorybtn = this.settingData.checkedHistory;
+      this.showmutedlistbtn = this.settingData.checkedMutedList;
       
     } else {
       localStorage.setItem("linxudoscriptssettingDMI", JSON.stringify(this.settingData));

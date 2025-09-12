@@ -1,7 +1,7 @@
 <template>
   <div class="backtotop">
     <div
-      class="el-button"
+      class="el-button backtotop-btn"
       style="font-size: 18px"
       @click="scrollToTop"
       type="primary"
@@ -24,3 +24,37 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.backtotop-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.backtotop-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.backtotop-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 8px 25px rgba(var(--primary-rgb, 79, 70, 229), 0.3),
+    0 4px 8px rgba(var(--primary-rgb, 79, 70, 229), 0.15);
+}
+
+.backtotop-btn:hover::before {
+  left: 100%;
+}
+
+.backtotop-btn:active {
+  transform: translateY(-1px) scale(1.02);
+  transition: all 0.1s;
+}
+</style>

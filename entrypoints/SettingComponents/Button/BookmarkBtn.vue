@@ -1,7 +1,10 @@
 <template>
   <div>
-    <div class="el-button linxudoscripts-bookmark1" @click="bookmark" title="收藏">
-      收藏
+    <div class="el-button bookmark-btn linxudoscripts-bookmark1" @click="bookmark" title="收藏">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-bookmark">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M9 4h6a2 2 0 0 1 2 2v14l-5 -3l-5 3v-14a2 2 0 0 1 2 -2"/>
+      </svg>
     </div>
   </div>
 </template>
@@ -118,3 +121,37 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.bookmark-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.bookmark-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.bookmark-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 8px 25px rgba(var(--primary-rgb, 79, 70, 229), 0.3),
+    0 4px 8px rgba(var(--primary-rgb, 79, 70, 229), 0.15);
+}
+
+.bookmark-btn:hover::before {
+  left: 100%;
+}
+
+.bookmark-btn:active {
+  transform: translateY(-1px) scale(1.02);
+  transition: all 0.1s;
+}
+</style>

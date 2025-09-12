@@ -1,7 +1,7 @@
 <template>
   <div class="item" :sort="sort">
     <div class="tit">
-      <span>浏览历史记录</span>
+      <span>{{ sort }}. 浏览历史记录</span>
       <div class="label">{{ labelText }}</div>
     </div>
     <input 
