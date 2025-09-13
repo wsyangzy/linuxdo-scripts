@@ -448,6 +448,13 @@
           return
         }
 
+        // 首先移除隐藏状态的属性
+        popup.removeAttribute('aria-hidden')
+        popup.inert = false  // 恢复交互能力
+
+        // 添加可见状态CSS类
+        popup.classList.add('popup-visible', 'popup-force-visible')
+
         // 使用内联样式和最高优先级确保显示
         const forceStyles = [
           'display: block !important',
@@ -475,7 +482,8 @@
           display: getComputedStyle(popup).display,
           visibility: getComputedStyle(popup).visibility,
           opacity: getComputedStyle(popup).opacity,
-          zIndex: getComputedStyle(popup).zIndex
+          zIndex: getComputedStyle(popup).zIndex,
+          interactionEnabled: !popup.inert
         })
       },
 
@@ -484,13 +492,24 @@
         const popup = this.$el.querySelector('.history-popup')
         if (popup) {
           console.log('Hiding popup')
+          // 移除所有CSS类
+          popup.classList.remove('popup-visible', 'popup-force-visible', 'popup-enter-active')
+          
           // 清除所有强制样式
           popup.style.cssText = ''
-          // 确保隐藏
-          popup.style.display = 'none'
-          popup.style.opacity = '0'
-          popup.style.visibility = 'hidden'
-          popup.style.pointerEvents = 'none'
+          
+          // 彻底隐藏元素并禁用交互
+          popup.style.setProperty('display', 'none', 'important')
+          popup.style.setProperty('opacity', '0', 'important')
+          popup.style.setProperty('visibility', 'hidden', 'important')
+          popup.style.setProperty('pointer-events', 'none', 'important')
+          popup.style.setProperty('z-index', '-1', 'important')
+          
+          // 移除从DOM树中的交互能力
+          popup.setAttribute('aria-hidden', 'true')
+          popup.inert = true  // 设置为惰性，禁用所有交互
+          
+          console.log('Popup completely hidden with all interactions disabled')
         }
       },
 
@@ -1436,45 +1455,62 @@
 
   /* 历史按钮现代化设计 */
   .history-btn {
-    background: linear-gradient(135deg, var(--primary, #4f46e5) 0%, var(--primary-medium, #6366f1) 100%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 500;
     color: #fff;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-medium) 100%);
     border: none;
     cursor: pointer;
-    border-radius: 12px;
-    padding: 12px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow:
-      0 4px 15px rgba(var(--primary-rgb, 79, 70, 229), 0.2),
-      0 2px 4px rgba(var(--primary-rgb, 79, 70, 229), 0.1);
-    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.2);
     overflow: hidden;
   }
 
   .history-btn::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
   .history-btn:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow:
-      0 8px 25px rgba(var(--primary-rgb, 79, 70, 229), 0.3),
-      0 4px 8px rgba(var(--primary-rgb, 79, 70, 229), 0.15);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.3);
   }
 
   .history-btn:hover::before {
-    left: 100%;
+    opacity: 1;
   }
 
   .history-btn:active {
-    transform: translateY(-1px) scale(1.02);
-    transition: all 0.1s;
+    transform: scale(0.98);
+    box-shadow: 0 2px 10px rgba(var(--primary-rgb), 0.2);
+  }
+
+  .history-btn svg {
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.2s ease;
+  }
+
+  .history-btn:hover svg {
+    transform: scale(1.1);
   }
 
   /* 优化的弹窗基础样式 */
@@ -2200,5 +2236,20 @@
     100% {
       transform: rotate(360deg);
     }
+  }
+
+  /* 确保inert元素完全不可交互 */
+  .history-popup[inert] {
+    display: none !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    z-index: -1 !important;
+  }
+
+  /* 辅助隐藏规则 */
+  .history-popup[aria-hidden="true"] {
+    display: none !important;
+    pointer-events: none !important;
   }
 </style>
