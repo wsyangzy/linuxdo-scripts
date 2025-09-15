@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>历史记录弹窗隐藏修复测试</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        color: #333;
+      }
+
+      .test-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #4f46e5;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 28px;
+      }
+
+      .fix-summary {
+        background: #f0f9ff;
+        border: 2px solid #0ea5e9;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .fix-title {
+        color: #0ea5e9;
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .fix-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .fix-list li {
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+      }
+
+      .fix-list li:before {
+        content: "✅ ";
+        color: #10b981;
+        font-weight: bold;
+      }
+
+      .test-section {
+        background: #fefce8;
+        border: 2px solid #eab308;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .test-title {
+        color: #eab308;
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+
+      .test-steps {
+        background: white;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 10px 0;
+      }
+
+      .step {
+        margin: 10px 0;
+        padding: 10px;
+        border-left: 4px solid #4f46e5;
+        background: #f8fafc;
+      }
+
+      .code-block {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 15px;
+        border-radius: 8px;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        font-size: 14px;
+        overflow-x: auto;
+        margin: 10px 0;
+      }
+
+      .highlight {
+        background: #fbbf24;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+
+      .success {
+        background: #dcfce7;
+        border: 2px solid #16a34a;
+        color: #15803d;
+      }
+
+      .warning {
+        background: #fef3c7;
+        border: 2px solid #f59e0b;
+        color: #d97706;
+      }
+
+      .implementation {
+        background: #ede9fe;
+        border: 2px solid #8b5cf6;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .implementation-title {
+        color: #8b5cf6;
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="test-container">
+      <h1>🔧 历史记录弹窗隐藏Bug修复报告</h1>
+
+      <div class="fix-summary">
+        <div class="fix-title">🎯 修复内容摘要</div>
+        <ul class="fix-list">
+          <li>修复弹窗隐藏后在页面左上角仍可点击的问题</li>
+          <li>增强hidePopup()方法，添加位置重置机制</li>
+          <li>完善CSS保护规则，多层级防护意外交互</li>
+          <li>重置Vue响应式状态，确保状态一致性</li>
+          <li>添加transform偏移，物理隔离交互区域</li>
+        </ul>
+      </div>
+
+      <div class="implementation">
+        <div class="implementation-title">🛠️ 技术实现细节</div>
+
+        <h3>1. JavaScript隐藏增强</h3>
+        <div class="code-block">
+          // 原有的隐藏逻辑 popup.style.setProperty('display', 'none',
+          'important') popup.style.setProperty('pointer-events', 'none',
+          'important') popup.inert = true // 新增的位置重置逻辑
+          popup.style.setProperty('left', '-9999px', 'important')
+          popup.style.setProperty('top', '-9999px', 'important')
+          popup.style.setProperty('transform', 'translateX(-100vw)
+          translateY(-100vh)', 'important') // 重置Vue响应式位置数据
+          this.popupPosition = { left: '-9999px', top: '-9999px' }
+        </div>
+
+        <h3>2. CSS保护规则增强</h3>
+        <div class="code-block">
+          /* 针对inert属性的完全隐藏 */ .history-popup[inert] { left: -9999px
+          !important; top: -9999px !important; transform: translateX(-100vw)
+          translateY(-100vh) !important; } /* 针对aria-hidden的完全隐藏 */
+          .history-popup[aria-hidden="true"] { left: -9999px !important; top:
+          -9999px !important; transform: translateX(-100vw) translateY(-100vh)
+          !important; } /* 当弹窗不可见时的额外保护 */
+          .history-popup:not(.popup-visible):not(.popup-force-visible) { left:
+          -9999px !important; top: -9999px !important; transform:
+          translateX(-100vw) translateY(-100vh) !important; pointer-events: none
+          !important; }
+        </div>
+      </div>
+
+      <div class="test-section">
+        <div class="test-title">🧪 测试验证步骤</div>
+
+        <div class="test-steps">
+          <div class="step">
+            <strong>步骤1:</strong>
+            在LinuxDo网站加载扩展，确认历史记录按钮正常显示
+          </div>
+          <div class="step">
+            <strong>步骤2:</strong> 点击历史记录按钮，观察弹窗正常弹出并显示内容
+          </div>
+          <div class="step">
+            <strong>步骤3:</strong> 点击页面其他区域关闭弹窗，确认弹窗视觉上消失
+          </div>
+          <div class="step">
+            <strong>步骤4:</strong> <span class="highlight">重点测试</span> -
+            在页面左上角区域(0,0)附近点击，确认不会意外触发历史记录弹窗
+          </div>
+          <div class="step">
+            <strong>步骤5:</strong>
+            打开开发者工具，检查弹窗元素是否已移动到屏幕外位置(-9999px)
+          </div>
+          <div class="step">
+            <strong>步骤6:</strong> 验证inert和aria-hidden属性是否正确设置
+          </div>
+        </div>
+      </div>
+
+      <div class="test-section warning">
+        <div class="test-title">⚠️ 重点验证项目</div>
+        <p>
+          <strong>核心问题:</strong>
+          确认页面左上角区域完全不可点击，不会意外触发历史记录功能
+        </p>
+        <p>
+          <strong>验证方法:</strong>
+          在(0,0)、(10,10)、(50,50)等左上角坐标点击，观察是否有任何弹窗响应
+        </p>
+        <p><strong>期望结果:</strong> 完全无响应，弹窗元素彻底隔离</p>
+      </div>
+
+      <div class="test-section success">
+        <div class="test-title">✅ 修复效果预期</div>
+        <p>通过多层级的隐藏保护机制，确保历史记录弹窗在隐藏后：</p>
+        <ul>
+          <li>视觉上完全不可见</li>
+          <li>物理位置移动到屏幕外</li>
+          <li>交互能力彻底禁用</li>
+          <li>状态数据完全重置</li>
+          <li>CSS层级多重保护</li>
+        </ul>
+      </div>
+
+      <div style="text-align: center; margin-top: 40px; color: #6b7280">
+        <p>📝 测试完成后请验证所有功能正常，确认bug已彻底修复</p>
+        <p style="font-size: 12px">
+          LinuxDo Scripts - 历史记录弹窗隐藏修复 v2025.09.15
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

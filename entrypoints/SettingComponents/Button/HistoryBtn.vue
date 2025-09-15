@@ -87,8 +87,8 @@
         historyList: [],
         maxRecords: 20,
         popupPosition: {
-          left: '0px',
-          top: '0px'
+          left: '-9999px',
+          top: '-9999px'
         },
         popupShowTime: 0,  // 记录弹窗显示时间，防止立即关闭
         lastClickEvent: null, // 保存最后一次点击事件，用于准确的按钮位置计算
@@ -383,13 +383,8 @@
               this.recalculatePositionIfNeeded()
             }, 100)
 
-            // 添加弹窗显示动画
-            setTimeout(() => {
-              const popup = this.$el.querySelector('.history-popup')
-              if (popup) {
-                popup.classList.add('popup-enter-active')
-              }
-            }, 10)
+            // 直接显示弹窗，无动画
+            // 移除动画效果 - 用户要求弹窗直接在对应位置显示
           })
         } else {
           console.log('Closing popup')
@@ -493,22 +488,33 @@
         if (popup) {
           console.log('Hiding popup')
           // 移除所有CSS类
-          popup.classList.remove('popup-visible', 'popup-force-visible', 'popup-enter-active')
-          
+          popup.classList.remove('popup-visible', 'popup-force-visible')
+
           // 清除所有强制样式
           popup.style.cssText = ''
-          
+
           // 彻底隐藏元素并禁用交互
           popup.style.setProperty('display', 'none', 'important')
           popup.style.setProperty('opacity', '0', 'important')
           popup.style.setProperty('visibility', 'hidden', 'important')
           popup.style.setProperty('pointer-events', 'none', 'important')
           popup.style.setProperty('z-index', '-1', 'important')
-          
+
+          // 重置位置到屏幕外，防止左上角点击问题
+          popup.style.setProperty('left', '-9999px', 'important')
+          popup.style.setProperty('top', '-9999px', 'important')
+          popup.style.setProperty('transform', 'translate(-100px, -100px)', 'important')
+
           // 移除从DOM树中的交互能力
           popup.setAttribute('aria-hidden', 'true')
           popup.inert = true  // 设置为惰性，禁用所有交互
-          
+
+          // 重置Vue响应式状态
+          this.popupPosition = {
+            left: '-9999px',
+            top: '-9999px'
+          }
+
           console.log('Popup completely hidden with all interactions disabled')
         }
       },
@@ -1513,7 +1519,7 @@
     transform: scale(1.1);
   }
 
-  /* 优化的弹窗基础样式 */
+  /* 优化的弹窗基础样式 - 移除所有动画效果 */
   .history-popup {
     position: fixed !important;
     width: min(380px, 90vw) !important;
@@ -1528,17 +1534,12 @@
     z-index: 2147483647 !important;
     overflow: hidden !important;
     border: none !important;
-    transform: translateZ(0) scale(0.95) !important;
-    opacity: 0 !important;
-    will-change: transform, opacity !important;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    opacity: 1 !important;
+    will-change: auto !important;
+    /* 移除所有transition动画 */
   }
 
-  /* 弹窗进入动画 */
-  .history-popup.popup-enter-active {
-    transform: translateZ(0) scale(1) !important;
-    opacity: 1 !important;
-  }
+  /* 移除弹窗进入动画 - 用户要求直接显示 */
 
   /* 强制显示样式 - 最高优先级 */
   .history-popup-force {

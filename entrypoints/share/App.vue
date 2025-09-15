@@ -133,7 +133,7 @@ export default {
             0,
             0,
             canvas.width,
-            canvas.height
+            canvas.height,
           );
 
           // 将canvas转换为blob
@@ -220,7 +220,7 @@ export default {
           const parser = new DOMParser();
           const doc = parser.parseFromString(
             data.post_stream.posts[0].cooked,
-            "text/html"
+            "text/html",
           );
           const oneboxElements = doc.querySelectorAll(".onebox");
 
